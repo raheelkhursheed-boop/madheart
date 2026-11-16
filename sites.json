@@ -1,0 +1,21 @@
+{
+  "_readme": "One entry per site. The folder, the domain and the Netlify project must always match. Add a new entry before creating a new site folder.",
+  "sites": [
+    {
+      "domain": "raheelkhursheed.com",
+      "folder": "sites/raheelkhursheed.com",
+      "netlify_project_name": "aquamarine-biscotti-557ba8",
+      "netlify_site_id": "50453a1a-37b3-4c65-820a-36f567b39da6",
+      "forms": false,
+      "check_text": "Raheel Khursheed"
+    },
+    {
+      "domain": "secondresponder.ai",
+      "folder": "sites/secondresponder.ai",
+      "netlify_project_name": "soft-profiterole-153040",
+      "netlify_site_id": "c77d4452-70e8-4fc5-bbac-29d6f323306c",
+      "forms": true,
+      "check_text": "No one should face a disaster alone"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Site: raheelkhursheed.com
+# Netlify project for this folder is listed in /sites.json. Do not link this folder to any other project.
+[build]
+  base = "sites/raheelkhursheed.com"
+  publish = "."
+  command = ""
+  # Only rebuild this site when files in its own folder change.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,20 +1,21 @@
 {
-  "_readme": "One entry per site. The folder, the domain and the Netlify project must always match. Add a new entry before creating a new site folder.",
+  "_readme": "One entry per site. The folder, the domain and the Cloudflare Pages project must always match. Add a new entry before creating a new site folder.",
+  "host": "Cloudflare Pages (account 5cf02a4d54666fd220c7dc1c8c4cd7ad); DNS on Cloudflare, domains registered at GoDaddy",
   "sites": [
     {
       "domain": "raheelkhursheed.com",
       "folder": "sites/raheelkhursheed.com",
-      "netlify_project_name": "aquamarine-biscotti-557ba8",
-      "netlify_site_id": "50453a1a-37b3-4c65-820a-36f567b39da6",
+      "cloudflare_project": "raheelkhursheed-com",
+      "preview_url": "https://raheelkhursheed-com.pages.dev",
       "forms": false,
       "check_text": "Raheel Khursheed"
     },
     {
       "domain": "secondresponder.ai",
       "folder": "sites/secondresponder.ai",
-      "netlify_project_name": "soft-profiterole-153040",
-      "netlify_site_id": "c77d4452-70e8-4fc5-bbac-29d6f323306c",
-      "forms": true,
+      "cloudflare_project": "secondresponder-ai",
+      "preview_url": "https://secondresponder-ai.pages.dev",
+      "forms": "functions/api/waitlist.js -> Workers KV secondresponder-waitlist (binding WAITLIST)",
       "check_text": "No one should face a disaster alone"
     }
   ]

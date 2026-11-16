@@ -1,5 +1,5 @@
 // Waitlist sign-ups for secondresponder.ai (Cloudflare Pages Function).
-// Stores each submission in the KV namespace bound as WAITLIST, then sends the visitor to /thanks.html.
+// Stores each submission in the KV namespace bound as WAITLIST, then sends the visitor to /thanks.html. Binding configured in Cloudflare: WAITLIST -> secondresponder-waitlist.
 const FORMS = {
   volunteers: ["email", "country", "help-type", "consent"],
   organizations: ["email", "country", "org-type", "offer-type", "consent"],

@@ -205,7 +205,7 @@ footer a{color:var(--navy)}
       <p class="lede">Join the waitlist and we'll let you know when we launch where you are.</p>
       <div class="cards">
 
-        <form id="volunteer" name="volunteers" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
+        <form id="volunteer" name="volunteers" method="POST" action="/api/waitlist">
           <input type="hidden" name="form-name" value="volunteers">
           <p class="hidden"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
           <h3>I want to help</h3>
@@ -234,7 +234,7 @@ footer a{color:var(--navy)}
           <button type="submit">Join as a volunteer</button>
         </form>
 
-        <form id="organizations" name="organizations" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
+        <form id="organizations" name="organizations" method="POST" action="/api/waitlist">
           <input type="hidden" name="form-name" value="organizations">
           <p class="hidden"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
           <h3>My organization can contribute</h3>

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Responder — No one should face a disaster alone</title>
+<meta name="description" content="Second Responder brings together people who want to help, and organizations with something to give, for the families who need it most, in the hours that matter most.">
+<meta property="og:title" content="Second Responder">
+<meta property="og:description" content="No one should face a disaster alone. Join the waitlist.">
+<meta property="og:url" content="https://secondresponder.ai/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A1B33">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1B33; --navy-2:#0F2647; --line:#22406A; --border:#3A5680;
+  --text-soft:#C6D4EA; --text-muted:#8FAED8; --accent:#6FA3FF;
+  --paper:#F4F7FC; --ink-soft:#3A4A63; --card-line:#D5DEEB; --field:#9AA8BD;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;line-height:1.55;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased}
+a{color:#fff}
+a:hover{color:#BFD6FF}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.display{font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:17px;padding:16px 28px;border-radius:999px;border:1px solid transparent}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:#E3ECFA;color:var(--navy)}
+.btn-ghost{border-color:var(--border);color:#fff}
+.btn-ghost:hover{background:var(--navy-2)}
+/* header */
+header .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:28px;padding-bottom:28px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand span{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px}
+.pill{text-decoration:none;font-size:15px;font-weight:600;padding:11px 18px;border-radius:999px;border:1px solid var(--border)}
+/* hero */
+.hero{padding:96px 0 136px}
+.tagline{margin:0 0 28px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(44px,7vw,92px);line-height:1;letter-spacing:-.03em;max-width:960px}
+.hero p{font-size:clamp(19px,1.7vw,23px);color:var(--text-soft);max-width:680px;margin:28px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+/* empathy */
+.empathy{background:var(--navy-2);padding:112px 0}
+.empathy .big{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.3;letter-spacing:-.015em;max-width:880px;margin:0 0 32px}
+.empathy .big.soft{color:var(--text-muted)}
+.empathy p.body{font-size:19px;color:var(--text-soft);max-width:640px;margin:8px 0 0}
+/* how */
+.how{padding:112px 0 96px}
+.eyebrow{margin:0 0 14px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.how h2{font-size:clamp(32px,3.6vw,46px);line-height:1.1;margin-bottom:56px}
+.flow{list-style:none;margin:0;padding:0;max-width:760px}
+.flow li{display:flex;gap:20px;align-items:stretch}
+.rail{display:flex;flex-direction:column;align-items:center;flex:none}
+.num{width:44px;height:44px;border-radius:999px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:18px}
+.num.start{background:var(--accent);color:var(--navy)}
+.num.done{background:#fff;border-color:#fff}
+.line{width:2px;flex:1;min-height:20px;background:var(--border)}
+.stepbody{padding:8px 0 32px}
+.stepbody h3{margin:0 0 6px;font-size:21px;font-weight:600}
+.stepbody p{margin:0;color:var(--text-soft);font-size:17px}
+.flow li.loop{display:block;border:1px dashed var(--border);border-radius:20px;padding:20px 20px 4px;margin:0 0 32px -12px}
+.loop-label{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.flow ol{list-style:none;margin:0;padding:0}
+.flow > li:last-child .stepbody{padding-bottom:0}
+.examples{background:var(--navy-2);padding:112px 0}
+.examples h2{font-size:clamp(32px,3.6vw,46px);line-height:1.1}
+.examples .lede{font-size:19px;color:var(--text-soft);margin:12px 0 48px;max-width:720px}
+.dcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.dcard{background:var(--navy);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.dcard h3{font-family:"Space Grotesk",sans-serif;font-size:26px;font-weight:700;margin:0 0 6px}
+.dcard .k{margin:0;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.dcard p{margin:0;color:var(--text-soft);font-size:15px}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:14px;padding:6px 12px;border:1px solid var(--border);border-radius:999px}
+.trust{padding:96px 0 112px}
+.trust p{margin:0;padding-top:40px;border-top:1px solid var(--line);font-size:18px;color:var(--text-soft);max-width:760px}
+/* join */
+.join{background:var(--paper);color:var(--navy);padding:112px 0}
+.join h2{font-size:clamp(32px,3.6vw,46px);line-height:1.1}
+.join .lede{font-size:19px;color:var(--ink-soft);margin:12px 0 48px;max-width:720px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+form{background:#fff;border:1px solid var(--card-line);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:18px;scroll-margin-top:24px}
+form h3{font-family:"Space Grotesk",sans-serif;font-size:28px;font-weight:700;margin:0}
+form p{margin:0;color:var(--ink-soft)}
+label.field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+input[type=email],select{font:inherit;font-size:16px;font-weight:400;padding:14px 16px;border:1px solid var(--field);border-radius:10px;background:#fff;color:var(--navy);width:100%}
+label.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-soft);font-weight:400}
+label.consent input{margin-top:3px;width:18px;height:18px;flex:none}
+label.consent a{color:var(--navy)}
+button{font:inherit;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:16px;font-size:17px;font-weight:600;cursor:pointer}
+button:hover{background:#17345F}
+.hidden{position:absolute;left:-9999px}
+footer{background:var(--paper);color:var(--ink-soft)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding-bottom:48px;font-size:14px}
+footer a{color:var(--navy)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Second Responder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M14 8v12M8 14h12" stroke="#6FA3FF" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>Second Responder</span>
+    </a>
+    <nav style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><a href="#how-it-works" style="text-decoration:none;font-size:15px;font-weight:600;padding:11px 18px">How it works</a><a class="pill" href="#join">Join the waitlist</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="tagline">The AI-powered disaster response system</p>
+      <h1 class="display">No one should face a disaster alone.</h1>
+      <p>Second Responder brings together people who want to help, and organizations with something to give, for the families who need it most, in the hours that matter most.</p>
+      <div class="cta">
+        <a class="btn btn-light" href="#volunteer">I want to help</a>
+        <a class="btn btn-ghost" href="#organizations">My organization can contribute</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="empathy" aria-label="Why Second Responder exists">
+    <div class="wrap">
+      <p class="big">When the water rises or the fire turns, people reach out for help, and others rush to give it.</p>
+      <p class="big soft">Too often, they never find each other.</p>
+      <p class="body">A family waits on a rooftop while a boat sits idle a few streets away. A warehouse fills with donations no one needs. We're building the connection that's been missing, so help finds the people who need it.</p>
+    </div>
+  </section>
+
+  <section class="how" id="how-it-works">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="display">From the first call to the last delivery.</h2>
+      <ol class="flow">
+        <li><div class="rail"><span class="num start">1</span><span class="line"></span></div><div class="stepbody"><h3>Disaster strikes</h3><p>A flood, earthquake or fire hits a community.</p></div></li>
+        <li><div class="rail"><span class="num">2</span><span class="line"></span></div><div class="stepbody"><h3>The disaster's protocol activates</h3><p>Each type of disaster has its own playbook: what's needed, who to alert and in what order, adjusted for the weather and the people affected.</p></div></li>
+        <li class="loop"><p class="loop-label"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Repeats until every call is answered</p><ol>
+          <li><div class="rail"><span class="num">3</span><span class="line"></span></div><div class="stepbody"><h3>Calls for help are picked up automatically</h3><p>AI monitors social media, news and text messages, and sorts every request by need, place and urgency.</p></div></li>
+          <li><div class="rail"><span class="num">4</span><span class="line"></span></div><div class="stepbody"><h3>Volunteers and resources mobilise</h3><p>Pledged volunteers and partner organizations are alerted with exactly what the protocol says this disaster needs.</p></div></li>
+          <li><div class="rail"><span class="num">5</span><span class="line"></span></div><div class="stepbody"><h3>Help is matched to each call</h3><p>Every call is matched to the nearest help that fits. People check every match that touches someone's safety.</p></div></li>
+          <li><div class="rail"><span class="num">6</span></div><div class="stepbody"><h3>More calls sharpen the response</h3><p>Each new call shows where needs are growing and what's running short, and feeds straight back into step 3.</p></div></li>
+        </ol></li>
+        <li><div class="rail"><span class="num done" role="img" aria-label="Step 7"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#0A1B33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="stepbody"><h3>The loop is closed</h3><p>Help arrives, the person who asked confirms it, and the call is marked done. Nobody falls through the cracks.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="examples" aria-labelledby="examples-h">
+    <div class="wrap">
+      <h2 class="display" id="examples-h">Every disaster needs something different.</h2>
+      <p class="lede">So every disaster gets its own protocol. Here's what it looks like in practice.</p>
+      <div class="dcards">
+        <article class="dcard">
+          <h3>Floods</h3>
+          <p class="k">Calls for help</p><p>Families stranded on rooftops, no clean water, medicines running out.</p>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Mobilised</p><ul class="chips"><li>Boats and rescue teams</li><li>Drinking water</li><li>Dry rations</li><li>Medical teams</li><li>Shelter and housing</li><li>Phone charging</li></ul>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Loop closed</p><p>Families rescued, sheltered and resupplied until the water goes down.</p>
+        </article>
+        <article class="dcard">
+          <h3>Earthquakes</h3>
+          <p class="k">Calls for help</p><p>People trapped under rubble, the injured, homes too unsafe to sleep in.</p>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Mobilised</p><ul class="chips"><li>Search and rescue</li><li>Heavy equipment</li><li>Doctors and blood donors</li><li>Tents and blankets</li><li>Structural engineers</li><li>Food and water</li></ul>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Loop closed</p><p>Survivors found and treated, families safely sheltered through the aftershocks.</p>
+        </article>
+        <article class="dcard">
+          <h3>Forest fires</h3>
+          <p class="k">Calls for help</p><p>People who need a way out, a place to stay, help with pets and livestock.</p>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Mobilised</p><ul class="chips"><li>Evacuation rides</li><li>Spare rooms and hotel stays</li><li>N95 masks</li><li>Animal shelter and trailers</li><li>Fuel</li><li>Essentials kits</li></ul>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Loop closed</p><p>Everyone out safely, housed nearby, and animals cared for until they can go home.</p>
+        </article>
+        <article class="dcard">
+          <h3>Flash floods</h3>
+          <p class="k">Calls for help</p><p>People cut off within minutes, cars swept away, relatives missing.</p>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Mobilised</p><ul class="chips"><li>Swift-water rescue</li><li>Text alerts via telecom partners</li><li>High-ground shelters</li><li>Missing-person tracing</li><li>Road and route updates</li><li>Dry clothes and food</li></ul>
+          <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 2v18M4 14l6 6 6-6" fill="none" stroke="#6FA3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="k">Loop closed</p><p>People reached in time, families reunited, everyone accounted for.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="wrap">
+      <p>Built by people who have spent more than a decade helping communities through floods, earthquakes and a pandemic. A nonprofit, launching first in India, Canada and the United States.</p>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="wrap">
+      <h2 class="display">Be ready for the next one.</h2>
+      <p class="lede">Join the waitlist and we'll let you know when we launch where you are.</p>
+      <div class="cards">
+
+        <form id="volunteer" name="volunteers" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
+          <input type="hidden" name="form-name" value="volunteers">
+          <p class="hidden"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+          <h3>I want to help</h3>
+          <p>Give your time, skills, a car or a spare room when it's needed most.</p>
+          <label class="field">Email<input type="email" name="email" autocomplete="email" required></label>
+          <label class="field">Where you are
+            <select name="country" required>
+              <option value="">Choose a country</option>
+              <option>India</option><option>Canada</option><option>United States</option><option>Somewhere else</option>
+            </select>
+          </label>
+          <label class="field">How you'd most like to help
+            <select name="help-type" required>
+              <option value="">Choose one</option>
+              <option>Hands-on help on the ground</option>
+              <option>Medical or first-aid skills</option>
+              <option>A vehicle or boat for transport</option>
+              <option>A spare room or shelter</option>
+              <option>Translation and languages</option>
+              <option>Tech, data or communications</option>
+              <option>Remote help from anywhere</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to Second Responder emailing me about volunteering and launch updates. See our <a href='/privacy'>privacy notice</a>.</span></label>
+          <button type="submit">Join as a volunteer</button>
+        </form>
+
+        <form id="organizations" name="organizations" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
+          <input type="hidden" name="form-name" value="organizations">
+          <p class="hidden"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+          <h3>My organization can contribute</h3>
+          <p>Housing, transport, supplies, connectivity or funding, ready before a crisis.</p>
+          <label class="field">Work email<input type="email" name="email" autocomplete="email" required></label>
+          <label class="field">Where you operate
+            <select name="country" required>
+              <option value="">Choose a country</option>
+              <option>India</option><option>Canada</option><option>United States</option><option>More than one</option><option>Somewhere else</option>
+            </select>
+          </label>
+          <label class="field">Type of organization
+            <select name="org-type" required>
+              <option value="">Choose one</option>
+              <option>Company</option>
+              <option>Nonprofit or NGO</option>
+              <option>Government or public agency</option>
+              <option>Community or faith group</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="field">What you could offer
+            <select name="offer-type" required>
+              <option value="">Choose one</option>
+              <option>Housing or shelter</option>
+              <option>Transport or logistics</option>
+              <option>Food, water or supplies</option>
+              <option>Medical supplies or care</option>
+              <option>Connectivity or messaging</option>
+              <option>Funding</option>
+              <option>Staff or volunteers</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to Second Responder contacting me about partnering and launch updates. See our <a href='/privacy'>privacy notice</a>.</span></label>
+          <button type="submit">Join as an organization</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>If a life is in danger right now, call your local emergency number.</span>
+    <span><a href='/privacy'>Privacy</a> · secondresponder.ai</span>
+  </div>
+</footer>
+
+</body>
+</html>

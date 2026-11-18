@@ -95,6 +95,22 @@ h2{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,3.6vw,42px)
 .pull{margin:0 0 56px;padding:28px 0 0;border-top:2px solid var(--fg);max-width:880px}
 .pull blockquote{margin:0;font-family:var(--f-display);font-size:clamp(24px,3vw,34px);line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
 .pull figcaption{margin-top:14px;color:var(--muted);line-height:1.5}
+.feat-h{color:var(--accent);margin:0 0 6px;font-weight:500}
+.featured{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-bottom:64px}
+.featured a{display:flex;flex-direction:column;gap:10px;padding:22px 28px 26px 0;border-bottom:1px solid var(--line);text-decoration:none;min-width:0}
+.featured .o{color:var(--muted)}
+.featured .t{font-family:var(--f-display);font-size:23px;line-height:1.25;letter-spacing:-.005em;flex:1}
+.featured em{font-style:normal;color:var(--accent)}
+.featured a:hover .t{color:var(--accent)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
+.tabs button{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+.tabs button span{opacity:.6;margin-left:4px}
+.tabs button:hover{color:var(--fg);border-color:var(--fg)}
+.tabs button[aria-selected="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.tab-panel{margin-top:20px}
+.tab-panel ul{display:grid;grid-template-columns:1fr 1fr;column-gap:56px;border-top:1px solid var(--line)}
+.js .panel-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.panel-h{margin-top:28px}
 .media-group h3.sub{margin-top:32px}
 .media-group .row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0}
 /* recognition */
@@ -126,6 +142,8 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
   .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .chapter{grid-template-columns:1fr;gap:20px}
   .media-grid{grid-template-columns:1fr;gap:40px}
+  .featured{grid-template-columns:1fr 1fr}
+  .tab-panel ul{grid-template-columns:1fr}
   .honors{grid-template-columns:1fr 1fr}
   .contact-box{grid-template-columns:1fr}
   section.block{padding-block:60px 12px}
@@ -135,6 +153,7 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
   .entry{grid-template-columns:1fr;gap:4px}
   .dateline b{display:inline;margin-right:8px}
   .honors{grid-template-columns:1fr}
+  .featured{grid-template-columns:1fr}
   .stat b{font-size:32px}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -288,20 +307,36 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
       <figcaption class="mono">The New York Times · On turning flood tweets into a rescue feed for the Indian Army, Kashmir, September 2014</figcaption>
     </figure>
 
-    <div class="media-grid">
-      <div class="media-group">
-        <h3>Interviews &amp; commentary</h3>
+    <h3 class="feat-h mono">Featured</h3>
+    <div class="featured">
+      <a href="https://www.nytimes.com/2014/09/13/world/asia/embrace-of-social-media-aids-flood-victims-in-kashmir.html" target="_blank" rel="noopener"><span class="o mono">The New York Times · 2014</span><span class="t">Embrace of social media aids flood victims in Kashmir</span><em class="mono">Open →</em></a>
+      <a href="https://www.youtube.com/watch?v=Hrr0rZLHqv0" target="_blank" rel="noopener"><span class="o mono">BBC Newsnight · 2021</span><span class="t">Covid in India: why is the government playing down the crisis? Live panel with Emily Maitlis</span><em class="mono">Open →</em></a>
+      <a href="https://restofworld.org/2020/raheel-khursheed-twitter-seva-india/" target="_blank" rel="noopener"><span class="o mono">Rest of World · 2020</span><span class="t">“If you find the right allies, you can still make headway”</span><em class="mono">Open →</em></a>
+      <a href="https://www.youtube.com/watch?v=tTRNiANlGYw" target="_blank" rel="noopener"><span class="o mono">Al Jazeera English · The Stream · 2013</span><span class="t">No longer silent: is the New Delhi gang rape the tipping point on violence against women?</span><em class="mono">Open →</em></a>
+      <a href="https://www.newyorker.com/news/news-desk/waters-close-kashmir" target="_blank" rel="noopener"><span class="o mono">The New Yorker · 2014</span><span class="t">Waters close over Kashmir</span><em class="mono">Open →</em></a>
+      <a href="https://asiasociety.org/policy-institute/events/asian-democracy-shadow-information-age-social-medias-promise-and-pitfalls" target="_blank" rel="noopener"><span class="o mono">Asia Society Policy Institute · Washington, D.C. · 2018</span><span class="t">Asian democracy in the shadow of the information age</span><em class="mono">Open →</em></a>
+    </div>
+
+    <div class="archive">
+      <div class="tabs" role="tablist" aria-label="Media archive">
+        <button role="tab" id="tab-interviews" aria-controls="panel-interviews" aria-selected="true">Interviews <span>15</span></button>
+        <button role="tab" id="tab-seva" aria-controls="panel-seva" aria-selected="false" tabindex="-1">#TwitterSeva <span>7</span></button>
+        <button role="tab" id="tab-floods" aria-controls="panel-floods" aria-selected="false" tabindex="-1">Kashmir floods <span>2</span></button>
+        <button role="tab" id="tab-talks" aria-controls="panel-talks" aria-selected="false" tabindex="-1">Talks &amp; courses <span>13</span></button>
+        <button role="tab" id="tab-laminar" aria-controls="panel-laminar" aria-selected="false" tabindex="-1">Laminar <span>7</span></button>
+        <button role="tab" id="tab-writing" aria-controls="panel-writing" aria-selected="false" tabindex="-1">Writing <span>2</span></button>
+        <button role="tab" id="tab-career" aria-controls="panel-career" aria-selected="false" tabindex="-1">Career news <span>4</span></button>
+      </div>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-interviews" aria-labelledby="tab-interviews">
+        <h3 class="panel-h">Interviews</h3>
         <ul>
-          <li><a href="https://www.youtube.com/watch?v=Hrr0rZLHqv0" target="_blank" rel="noopener"><span class="o mono">BBC Newsnight</span><span class="t">Covid in India: why is the government playing down the crisis? Live panel with Emily Maitlis</span><span class="y mono">2021</span></a></li>
           <li><a href="https://www.bbc.com/news/av/world-asia-21618469" target="_blank" rel="noopener"><span class="o mono">BBC News</span><span class="t">Impact of social media on activism in Asia</span><span class="y mono">2013</span></a></li>
-          <li><a href="https://www.youtube.com/watch?v=tTRNiANlGYw" target="_blank" rel="noopener"><span class="o mono">Al Jazeera English · The Stream</span><span class="t">No longer silent: is the New Delhi gang rape the tipping point on violence against women?</span><span class="y mono">2013</span></a></li>
           <li><a href="https://www.dawn.com/news/734259/raheel-khursheed-on-the-pak-india-social-media-mela" target="_blank" rel="noopener"><span class="o mono">Dawn · Karachi</span><span class="t">Raheel Khursheed on the Pak-India social media mela</span><span class="y mono">2012</span></a></li>
           <li><a href="https://www.ndtv.com/video/government-vs-twitter-social-media-giants-soft-on-ruling-regime-575461" target="_blank" rel="noopener"><span class="o mono">NDTV</span><span class="t">Social media giants soft on ruling regime?</span><span class="y mono">2021</span></a></li>
           <li><a href="https://www.ndtv.com/video/online-protests-vs-water-cannons-260334" target="_blank" rel="noopener"><span class="o mono">NDTV</span><span class="t">Online protests vs water cannons</span><span class="y mono">2013</span></a></li>
           <li><a href="https://www.businessinsider.com/how-twitters-india-standoff-dragged-in-journalists-and-activists-2021-2" target="_blank" rel="noopener"><span class="o mono">Business Insider</span><span class="t">How Twitter’s India standoff hit journalists and activists</span><span class="y mono">2021</span></a></li>
           <li><a href="https://www.csmonitor.com/World/Asia-South-Central/2021/0715/India-s-new-law-would-restrain-social-media.-Are-rights-at-risk" target="_blank" rel="noopener"><span class="o mono">The Christian Science Monitor</span><span class="t">India’s new law would restrain social media. Are rights at risk?</span><span class="y mono">2021</span></a></li>
           <li><a href="https://restofworld.org/2021/how-india-fell-in-then-out-of-love-with-twitter/" target="_blank" rel="noopener"><span class="o mono">Rest of World</span><span class="t">How India fell in, then out of love with Twitter</span><span class="y mono">2021</span></a></li>
-          <li><a href="https://restofworld.org/2020/raheel-khursheed-twitter-seva-india/" target="_blank" rel="noopener"><span class="o mono">Rest of World</span><span class="t">“If you find the right allies, you can still make headway”</span><span class="y mono">2020</span></a></li>
           <li><a href="https://www.outlookbusiness.com/news/twitter-s-ability-to-uphold-free-speech-in-india-will-take-a-hit-warns-company-s-former-india-news-chief-news-236372" target="_blank" rel="noopener"><span class="o mono">Outlook Business</span><span class="t">Twitter’s ability to uphold free speech in India will take a hit, warns former India news chief</span><span class="y mono">2022</span></a></li>
           <li><a href="https://inc42.com/buzz/many-saw-it-coming-former-twitter-india-news-chief-raheel-khursheed-twitter-layoffs/" target="_blank" rel="noopener"><span class="o mono">Inc42</span><span class="t">“Many saw it coming”: former Twitter India news chief on the layoffs</span><span class="y mono">2022</span></a></li>
           <li><a href="https://www.facebook.com/IndiaToday/videos/twitter-india-head-raheel-khursheed-on-traceability-and-breach-of-privacy/137250768465913/" target="_blank" rel="noopener"><span class="o mono">India Today</span><span class="t">On traceability and the breach of privacy</span><span class="y mono">Video</span></a></li>
@@ -311,24 +346,9 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
           <li><a href="https://misaal.co.in/how-did-a-journalist-co-found-a-tech-startup-raheel-khursheeds-journey-from-kashmir-to-harvard" target="_blank" rel="noopener"><span class="o mono">Misaal</span><span class="t">How did a journalist co-found a tech startup? From Kashmir to Harvard</span><span class="y mono">Podcast</span></a></li>
           <li><a href="https://soundcloud.com/yaleuniversity/2017-world-fellow-raheel-khursheed" target="_blank" rel="noopener"><span class="o mono">Yale University</span><span class="t">2017 World Fellow Raheel Khursheed</span><span class="y mono">Podcast</span></a></li>
         </ul>
-        <h3 class="sub">Career news</h3>
-        <ul>
-          <li><a href="https://economictimes.indiatimes.com/small-biz/startups/newsbuzz/former-twitter-executive-raheel-khursheed-appointed-snap-india-expert/articleshow/66113858.cms" target="_blank" rel="noopener"><span class="o mono">The Economic Times</span><span class="t">Former Twitter executive appointed Snap India expert</span><span class="y mono">2018</span></a></li>
-          <li><a href="https://www.socialsamosa.com/2018/10/ex-twitter-india-exec-raheel-khursheed-joins-snapchat-as-country-expert-india" target="_blank" rel="noopener"><span class="o mono">Social Samosa</span><span class="t">Ex-Twitter India exec joins Snapchat as Country Expert, India</span><span class="y mono">2018</span></a></li>
-          <li><a href="https://www.medianama.com/2018/10/223-raheel-khursheed-snapchat-india/" target="_blank" rel="noopener"><span class="o mono">MediaNama</span><span class="t">Raheel Khursheed joins Snapchat in India</span><span class="y mono">2018</span></a></li>
-          <li><a href="https://www.socialsamosa.com/2014/01/industry-movements-raheel-khursheed-joins-twitter-india-head-news-politics-govt" target="_blank" rel="noopener"><span class="o mono">Social Samosa</span><span class="t">Joins Twitter India as Head of News, Politics &amp; Government</span><span class="y mono">2014</span></a></li>
-        </ul>
       </div>
-
-      <div class="media-group">
-        <h3>Kashmir floods, 2014</h3>
-        <ul>
-          <li><a href="https://www.nytimes.com/2014/09/13/world/asia/embrace-of-social-media-aids-flood-victims-in-kashmir.html" target="_blank" rel="noopener"><span class="o mono">The New York Times</span><span class="t">Embrace of social media aids flood victims in Kashmir</span><span class="y mono">2014</span></a></li>
-          <li><a href="https://www.newyorker.com/news/news-desk/waters-close-kashmir" target="_blank" rel="noopener"><span class="o mono">The New Yorker</span><span class="t">Waters close over Kashmir</span><span class="y mono">2014</span></a></li>
-          <li><a href="https://www.npr.org/sections/goatsandsoda/2014/09/19/349868432/social-media-gets-the-right-stuff-to-indias-flood-victims" target="_blank" rel="noopener"><span class="o mono">NPR</span><span class="t">Social media get the right stuff to India’s flood victims</span><span class="y mono">2014</span></a></li>
-          <li><a href="https://www.nextgov.com/digital-government/2014/09/how-social-media-is-changing-government-management-again/240334/" target="_blank" rel="noopener"><span class="o mono">Nextgov</span><span class="t">How social media is changing government management (again)</span><span class="y mono">2014</span></a></li>
-        </ul>
-        <h3 class="sub">#TwitterSeva</h3>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-seva" aria-labelledby="tab-seva">
+        <h3 class="panel-h">#TwitterSeva</h3>
         <ul>
           <li><a href="http://www.mea.gov.in/media-briefings.htm?dtl/27878/Transcript+of+Media+briefing+about+Launch+of+Twitter+Seva+Application+and+Announcement+of+New+Passport+Rules" target="_blank" rel="noopener"><span class="o mono">Ministry of External Affairs, India</span><span class="t">Media briefing on the launch of the Twitter Seva application</span><span class="y mono">2016</span></a></li>
           <li><a href="https://www.business-standard.com/article/pti-stories/mea-launches-twitter-seva-116122301060_1.html" target="_blank" rel="noopener"><span class="o mono">Business Standard · PTI</span><span class="t">MEA launches Twitter Seva</span><span class="y mono">2016</span></a></li>
@@ -339,13 +359,18 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
           <li><a href="https://archive.factordaily.com/twitter-helping-india-reboot-public-services-publicly/" target="_blank" rel="noopener"><span class="o mono">FactorDaily</span><span class="t">How Twitter is helping India reboot public services, publicly</span><span class="y mono">2016</span></a></li>
         </ul>
       </div>
-
-      <div class="media-group">
-        <h3>Talks &amp; courses</h3>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-floods" aria-labelledby="tab-floods">
+        <h3 class="panel-h">Kashmir floods</h3>
+        <ul>
+          <li><a href="https://www.npr.org/sections/goatsandsoda/2014/09/19/349868432/social-media-gets-the-right-stuff-to-indias-flood-victims" target="_blank" rel="noopener"><span class="o mono">NPR</span><span class="t">Social media get the right stuff to India’s flood victims</span><span class="y mono">2014</span></a></li>
+          <li><a href="https://www.nextgov.com/digital-government/2014/09/how-social-media-is-changing-government-management-again/240334/" target="_blank" rel="noopener"><span class="o mono">Nextgov</span><span class="t">How social media is changing government management (again)</span><span class="y mono">2014</span></a></li>
+        </ul>
+      </div>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-talks" aria-labelledby="tab-talks">
+        <h3 class="panel-h">Talks &amp; courses</h3>
         <ul>
           <li><a href="https://mittalsouthasiainstitute.harvard.edu/event/india-conference-at-harvard-4/" target="_blank" rel="noopener"><span class="o mono">India Conference at Harvard</span><span class="t">Moderator, “Democracy: A Vision for India at 100”</span><span class="y mono">2023</span></a></li>
           <li><a href="https://socialenterpriseconference.net/about-us" target="_blank" rel="noopener"><span class="o mono">Harvard Social Enterprise Conference</span><span class="t">Panelist, Technology and Society</span><span class="y mono">2021</span></a></li>
-          <li><a href="https://asiasociety.org/policy-institute/events/asian-democracy-shadow-information-age-social-medias-promise-and-pitfalls" target="_blank" rel="noopener"><span class="o mono">Asia Society Policy Institute · Washington, D.C.</span><span class="t">Asian democracy in the shadow of the information age</span><span class="y mono">2018</span></a></li>
           <li><div class="row"><span class="o mono">Nieman Foundation · Harvard</span><span class="t">Visiting Fellow presentation on news and micropayments</span><span class="y mono">2017</span></div></li>
           <li><a href="https://www.gatewayhouse.in/digital-diplomacy/" target="_blank" rel="noopener"><span class="o mono">Gateway House · Mumbai</span><span class="t">Panel: Digital diplomacy</span><span class="y mono">2014</span></a></li>
           <li><a href="https://law.yale.edu/yls-today/yale-law-school-events/online-governance-delivery-india-south-east-asia-are-platforms-succeeding-where-governments-are" target="_blank" rel="noopener"><span class="o mono">Yale Law School</span><span class="t">Online governance delivery in India and Southeast Asia: are platforms succeeding where governments are failing?</span><span class="y mono">Talk</span></a></li>
@@ -358,15 +383,9 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
           <li><a href="https://www.networkcapital.tv/course/global-tech-products-with-raheel-khursheed" target="_blank" rel="noopener"><span class="o mono">Network Capital</span><span class="t">Building Global Tech Products</span><span class="y mono">Course</span></a></li>
           <li><a href="https://www.networkcapital.tv/course/career-principles-with-yale-world-fellow-with-raheel-khursheed" target="_blank" rel="noopener"><span class="o mono">Network Capital</span><span class="t">Career Principles masterclass</span><span class="y mono">Course</span></a></li>
         </ul>
-        <h3 class="sub">Writing</h3>
-        <ul>
-          <li><a href="https://www.igi-global.com/chapter/empowering-crisis-response-led-citizen-communities/143520" target="_blank" rel="noopener"><span class="o mono">IGI Global · peer-reviewed chapter</span><span class="t">Empowering crisis response-led citizen communities: lessons from the JKFloodRelief.org initiative</span><span class="y mono">2016</span></a></li>
-          <li><a href="http://www.hindustantimes.com/india-news/ht90/digital-tryst-with-destiny/article1-1271312.aspx" target="_blank" rel="noopener"><span class="o mono">Hindustan Times · HT at 90</span><span class="t">Digital tryst with destiny</span><span class="y mono">Essay</span></a></li>
-        </ul>
       </div>
-
-      <div class="media-group">
-        <h3>Laminar</h3>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-laminar" aria-labelledby="tab-laminar">
+        <h3 class="panel-h">Laminar</h3>
         <ul>
           <li><div class="row"><span class="o mono">Berlinale &amp; Festival de Cannes</span><span class="t">Led Laminar’s delegations to the European Film Market in Berlin and the Marché du Film in Cannes</span><span class="y mono">2023</span></div></li>
           <li><a href="https://finance.yahoo.com/news/uk-based-laminar-global-limited-224500225.html" target="_blank" rel="noopener"><span class="o mono">Yahoo Finance</span><span class="t">Laminar Global brought within the A Parent Media Co. group in a strategic acquisition</span><span class="y mono">2024</span></a></li>
@@ -377,8 +396,22 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
           <li><a href="https://yourstory.com/2020/07/ott-startup-laminar-raheel-khursheed-netflix-amazon-prime" target="_blank" rel="noopener"><span class="o mono">YourStory</span><span class="t">This Twitter alum’s startup can help content creators launch their own Netflix-like platform</span><span class="y mono">2020</span></a></li>
         </ul>
       </div>
-
-
+      <div class="media-group tab-panel" role="tabpanel" id="panel-writing" aria-labelledby="tab-writing">
+        <h3 class="panel-h">Writing</h3>
+        <ul>
+          <li><a href="https://www.igi-global.com/chapter/empowering-crisis-response-led-citizen-communities/143520" target="_blank" rel="noopener"><span class="o mono">IGI Global · peer-reviewed chapter</span><span class="t">Empowering crisis response-led citizen communities: lessons from the JKFloodRelief.org initiative</span><span class="y mono">2016</span></a></li>
+          <li><a href="http://www.hindustantimes.com/india-news/ht90/digital-tryst-with-destiny/article1-1271312.aspx" target="_blank" rel="noopener"><span class="o mono">Hindustan Times · HT at 90</span><span class="t">Digital tryst with destiny</span><span class="y mono">Essay</span></a></li>
+        </ul>
+      </div>
+      <div class="media-group tab-panel" role="tabpanel" id="panel-career" aria-labelledby="tab-career">
+        <h3 class="panel-h">Career news</h3>
+        <ul>
+          <li><a href="https://economictimes.indiatimes.com/small-biz/startups/newsbuzz/former-twitter-executive-raheel-khursheed-appointed-snap-india-expert/articleshow/66113858.cms" target="_blank" rel="noopener"><span class="o mono">The Economic Times</span><span class="t">Former Twitter executive appointed Snap India expert</span><span class="y mono">2018</span></a></li>
+          <li><a href="https://www.socialsamosa.com/2018/10/ex-twitter-india-exec-raheel-khursheed-joins-snapchat-as-country-expert-india" target="_blank" rel="noopener"><span class="o mono">Social Samosa</span><span class="t">Ex-Twitter India exec joins Snapchat as Country Expert, India</span><span class="y mono">2018</span></a></li>
+          <li><a href="https://www.medianama.com/2018/10/223-raheel-khursheed-snapchat-india/" target="_blank" rel="noopener"><span class="o mono">MediaNama</span><span class="t">Raheel Khursheed joins Snapchat in India</span><span class="y mono">2018</span></a></li>
+          <li><a href="https://www.socialsamosa.com/2014/01/industry-movements-raheel-khursheed-joins-twitter-india-head-news-politics-govt" target="_blank" rel="noopener"><span class="o mono">Social Samosa</span><span class="t">Joins Twitter India as Head of News, Politics &amp; Government</span><span class="y mono">2014</span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -421,5 +454,20 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
 <footer><div class="wrap"><span>Raheel Khursheed · Toronto</span><span class="mono">2006 – 2026</span></div></footer>
 
 
+<script>
+(function(){
+  var list=document.querySelector('.tabs'); if(!list) return;
+  document.documentElement.classList.add('js');
+  var tabs=[].slice.call(list.querySelectorAll('[role=tab]'));
+  function show(tab){
+    tabs.forEach(function(t){var on=t===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t)});
+    t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){var n=tabs[(i+d+tabs.length)%tabs.length];show(n);n.focus();}});
+  });
+  show(tabs[0]);
+})();
+</script>
 </body>
 </html>

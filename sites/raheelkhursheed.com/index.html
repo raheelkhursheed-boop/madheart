@@ -49,7 +49,13 @@ nav ul a:hover{color:var(--fg)}
 /* hero */
 .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding-block:72px 56px}
 .kicker{color:var(--accent);margin:0 0 20px}
-h1{font-family:var(--f-display);font-weight:400;font-size:clamp(38px,5.2vw,64px);line-height:1.06;letter-spacing:-.02em;margin:0 0 24px;text-wrap:balance}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(38px,5.2vw,64px);line-height:1.06;letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
+.thesis{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,2.6vw,32px);line-height:1.25;letter-spacing:-.01em;margin:0 0 20px;max-width:28ch;text-wrap:balance}
+.thesis em{color:var(--accent);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:22px 0 0;padding:0}
+.chips li{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);letter-spacing:.04em}
+.fellows{margin:18px 0 0;color:var(--muted);font-size:14.5px}
+.proof-label{display:block;margin:0 auto;padding-top:22px;color:var(--accent)}
 h1 em{color:var(--accent);font-style:italic}
 .lede{font-size:18px;color:var(--muted);max-width:58ch;margin:0 0 16px}
 .lede:last-child{margin-bottom:0}
@@ -188,10 +194,12 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
     <div>
       <p class="kicker mono">Technology • Media • Markets • Society</p>
       <h1>Raheel Khursheed</h1>
-      <p class="lede"><strong>Raheel Khursheed is an international technology executive, entrepreneur and former journalist with 20+ years of experience building, scaling and commercializing technology platforms across emerging and developed markets.</strong></p>
-      <p class="lede">From Twitter and Snapchat to anthro.ai, Laminar and Victory+, his work has spanned platform strategy, AI, streaming infrastructure, media partnerships, civic technology and digital transformation.</p>
-      <p class="lede">A Yale World Fellow, Harvard Nieman Fellow and Stanford Draper Hills Fellow, he brings a distinctive combination of commercial leadership, entrepreneurial execution, institutional insight and storytelling.</p>
-      <p class="lede">A former journalist with bylines in The Wall Street Journal, The Atlantic and the BBC, he built Twitter Seva, led Snapchat's India entry and co-founded two companies, bringing an operator's execution and a storyteller's instinct to every market he works in.</p>
+      <p class="thesis">Democratising information, from newsrooms to platforms to <em>AI.</em></p>
+      <p class="lede">Technology executive, entrepreneur and former journalist. From the newsrooms of India to global technology platforms, AI ventures and streaming infrastructure.</p>
+      <ul class="chips mono" aria-label="Companies">
+        <li>Twitter</li><li>Snapchat</li><li>anthro.ai</li><li>Laminar</li><li>Victory+</li>
+      </ul>
+      <p class="fellows">Yale World Fellow · Harvard Nieman Fellow · Stanford Draper Hills Fellow</p>
     </div>
     <figure class="portrait">
       <img src="portrait.jpg" width="720" height="900" alt="Portrait of Raheel Khursheed">
@@ -200,11 +208,12 @@ footer .wrap{padding-block:22px;color:var(--muted);display:flex;justify-content:
 </header>
 
 <div class="proof" aria-label="At a glance">
+  <p class="wrap proof-label mono">At a glance</p>
   <div class="wrap">
+    <div class="stat"><b>1M+</b><span>monthly grievances handled through #TwitterSeva</span></div>
+    <div class="stat"><b>10M+</b><span>viewers reached through Laminar-launched services</span></div>
     <div class="stat"><b>2</b><span>companies co-founded, one acquired by APMC</span></div>
-    <div class="stat"><b>1M+</b><span>citizen complaints a month handled through #TwitterSeva</span></div>
-    <div class="stat"><b>250+</b><span>newsrooms partnered with across South and Southeast Asia</span></div>
-    <div class="stat"><b>10M+</b><span>viewers on streaming services launched with Laminar</span></div>
+    <div class="stat"><b>20+</b><span>years across media and technology</span></div>
   </div>
 </div>
 

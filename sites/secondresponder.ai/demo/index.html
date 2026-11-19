@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Responder — Prototype</title>
+<meta name="description" content="A working prototype of Second Responder: open crisis-response infrastructure that matches calls for help with volunteers and resources.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1B33">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1B33; --navy-2:#0F2647; --line:#22406A; --border:#3A5680;
+  --text-soft:#C6D4EA; --text-muted:#8FAED8; --accent:#6FA3FF;
+  --red:#FF7A7A; --amber:#FFC46B; --green:#6FE0A8;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;line-height:1.5;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased}
+a{color:#fff}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.display{font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand span{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:18px}
+.sim{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:5px 12px}
+.incident{background:var(--navy-2);border-bottom:1px solid var(--line)}
+.incident .wrap{padding-top:20px;padding-bottom:20px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between}
+.incident h1{font-size:clamp(22px,3vw,32px)}
+.meta{color:var(--text-soft);font-size:14px;margin-top:6px}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{border:1px solid var(--line);border-radius:14px;padding:10px 14px;min-width:96px}
+.stat b{display:block;font-family:"Space Grotesk",sans-serif;font-size:24px}
+.stat small{color:var(--text-muted);font-size:12px}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 20px 0;max-width:1200px;margin:0 auto}
+nav.tabs button{background:none;border:1px solid var(--border);color:var(--text-soft);border-radius:999px;padding:9px 16px;white-space:nowrap;font-size:14px;font-weight:600}
+nav.tabs button[aria-selected=true]{background:#fff;color:var(--navy);border-color:#fff}
+main .wrap{padding-top:20px;padding-bottom:60px}
+.panel[hidden]{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.col h2{font-size:18px;margin:0 0 4px}
+.col .sub{color:var(--text-muted);font-size:13px;margin:0 0 12px}
+.card{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card h3{margin:0;font-size:15px;font-weight:600}
+.card p{margin:6px 0 0;color:var(--text-soft);font-size:14px}
+.raw{font-style:italic;color:var(--text-muted);font-size:13px;margin-top:8px;border-left:2px solid var(--border);padding-left:10px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:3px 9px;color:var(--text-soft)}
+.u-critical{color:var(--red);border-color:var(--red)}
+.u-high{color:var(--amber);border-color:var(--amber)}
+.u-normal{color:var(--text-soft)}
+.st-matched,.st-verified{color:var(--green);border-color:var(--green)}
+.st-delivered{background:var(--green);color:var(--navy);border-color:var(--green)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;border:1px solid var(--border);background:none;color:#fff}
+.btn.primary{background:#fff;color:var(--navy);border-color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+.match{border:1px dashed var(--accent);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.match h3{margin:0 0 8px;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.why{font-size:13px;color:var(--text-soft);margin:4px 0 0}
+.log{font-size:13px;color:var(--text-soft);list-style:none;padding:0;margin:0}
+.log li{padding:8px 0;border-bottom:1px solid var(--line)}
+.log time{color:var(--text-muted);margin-right:8px}
+.phase{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.phase{grid-template-columns:1fr}}
+.phase .card h3{color:var(--accent);text-transform:uppercase;font-size:13px;letter-spacing:.06em}
+.phase ul{margin:8px 0 0;padding-left:18px;color:var(--text-soft);font-size:14px}
+.modifier{border-color:var(--amber)}
+.modifier h3{color:var(--amber)!important}
+.arch{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.arch{grid-template-columns:1fr}}
+.core{grid-column:1/-1;text-align:center;border-color:var(--accent)}
+.lede{color:var(--text-soft);max-width:760px;margin:0 0 20px}
+form.intake{display:grid;gap:10px;max-width:640px}
+textarea,select,input{width:100%;background:var(--navy-2);border:1px solid var(--border);border-radius:12px;color:#fff;padding:12px;font:inherit}
+label{font-size:13px;color:var(--text-muted);font-weight:600}
+.parsed{margin-top:14px}
+footer{border-top:1px solid var(--line);color:var(--text-muted);font-size:13px}
+footer .wrap{padding-top:18px;padding-bottom:30px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="/"><img src="/favicon.svg" width="28" height="28" alt=""><span>Second Responder</span></a>
+  <span class="sim">Prototype · simulated data</span>
+</div></header>
+
+<section class="incident" aria-label="Active incident"><div class="wrap">
+  <div>
+    <h1 class="display">Flood response · River basin, District A</h1>
+    <div class="meta">Flood protocol active · Phase: <b id="phaseLabel">Rescue &amp; relief (0–72 h)</b> · Weather: heavy rain, falling to 8°C overnight</div>
+  </div>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><b id="sOpen">0</b><small>Open calls</small></div>
+    <div class="stat"><b id="sMatched">0</b><small>Matched</small></div>
+    <div class="stat"><b id="sDone">0</b><small>Delivered</small></div>
+    <div class="stat"><b id="sPeople">0</b><small>People reached</small></div>
+  </div>
+</div></section>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button role="tab" aria-selected="true" data-tab="coord">Coordinate</button>
+  <button role="tab" aria-selected="false" data-tab="intake">Report a need</button>
+  <button role="tab" aria-selected="false" data-tab="protocol">Flood protocol</button>
+  <button role="tab" aria-selected="false" data-tab="open">Open by design</button>
+</nav>
+
+<main><div class="wrap">
+
+<section class="panel" id="coord" role="tabpanel">
+  <div class="grid">
+    <div class="col">
+      <h2>Calls for help</h2>
+      <p class="sub">Picked up from SMS, WhatsApp, X, helplines and field teams, then structured automatically. Select one to find a match.</p>
+      <div id="needs"></div>
+    </div>
+    <div class="col">
+      <h2>Suggested match</h2>
+      <p class="sub">Ranked by what's needed, distance, capacity and verification.</p>
+      <div id="matchBox" class="match"><p class="why">Select a call for help to see who can respond.</p></div>
+      <h2 style="margin-top:20px">Volunteers &amp; resources on hand</h2>
+      <p class="sub">People who signed up to help and organizations with something to give.</p>
+      <div id="offers"></div>
+      <h2 style="margin-top:20px">Activity</h2>
+      <ul class="log" id="log"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="intake" role="tabpanel" hidden>
+  <p class="lede">Anyone can report a need in their own words, by text, voice note or post. Second Responder turns it into a structured request that responders can act on, then asks a local verifier to confirm it.</p>
+  <form class="intake" id="intakeForm">
+    <label for="channel">Channel</label>
+    <select id="channel"><option>SMS</option><option>WhatsApp</option><option>X / social post</option><option>Helpline call (transcribed)</option></select>
+    <label for="msg">Message</label>
+    <textarea id="msg" rows="4">Water entered our house in Ward 7 near the old bridge, 6 of us on the roof including my mother who needs insulin. Please send a boat.</textarea>
+    <div><button class="btn primary" type="submit">Structure this request</button></div>
+  </form>
+  <div class="parsed" id="parsed"></div>
+</section>
+
+<section class="panel" id="protocol" role="tabpanel" hidden>
+  <p class="lede">Every disaster type has an open response protocol: what's needed, in what order, adjusted for weather and the people affected. Protocols are published openly so any city, NGO or company can use them.</p>
+  <div class="phase">
+    <div class="card"><h3>0–72 hours · Rescue &amp; relief</h3><ul><li>Boats and rescue teams</li><li>Drinking water, ready-to-eat food</li><li>Medicines (insulin, BP, ORS), first aid</li><li>Dry shelter, tarpaulins</li><li>Phone charging, SMS broadcast</li></ul></div>
+    <div class="card"><h3>Days 3–14 · Stabilise</h3><ul><li>Cooked meals, dry rations</li><li>Water purification, sanitation kits</li><li>Medical camps, disease watch</li><li>Temporary housing</li><li>Bedding and clothing</li></ul></div>
+    <div class="card"><h3>Weeks 2–12 · Recover</h3><ul><li>Clean-up crews and tools</li><li>House repair materials</li><li>Livelihood and school kits</li><li>Documents and claims help</li><li>Mental-health support</li></ul></div>
+  </div>
+  <div class="phase" style="margin-top:14px">
+    <div class="card modifier"><h3>Weather modifier · Cold nights</h3><p>Adds blankets, warm clothing and heating fuel to the 0–72 h list.</p></div>
+    <div class="card modifier"><h3>Population modifier · Elderly &amp; infants</h3><p>Raises priority for medicines, baby food and accessible shelter.</p></div>
+    <div class="card modifier"><h3>Other protocols</h3><p>Earthquakes, wildfires and flash floods each have their own lists and phases.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="open" role="tabpanel" hidden>
+  <p class="lede">Crisis coordination shouldn't depend on a single private platform that can change its rules or switch off. Second Responder is built as public infrastructure.</p>
+  <div class="arch">
+    <div class="card core"><h3>Open core</h3><p>Open-source matching, verification and open response protocols. Anyone can run it, audit it or improve it.</p></div>
+    <div class="card"><h3>India deployment</h3><p>Data stays in India. Local languages, local verification, state and district integrations.</p></div>
+    <div class="card"><h3>Canada deployment</h3><p>Data stays in Canada. English and French. Wildfire and flood protocols first.</p></div>
+    <div class="card"><h3>US deployment</h3><p>Data stays in the US. County and city emergency desks, community groups.</p></div>
+  </div>
+  <div class="phase" style="margin-top:14px">
+    <div class="card"><h3>Communities in control</h3><p>Local responders verify needs and decide what data is shared, with whom, and for how long.</p></div>
+    <div class="card"><h3>Any channel in</h3><p>Requests arrive from SMS, messaging apps, social posts and helplines, so no one needs a new app to ask for help.</p></div>
+    <div class="card"><h3>Nonprofit</h3><p>Run as a nonprofit. Public outputs stay free and open.</p></div>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">This is a prototype with simulated data. No real people, places or organizations are shown. <a href="/">Join the waitlist</a></div></footer>
+
+<script>
+const needs=[
+ {id:'N-104',title:'Family of 6 stranded on roof',where:'Ward 7, near old bridge',km:0,people:6,urg:'critical',type:'rescue',needs:['Boat rescue','Insulin'],src:'SMS',raw:'water in house, 6 of us on roof, mother needs insulin',status:'verified'},
+ {id:'N-109',title:'Relief camp short of drinking water',where:'Government school, Ward 3',km:2.1,people:180,urg:'high',type:'water',needs:['Drinking water','ORS'],src:'Field team',raw:'camp at school has ~180 ppl, water for 1 day only',status:'verified'},
+ {id:'N-112',title:'Elderly couple need warm bedding',where:'Ward 9, upper floor',km:3.4,people:2,urg:'high',type:'shelter',needs:['Blankets','Warm clothing'],src:'WhatsApp',raw:'my grandparents are cold, no dry blankets left',status:'unverified'},
+ {id:'N-117',title:'Displaced families need a place to stay',where:'Ward 5',km:1.6,people:14,urg:'normal',type:'housing',needs:['Temporary housing'],src:'X post',raw:'3 families from our lane lost their homes, need somewhere to stay for a few nights',status:'unverified'}
+];
+const offers=[
+ {id:'O-21',name:'River rescue volunteers (4 boats)',kind:'Volunteer team',km:0.8,cap:'4 boats · 12 people',serves:['rescue'],verified:true},
+ {id:'O-33',name:'Pharmacy network',kind:'Organization',km:1.2,cap:'Insulin, BP meds, ORS',serves:['rescue','water'],verified:true},
+ {id:'O-40',name:'Water utility tanker',kind:'Public agency',km:2.5,cap:'2 × 10,000 L tankers',serves:['water'],verified:true},
+ {id:'O-52',name:'Neighbourhood volunteers',kind:'Volunteers (18)',km:3.0,cap:'Blankets, clothing, delivery',serves:['shelter'],verified:true},
+ {id:'O-61',name:'Short-stay housing partner',kind:'Company',km:4.2,cap:'40 rooms for 7 nights',serves:['housing'],verified:true},
+ {id:'O-70',name:'Telecom partner',kind:'Company',km:null,cap:'Area-wide SMS alerts',serves:['broadcast'],verified:true}
+];
+let sel=null; const logEl=document.getElementById('log');
+const now=()=>new Date().toTimeString().slice(0,5);
+function log(t){const li=document.createElement('li');li.innerHTML='<time>'+now()+'</time>'+t;logEl.prepend(li)}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function stats(){
+ const open=needs.filter(n=>n.status==='verified'||n.status==='unverified').length;
+ document.getElementById('sOpen').textContent=open;
+ document.getElementById('sMatched').textContent=needs.filter(n=>n.status==='matched').length;
+ const done=needs.filter(n=>n.status==='delivered');
+ document.getElementById('sDone').textContent=done.length;
+ document.getElementById('sPeople').textContent=done.reduce((a,n)=>a+n.people,0);
+}
+function renderNeeds(){
+ const order={critical:0,high:1,normal:2};
+ const el=document.getElementById('needs');el.innerHTML='';
+ [...needs].sort((a,b)=>(a.status==='delivered')-(b.status==='delivered')||order[a.urg]-order[b.urg]).forEach(n=>{
+  const d=document.createElement('div');d.className='card'+(sel===n.id?' sel':'');
+  d.innerHTML=`<div class="top"><h3>${esc(n.title)}</h3><span class="tag u-${n.urg}">${n.urg}</span></div>
+  <p>${esc(n.where)} · ${n.people} ${n.people===1?'person':'people'} · via ${esc(n.src)}</p>
+  <div class="raw">“${esc(n.raw)}”</div>
+  <div class="tags">${n.needs.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}<span class="tag st-${n.status}">${n.status}</span></div>
+  <div class="actions">
+   ${n.status==='unverified'?`<button class="btn" data-act="verify" data-id="${n.id}">Verify</button>`:''}
+   ${n.status==='verified'||n.status==='unverified'?`<button class="btn primary" data-act="select" data-id="${n.id}">Find a match</button>`:''}
+   ${n.status==='matched'?`<button class="btn primary" data-act="deliver" data-id="${n.id}">Mark delivered</button>`:''}
+  </div>`;
+  el.appendChild(d);
+ });
+}
+function renderOffers(){
+ const el=document.getElementById('offers');el.innerHTML='';
+ offers.forEach(o=>{const d=document.createElement('div');d.className='card';
+  d.innerHTML=`<div class="top"><h3>${esc(o.name)}</h3><span class="tag st-verified">verified</span></div><p>${esc(o.kind)} · ${esc(o.cap)}${o.km!=null?' · '+o.km+' km away':''}</p>`;
+  el.appendChild(d)});
+}
+function renderMatch(){
+ const box=document.getElementById('matchBox');const n=needs.find(x=>x.id===sel);
+ if(!n){box.innerHTML='<p class="why">Select a call for help to see who can respond.</p>';return}
+ const cands=offers.filter(o=>o.serves.includes(n.type)).sort((a,b)=>(a.km??99)-(b.km??99));
+ box.innerHTML=`<h3>For ${esc(n.id)} · ${esc(n.title)}</h3>`+(cands.length?cands.map(o=>`
+  <div class="card"><div class="top"><h3>${esc(o.name)}</h3></div>
+  <p class="why">${esc(o.cap)} · ${o.km} km away · covers ${esc(n.needs.join(', '))}</p>
+  <div class="actions"><button class="btn primary" data-act="assign" data-id="${n.id}" data-offer="${o.id}" ${n.status==='unverified'?'disabled':''}>Assign</button></div></div>`).join('')
+  +(n.status==='unverified'?'<p class="why">Verify this request before assigning a responder.</p>':''):'<p class="why">No one on hand covers this yet. Alert nearby volunteers.</p>');
+}
+function render(){renderNeeds();renderMatch();stats()}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button[data-act]');if(!b)return;
+ const n=needs.find(x=>x.id===b.dataset.id);
+ if(b.dataset.act==='select'){sel=n.id}
+ if(b.dataset.act==='verify'){n.status='verified';log(`${n.id} verified by a local volunteer lead`)}
+ if(b.dataset.act==='assign'){const o=offers.find(x=>x.id===b.dataset.offer);n.status='matched';n.by=o.name;sel=null;log(`${n.id} assigned to ${esc(o.name)}. Requester notified by ${esc(n.src)}`)}
+ if(b.dataset.act==='deliver'){n.status='delivered';log(`${n.id} delivered by ${esc(n.by)}. Loop closed, ${n.people} people reached`)}
+ render();
+});
+document.querySelectorAll('nav.tabs button').forEach(t=>t.addEventListener('click',()=>{
+ document.querySelectorAll('nav.tabs button').forEach(x=>x.setAttribute('aria-selected',x===t));
+ document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!==t.dataset.tab);
+}));
+// Intake: simple rule-based structuring for the prototype
+document.getElementById('intakeForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const m=document.getElementById('msg').value, low=m.toLowerCase(), ch=document.getElementById('channel').value;
+ const tags=[];
+ if(/boat|roof|stranded|trapped|rescue/.test(low))tags.push('Boat rescue');
+ if(/insulin|medicine|tablet|bp\b|dialysis/.test(low))tags.push('Medicines');
+ if(/water|thirst/.test(low)&&!/water entered|water in/.test(low))tags.push('Drinking water');
+ if(/food|hungry|ration/.test(low))tags.push('Food');
+ if(/cold|blanket/.test(low))tags.push('Blankets');
+ if(/stay|shelter|homeless|lost (our|their) home/.test(low))tags.push('Temporary housing');
+ if(!tags.length)tags.push('General help');
+ const ppl=(low.match(/(\d+)\s*(of us|people|ppl|persons|families)/)||[])[1];
+ const where=(m.match(/(ward\s*\d+[^,.]*)/i)||[])[1]||'Location to confirm';
+ const urg=/roof|stranded|trapped|insulin|injured|bleeding/.test(low)?'critical':'high';
+ const id='N-'+(120+needs.length);
+ document.getElementById('parsed').innerHTML=`<div class="card"><div class="top"><h3>Structured request ${id}</h3><span class="tag u-${urg}">${urg}</span></div>
+ <p>Location: ${esc(where)} · People: ${ppl||'to confirm'} · Channel: ${esc(ch)}</p>
+ <div class="tags">${tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}<span class="tag">unverified</span></div>
+ <p class="why">Next: a local verifier confirms it, then it joins the coordination queue.</p>
+ <div class="actions"><button class="btn primary" type="button" id="addIt">Send to coordination queue</button></div></div>`;
+ document.getElementById('addIt').onclick=()=>{
+  const type=tags.includes('Boat rescue')?'rescue':tags.includes('Drinking water')?'water':tags.includes('Blankets')?'shelter':tags.includes('Temporary housing')?'housing':'rescue';
+  needs.push({id,title:tags.join(' + ')+' request',where,km:1,people:+ppl||1,urg,type,needs:tags,src:ch,raw:m.slice(0,140),status:'unverified'});
+  log(`${id} received via ${esc(ch)} and structured automatically`);
+  document.querySelector('nav.tabs button[data-tab=coord]').click();render();
+ };
+});
+renderOffers();render();log('Flood protocol activated for District A. Telecom partner SMS alert sent');
+</script>
+</body>
+</html>

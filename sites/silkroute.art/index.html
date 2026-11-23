@@ -9,411 +9,417 @@
 <meta property="og:description" content="An artist-first home for contemporary art from Kashmir and the Silk Route. Artists set their prices and keep the majority share. Opening soon.">
 <meta property="og:url" content="https://silkroute.art/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0E1424">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* silkroute.art. Quiet, white, image-led: the page steps back so the work can lead.
-   Grotesk for everything you read, a light serif only for the wordmark, soft grey rooms,
-   rounded plates, pill buttons, and one accent of saffron. */
+/* silkroute.art. An atlas, not an app: the route is the cover, the pages are warm paper,
+   type is a book serif ruled by hairlines, corners are square, and saffron is the one accent. */
 :root{
-  --bg:#FFFFFF; --soft:#F5F4F1; --soft-2:#ECEAE5; --line:#E6E3DD;
-  --ink:#2B2B2B; --ink-2:#6E6E6E; --ink-3:#9C9B98; --ghost:#E4E2DE;
-  --saffron:#C8701E; --saffron-soft:#F6E9DA; --night:#0E1424;
-  --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --paper:#F7F4EE; --paper-2:#EFEAE0; --ink:#1D1B18; --ink-2:#5F5A52; --ink-3:#8F897F; --rule:#DCD5C8; --rule-strong:#1D1B18;
+  --night:#0E1424; --night-2:#141B30; --ivory:#F3EEE4; --ivory-2:#B9B6AE; --hair:rgba(243,238,228,.16);
+  --saffron:#B8641A; --saffron-lt:#E1A458;
   --serif:"Newsreader","Iowan Old Style",Georgia,serif;
-  --r:16px; --r-sm:10px;
-  --gutter:clamp(16px,2.2vw,28px);
+  --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --gutter:clamp(20px,4.4vw,72px);
+  --room:clamp(104px,13vw,200px);
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;--bg:var(--paper)}
 a{color:inherit;text-decoration:none}
 p{margin:0}
-h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
-::selection{background:var(--saffron-soft)}
-:focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gutter)}
-.center{text-align:center}
-.muted{color:var(--ink-2)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:400;letter-spacing:-.018em;line-height:1.06;text-wrap:balance}
+::selection{background:var(--saffron);color:#fff}
+:focus-visible{outline:1.5px solid var(--saffron);outline-offset:4px}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:var(--gutter)}
 
-/* Pills */
-.pill{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 20px;border-radius:999px;background:var(--soft-2);color:var(--ink);font:500 14px/1 var(--sans);letter-spacing:0;border:0;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
-.pill:hover{background:#E0DDD6}
-.pill.dark{background:var(--ink);color:#fff}
-.pill.dark:hover{background:#000}
-.pill.light{background:#fff;color:var(--ink)}
-.pill.light:hover{background:var(--soft)}
-.pill.glass{background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(8px)}
-.pill.glass:hover{background:rgba(255,255,255,.26)}
-.pill.sm{height:30px;padding:0 12px;font-size:13px}
-.tag{display:flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--soft);color:var(--ink-2);font-size:12.5px;width:100%}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--saffron);display:inline-block;flex:none}
+/* Small caps label */
+.label{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--saffron)}
+.label .n{font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink-3)}
 
-/* Announcement + header */
-.notice{background:var(--soft-2);color:var(--ink-2);font-size:12.5px;text-align:center;padding:7px 16px}
-.notice a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px)}
-.top .wrap{display:flex;align-items:center;gap:28px;height:64px}
-.brand{display:inline-flex;align-items:center;gap:9px}
-.brand svg{width:20px;height:24px;color:var(--ink)}
-.brand span{font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:.01em}
-nav.main{display:flex;gap:22px;flex:1}
-nav.main a{font-size:14px;color:var(--ink-3);transition:color .2s}
-nav.main a:hover,nav.main a.on{color:var(--ink)}
-.top .right{display:flex;gap:8px;align-items:center}
-@media (max-width:760px){nav.main{display:none}.top .right .pill.ghosty{display:none}}
+/* Buttons: square, ruled */
+.btn{display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 26px;border:1px solid var(--ink);color:var(--ink);background:transparent;font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.fill{background:var(--ink);color:var(--paper)}
+.btn.fill:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.btn .a{font-family:var(--serif);font-size:18px;letter-spacing:0;transition:transform .25s}
+.btn:hover .a{transform:translateX(4px)}
+.on-dark .btn{border-color:rgba(243,238,228,.6);color:var(--ivory)}
+.on-dark .btn:hover{background:var(--ivory);color:var(--night);border-color:var(--ivory)}
+.on-dark .btn.fill{background:var(--saffron-lt);border-color:var(--saffron-lt);color:var(--night)}
+.on-dark .btn.fill:hover{background:var(--ivory);border-color:var(--ivory)}
+.link{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--saffron);padding-bottom:5px}
+.link:hover{color:var(--saffron)}
 
-/* Hero: a wordmark wall with plates floating over it */
-.hero{position:relative;padding-top:clamp(56px,9vw,120px)}
-.hero .intro{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px}
-.hero .intro .pill{height:28px;padding:0 12px;font-size:13px;background:var(--soft)}
-.stage{position:relative;height:clamp(560px,62vw,860px);margin-top:clamp(56px,8vw,110px)}
-.wordmark{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--serif);font-weight:300;font-size:clamp(84px,17.2vw,300px);line-height:.8;letter-spacing:-.035em;color:var(--ghost);white-space:nowrap;user-select:none;pointer-events:none;overflow:hidden}
-.plate{position:absolute;border-radius:4px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.02)}
-.plate.big{left:50%;top:0;bottom:0;width:min(31%,440px);transform:translateX(-36%)}
-.p1{left:8.6%;top:0;width:8.2%;aspect-ratio:4/5}
-.p2{left:19.4%;top:16%;width:8.2%;aspect-ratio:4/5}
-.p3{left:26.2%;bottom:3%;width:8.2%;aspect-ratio:4/5}
-.p4{right:21%;top:12%;width:8.2%;aspect-ratio:4/5}
-.p5{right:8%;bottom:14%;width:6.6%;aspect-ratio:1/1}
-.stage .meta-l,.stage .meta-r{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-3);z-index:3}
-.stage .meta-l{left:0}
-.stage .meta-r{right:0;display:flex;align-items:center;gap:8px;background:var(--soft);padding:7px 12px;border-radius:999px;color:var(--ink)}
-.stage .meta-r .t{color:var(--ink-2);font-variant-numeric:tabular-nums}
-.big-cap{position:absolute;left:0;right:0;bottom:0;padding:16px;display:flex;justify-content:space-between;gap:10px;color:rgba(255,255,255,.92);font-size:12.5px;z-index:2;background:linear-gradient(transparent,rgba(0,0,0,.35))}
-.plate .cap{position:absolute;left:8px;bottom:6px;font-size:10.5px;color:rgba(255,255,255,.9)}
+/* Header: sits on the night cover, turns to paper once you scroll */
+.top{position:fixed;inset:0 0 auto;z-index:50;color:var(--ivory);--bg:var(--night);transition:background .35s,color .35s,border-color .35s;border-bottom:1px solid transparent}
+.top .wrap{display:flex;align-items:center;gap:32px;height:76px}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand svg{width:22px;height:26px;color:var(--saffron-lt)}
+.brand span{font-family:var(--serif);font-size:23px;letter-spacing:.005em}
+.brand span i{color:var(--saffron-lt)}
+nav.main{display:flex;gap:34px;margin-left:auto}
+nav.main a{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.78;transition:opacity .2s}
+nav.main a:hover{opacity:1}
+.top .cta{height:40px;padding:0 18px;border:1px solid currentColor;display:inline-flex;align-items:center;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.top .cta:hover{background:var(--ivory);color:var(--night);border-color:var(--ivory)}
+.top.solid{background:rgba(247,244,238,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);border-bottom-color:var(--rule);--bg:var(--paper)}
+.top.solid .brand svg,.top.solid .brand span i{color:var(--saffron)}
+.top.solid .cta:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:860px){nav.main{display:none}.top .cta{margin-left:auto}}
+
+/* Hero: the route is the cover */
+.hero{position:relative;background:var(--night);color:var(--ivory);display:flex;flex-direction:column;overflow:hidden;--bg:var(--night)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 78% 78%,rgba(225,164,88,.16),transparent 70%),radial-gradient(60% 70% at 0% 0%,rgba(53,87,196,.28),transparent 70%);pointer-events:none}
+.hero .map{position:relative;z-index:1;margin-top:clamp(-150px,-8vw,-40px);padding-inline:clamp(0px,2vw,40px);pointer-events:none}
+.hero .map svg{display:block;width:100%;height:auto;overflow:visible}
+.map .grat{stroke:rgba(243,238,228,.07);stroke-width:1;fill:none}
+.map .grat-l{font:500 9.5px var(--sans);letter-spacing:.12em;fill:rgba(243,238,228,.28)}
+.map .path{fill:none;stroke:var(--saffron-lt);stroke-width:1.6;stroke-linecap:round}
+.map .path-glow{fill:none;stroke:rgba(225,164,88,.22);stroke-width:7;stroke-linecap:round;filter:blur(3px)}
+.map .city circle{fill:var(--night);stroke:var(--ivory);stroke-width:1.2}
+.map .city.home circle{fill:var(--saffron-lt);stroke:var(--saffron-lt)}
+.map .city.home .ring{fill:none;stroke:var(--saffron-lt);stroke-width:1;opacity:.6}
+.map .city text{font:400 10.5px var(--sans);letter-spacing:.08em;fill:rgba(243,238,228,.5)}
+.map .city text.name{font:400 19px var(--serif);letter-spacing:0;fill:var(--ivory)}
+@media (prefers-reduced-motion:no-preference){
+  .map .path,.map .path-glow{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 3.4s cubic-bezier(.6,.1,.2,1) .4s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .map .city{opacity:0;animation:fade .8s ease forwards}
+  @keyframes fade{to{opacity:1}}
+  .map .city.home .ring{transform-origin:center;transform-box:fill-box;animation:pulse 2.8s ease-out 3.6s infinite}
+  @keyframes pulse{from{transform:scale(1);opacity:.7}to{transform:scale(3.2);opacity:0}}
+}
+.hero .copy{position:relative;z-index:2;padding-top:clamp(140px,19vh,210px);width:100%}
+.hero .kick{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-2);margin-bottom:clamp(26px,3.4vw,40px)}
+.hero .kick b{color:var(--saffron-lt);font-weight:600}
+.hero h1{font-size:clamp(50px,7.6vw,128px);line-height:.96;letter-spacing:-.035em;font-weight:300;max-width:12ch}
+.hero h1 em{font-style:italic;color:var(--saffron-lt)}
+.hero .lede{margin-top:clamp(24px,2.6vw,34px);font-family:var(--serif);font-size:clamp(19px,1.6vw,23px);line-height:1.45;color:var(--ivory-2);max-width:34ch}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(28px,3vw,40px)}
+.hero .legend{position:relative;z-index:2;margin-top:auto;border-top:1px solid var(--hair)}
+.hero .legend .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-2)}
+.hero .legend i{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:0;text-transform:none}
 @media (max-width:760px){
-  .stage{height:520px}
-  .plate.big{width:62%;transform:translateX(-50%);top:40px;bottom:40px}
-  .p1{left:0;top:0;width:24%}.p2{display:none}.p3{left:2%;bottom:0;width:26%}.p4{right:0;top:12%;width:24%}.p5{right:2%;bottom:6%;width:22%}
-  .stage .meta-l,.stage .meta-r{display:none}
-  .wordmark{font-size:23vw}
+  .hero{min-height:auto}
+  .hero .map{margin-top:36px;padding-inline:4px}
+  .map .grat-l,.map .city text:not(.name){display:none}
+  .map .city text.name{font-size:34px}
+  .map .city circle{r:9px}
 }
 
-/* Material studies: CSS-painted surfaces standing in for photography until works are shot */
-.m{position:relative;width:100%;height:100%;min-height:100%}
+/* Section scaffolding */
+.room{padding-block:var(--room)}
+.room + .room{border-top:1px solid var(--rule)}
+.head{display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,6vw,110px);align-items:end;margin-bottom:clamp(48px,6vw,88px)}
+.head h2{font-size:clamp(42px,5.4vw,84px);line-height:.98;letter-spacing:-.03em;margin-top:22px}
+.head h2 em{font-style:italic;color:var(--saffron)}
+.head p{font-family:var(--serif);font-size:clamp(20px,1.7vw,25px);line-height:1.42;color:var(--ink-2);max-width:40ch}
+@media (max-width:900px){.head{grid-template-columns:1fr;gap:22px}}
+
+/* Artist terms: three ruled columns */
+.terms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-strong)}
+.terms li{padding:32px clamp(20px,2.6vw,40px) 0 0;min-width:0}
+.terms li+li{padding-left:clamp(20px,2.6vw,40px);border-left:1px solid var(--rule)}
+.terms .num{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(64px,7vw,112px);line-height:.9;letter-spacing:-.03em;color:var(--saffron);margin-bottom:34px}
+.terms h3{font-size:clamp(24px,2vw,30px);line-height:1.15;margin-bottom:12px}
+.terms p{color:var(--ink-2);max-width:36ch}
+.terms-foot{margin-top:clamp(48px,6vw,80px);display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.terms-foot span{font-size:14.5px;color:var(--ink-3)}
+@media (max-width:860px){.terms{grid-template-columns:1fr}.terms li,.terms li+li{padding:28px 0;border-left:0;border-top:1px solid var(--rule)}.terms li:first-child{border-top:0}}
+
+/* Statement */
+.statement{background:var(--paper-2)}
+.statement blockquote{margin:0 auto;max-width:23ch;text-align:center;font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.4vw,66px);line-height:1.1;letter-spacing:-.025em;color:var(--ink-3);text-wrap:balance}
+.statement blockquote b{font-weight:400;color:var(--ink)}
+.statement .orn{display:block;width:44px;height:44px;margin:0 auto 40px;color:var(--saffron)}
+.statement .small{margin-top:40px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Collectors */
+.collect{display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,6vw,110px);align-items:start}
+.collect aside{position:sticky;top:110px}
+.collect aside h2{font-size:clamp(42px,5.4vw,84px);line-height:.98;letter-spacing:-.03em;margin:22px 0 26px}
+.collect aside h2 em{font-style:italic;color:var(--saffron);white-space:nowrap}
+.collect aside p{font-family:var(--serif);font-size:clamp(19px,1.5vw,22px);line-height:1.45;color:var(--ink-2);max-width:32ch}
+.collect aside .btn{margin-top:32px}
+.intro{font-size:17.5px;color:var(--ink-2);max-width:60ch;padding-bottom:40px}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-strong)}
+.steps li{display:grid;grid-template-columns:clamp(64px,7vw,110px) 1fr;gap:12px;padding:34px 0 38px;border-bottom:1px solid var(--rule)}
+.steps .n{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(34px,3vw,46px);line-height:1;color:var(--saffron)}
+.steps h3{font-size:clamp(24px,2.1vw,31px);line-height:1.15;margin-bottom:10px}
+.steps p{color:var(--ink-2);max-width:56ch}
+.rules{margin-top:clamp(56px,6vw,90px);padding:clamp(26px,3vw,44px);background:var(--night);color:var(--ivory);--bg:var(--night)}
+.rules h3{font-size:clamp(26px,2.3vw,34px);margin-bottom:26px}
+.rules h3 em{color:var(--saffron-lt)}
+.rules ol{list-style:none;margin:0;padding:0;counter-reset:r;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.rules li{counter-increment:r;display:grid;grid-template-columns:36px 1fr;padding:18px 0;border-top:1px solid var(--hair);font-family:var(--serif);font-size:19px;line-height:1.45}
+.rules li::before{content:counter(r,lower-roman)".";font-style:italic;color:var(--saffron-lt);font-size:16px;padding-top:2px}
+.rules .btn{margin-top:30px}
+@media (max-width:900px){.collect{grid-template-columns:1fr}.collect aside{position:static}.rules ol{grid-template-columns:1fr}}
+
+/* Materials */
+.mats{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.2vw,18px)}
+.mats figure{margin:0}
+.mats .img{aspect-ratio:3/4;position:relative;overflow:hidden}
+.mats figure:nth-child(even){padding-top:clamp(24px,4vw,64px)}
+.mats figcaption{margin-top:12px;font-family:var(--serif);font-size:18px;line-height:1.25}
+.mats figcaption span{display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:4px}
+.mats-note{margin-top:28px;font-size:14px;color:var(--ink-3)}
+@media (max-width:900px){.mats{grid-template-columns:repeat(3,1fr)}.mats figure:nth-child(even){padding-top:0}.mats figure:nth-child(3n+2){padding-top:32px}}
+@media (max-width:520px){.mats{grid-template-columns:1fr 1fr}.mats figure:nth-child(3n+2){padding-top:0}.mats figure:nth-child(even){padding-top:32px}}
+
+/* Material studies (CSS-painted surfaces until works are photographed) */
+.m{position:absolute;inset:0}
 .m::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.35;pointer-events:none}
 .m-saffron{background:radial-gradient(120% 90% at 30% 20%,#F0A54A 0%,#D27322 45%,#A4470F 100%)}
 .m-lapis{background:radial-gradient(1.4px 1.4px at 22% 30%,#E9C77A 50%,transparent 51%),radial-gradient(1.2px 1.2px at 68% 62%,#E9C77A 50%,transparent 51%),radial-gradient(1px 1px at 41% 81%,#F2D592 50%,transparent 51%),radial-gradient(1.6px 1.6px at 83% 18%,#E9C77A 50%,transparent 51%),radial-gradient(1px 1px at 12% 70%,#F2D592 50%,transparent 51%),radial-gradient(130% 100% at 70% 10%,#2F4DAE 0%,#1B2F7A 50%,#0E1A4A 100%);background-size:90px 110px,70px 80px,60px 60px,120px 100px,50px 70px,100% 100%}
-.m-walnut{background:repeating-linear-gradient(94deg,rgba(0,0,0,.0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.04) 8px 15px,rgba(0,0,0,.14) 15px 16px),radial-gradient(140% 80% at 40% 40%,#8A5A36 0%,#5C3A22 55%,#3A2414 100%)}
-.m-turquoise{background:conic-gradient(from 45deg at 50% 50%,#1E8B8C 0 25%,#2BA3A1 0 50%,#1E8B8C 0 75%,#2BA3A1 0) 0 0/38px 38px,#1E8B8C;}
+.m-walnut{background:repeating-linear-gradient(94deg,rgba(0,0,0,0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.04) 8px 15px,rgba(0,0,0,.14) 15px 16px),radial-gradient(140% 80% at 40% 40%,#8A5A36 0%,#5C3A22 55%,#3A2414 100%)}
+.m-turquoise{background:conic-gradient(from 45deg at 50% 50%,#1E8B8C 0 25%,#2BA3A1 0 50%,#1E8B8C 0 75%,#2BA3A1 0) 0 0/38px 38px,#1E8B8C}
 .m-turquoise::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 37px,rgba(240,232,214,.75) 37px 38px),repeating-linear-gradient(90deg,transparent 0 37px,rgba(240,232,214,.75) 37px 38px)}
 .m-pashmina{background:repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 2px,transparent 2px 5px),repeating-linear-gradient(-45deg,rgba(255,255,255,.25) 0 2px,transparent 2px 5px),linear-gradient(160deg,#E8DDCB,#CDBB9F)}
 .m-felt{background:radial-gradient(90% 70% at 50% 50%,#A8352F 0%,#80211E 70%,#5E1614 100%)}
-.m-felt::before{content:"";position:absolute;inset:18%;border:2px solid rgba(241,227,200,.75);border-radius:46% 46% 46% 46%/30% 30% 30% 30%}
-.m-route{background:var(--night)}
-.m-route svg{position:absolute;inset:0;width:100%;height:100%}
-
-/* Section rhythm */
-.sec{padding-block:clamp(110px,14vw,210px) 0}
-.sec-title{font-size:clamp(24px,2vw,28px);text-align:center}
-.sec-sub{max-width:540px;margin:18px auto 0;text-align:center;color:var(--ink-2);font-size:16px}
-.sec-actions{display:flex;justify-content:center;gap:8px;margin-top:28px}
-
-/* Terms: three soft cards */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(40px,5vw,64px)}
-.card{background:var(--soft);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;min-height:clamp(320px,30vw,420px)}
-.card .lbl{font-size:12.5px;color:var(--ink-3)}
-.card .num{font-family:var(--serif);font-weight:300;font-size:clamp(84px,9vw,140px);line-height:.85;letter-spacing:-.04em;margin:auto 0 22px;color:var(--ink)}
-.card h3{font-size:19px;letter-spacing:-.01em;margin-bottom:6px}
-.card p{color:var(--ink-2);font-size:15px;max-width:38ch}
-@media (max-width:860px){.cards{grid-template-columns:1fr}.card{min-height:260px}}
-
-/* Big two-tone statement */
-.statement{font-size:clamp(30px,3.9vw,56px);line-height:1.12;letter-spacing:-.028em;text-align:center;max-width:22ch;margin:0 auto;color:var(--ink-3);text-wrap:balance}
-.statement b{font-weight:400;color:var(--ink)}
-.statement-foot{margin-top:26px;display:flex;justify-content:center}
-
-/* Collectors: sticky index on the left, chapters on the right */
-.guide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,90px)}
-.guide-index{position:sticky;top:110px;align-self:start}
-.guide-index .tag{margin-bottom:46px}
-.guide-index ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
-.guide-index li a{display:flex;align-items:center;gap:12px;font-size:clamp(19px,1.6vw,23px);letter-spacing:-.015em;color:var(--ink-3);transition:color .3s}
-.guide-index li a::before{content:"";width:9px;height:9px;border:1.3px solid currentColor;transform:rotate(45deg);opacity:0;margin-left:-21px;transition:opacity .3s}
-.guide-index ol{padding-left:21px}
-.guide-index li a.on{color:var(--ink)}
-.guide-index li a.on::before{opacity:1}
-.chapters{display:grid;gap:clamp(70px,8vw,120px)}
-.chapter .tag{margin-bottom:18px}
-.chapter h3{font-size:clamp(19px,1.5vw,21px);letter-spacing:-.01em;margin-bottom:8px}
-.chapter p{color:var(--ink-2);font-size:16px;max-width:52ch}
-.chapter .visual{margin-top:26px;border-radius:var(--r);background:var(--soft);aspect-ratio:16/10;position:relative;overflow:hidden}
-.chapter .visual .pl{position:absolute;border-radius:3px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.12)}
-.visual .note{position:absolute;left:18px;bottom:16px;right:18px;background:#fff;border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.45;color:var(--ink-2);max-width:300px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.visual .note b{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
-.price-row{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(78%,420px);background:#fff;border-radius:14px;padding:14px;display:grid;grid-template-columns:68px 1fr auto;gap:14px;align-items:center;box-shadow:0 16px 40px rgba(0,0,0,.08)}
-.price-row .sw{height:68px;border-radius:6px;overflow:hidden}
-.price-row b{display:block;font-weight:500;font-size:14.5px}
-.price-row span{font-size:13px;color:var(--ink-3)}
-.price-row .pr{font-size:13px;background:var(--soft);padding:6px 10px;border-radius:999px;color:var(--ink)}
-.rules{margin-top:clamp(70px,8vw,120px);background:var(--soft);border-radius:var(--r);padding:clamp(22px,3vw,36px)}
-.rules h3{font-size:clamp(21px,1.7vw,24px);margin-bottom:22px}
-.rules ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.rules li{background:#fff;border-radius:12px;padding:18px;font-size:15.5px;color:var(--ink);display:grid;grid-template-columns:28px 1fr;gap:6px}
-.rules li span{color:var(--saffron);font-size:13px;padding-top:2px}
-.rules .go{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
-@media (max-width:860px){.guide{grid-template-columns:1fr}.guide-index{position:static}.guide-index ol{display:none}.guide-index .tag{margin-bottom:0}.rules ol{grid-template-columns:1fr}}
-
-/* Route plates row */
-.row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:4px;margin-top:clamp(40px,5vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
-.row::-webkit-scrollbar{display:none}
-.row figure{margin:0;scroll-snap-align:start}
-.row .img{aspect-ratio:3/4;position:relative;overflow:hidden}
-.row figure:nth-child(even) .img{aspect-ratio:3/3.4}
-.row figcaption{padding:10px 2px 0;font-size:12.5px;line-height:1.4}
-.row figcaption span{display:block;color:var(--ink-3)}
-.route-card{margin-top:10px;border-radius:var(--r);background:var(--night);color:#fff;padding:clamp(20px,3vw,36px);position:relative;overflow:hidden}
-.route-card .hd{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.62)}
-.route-card .hd b{color:#fff;font-weight:500}
-.route-card svg{width:100%;height:auto;display:block;overflow:visible;margin-top:18px}
-.route-card .path{fill:none;stroke:#E1A458;stroke-width:1.5;stroke-linecap:round}
-.route-card .ghost-path{fill:none;stroke:rgba(255,255,255,.10);stroke-width:1;stroke-dasharray:2 6}
-.route-card .city circle{fill:var(--night);stroke:#fff;stroke-width:1.3}
-.route-card .city.home circle{fill:#E1A458;stroke:#E1A458}
-.route-card .city text{font-family:var(--sans);font-size:10.5px;fill:rgba(255,255,255,.55)}
-.route-card .city text.name{font-size:15px;fill:#fff;font-weight:500}
-@media (prefers-reduced-motion:no-preference){.route-card .path{stroke-dasharray:1400;stroke-dashoffset:1400}.route-card.in .path{animation:draw 3s cubic-bezier(.6,.1,.2,1) forwards}@keyframes draw{to{stroke-dashoffset:0}}}
-@media (max-width:700px){.route-card svg{width:calc(100% + 16px);margin-inline:-8px}.route-card .city text:not(.name){display:none}.route-card .city text.name{font-size:28px}.route-card .city circle{r:9px}}
+.m-felt::before{content:"";position:absolute;inset:18%;border:2px solid rgba(241,227,200,.75);border-radius:46%/30%}
 
 /* Curation */
-.founder{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:start;max-width:920px;margin:clamp(40px,5vw,64px) auto 0}
-.founder .portrait{width:clamp(140px,16vw,220px);aspect-ratio:4/5;border-radius:var(--r);background:var(--soft);display:grid;place-items:center;--bg:var(--soft)}
-.founder .portrait svg{width:34%;height:auto;color:var(--saffron)}
-.founder p{font-size:clamp(17px,1.35vw,19px);line-height:1.55;color:var(--ink-2);max-width:56ch}
-.founder p+p{margin-top:16px}
-.founder p b{font-weight:500;color:var(--ink)}
-.founder .by{display:flex;align-items:center;gap:10px;margin-top:24px;font-size:14px;color:var(--ink)}
-.founder .by span{color:var(--ink-3)}
-@media (max-width:640px){.founder{grid-template-columns:1fr}}
-.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(70px,8vw,120px)}
-.principles .lbl{font-size:12.5px;color:var(--ink-3);padding:0 4px 12px}
-.principles .box{background:var(--soft);border-radius:var(--r);padding:22px;height:calc(100% - 31px);display:flex;flex-direction:column;gap:10px}
-.principles h3{font-size:19px;letter-spacing:-.01em}
-.principles p{font-size:15px;color:var(--ink-2)}
-.principles .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:22px}
-.principles .chips span{background:#fff;border-radius:999px;padding:6px 11px;font-size:12.5px;color:var(--ink)}
-@media (max-width:860px){.principles{grid-template-columns:1fr}}
+.letter{display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,6vw,110px);align-items:start}
+.letter aside h2{font-size:clamp(42px,5.4vw,84px);line-height:.98;letter-spacing:-.03em;margin-top:22px}
+.letter aside h2 em{font-style:italic;color:var(--saffron)}
+.sig{margin-top:36px;display:flex;align-items:center;gap:14px}
+.sig .mono{width:52px;height:52px;border:1px solid var(--saffron);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--saffron)}
+.sig b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2}
+.sig span{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.letter .quote{font-family:var(--serif);font-weight:300;font-size:clamp(27px,2.7vw,40px);line-height:1.24;letter-spacing:-.015em;margin-bottom:34px}
+.letter .quote::first-letter{color:var(--saffron)}
+.letter .body p+p{margin-top:20px}
+.letter .body p:not(.quote){font-size:18px;line-height:1.75;color:var(--ink-2);max-width:60ch}
+.letter .body strong{color:var(--ink);font-weight:500}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-strong);margin-top:clamp(70px,8vw,120px)}
+.principles div{padding:30px clamp(20px,2.6vw,40px) 0 0;min-width:0}
+.principles div+div{padding-left:clamp(20px,2.6vw,40px);border-left:1px solid var(--rule)}
+.principles .k{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--saffron)}
+.principles h3{font-size:clamp(23px,1.9vw,28px);line-height:1.18;margin:16px 0 12px}
+.principles p{color:var(--ink-2);font-size:16.5px}
+@media (max-width:900px){.letter{grid-template-columns:1fr}.principles{grid-template-columns:1fr}.principles div,.principles div+div{padding:26px 0;border-left:0;border-top:1px solid var(--rule)}.principles div:first-child{border-top:0}}
 
-/* Closing panel */
-.closing{margin-top:clamp(110px,14vw,210px);border-radius:var(--r);overflow:hidden;position:relative;min-height:clamp(460px,52vw,700px);display:grid;place-items:center;text-align:center;color:#fff;background:var(--night)}
-.closing .bgm{position:absolute;inset:0}
-.closing .bgm::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 110%,rgba(225,164,88,.45),transparent 70%),radial-gradient(50% 60% at 15% 0%,rgba(53,87,196,.55),transparent 70%)}
-.closing .bgm svg{position:absolute;inset:0;width:100%;height:100%;opacity:.16}
-.closing .inner{position:relative;padding:40px 20px}
-.closing .lbl{font-size:12.5px;color:rgba(255,255,255,.7)}
-.closing h2{font-size:clamp(28px,3vw,40px);margin:14px 0 10px;letter-spacing:-.025em}
-.closing p{color:rgba(255,255,255,.75);font-size:16px}
-.closing .acts{display:flex;justify-content:center;gap:8px;margin-top:26px;flex-wrap:wrap}
+/* Closing: back to the night of the cover */
+.closing{position:relative;background:var(--night);color:var(--ivory);overflow:hidden;text-align:center;padding-block:clamp(120px,15vw,220px);--bg:var(--night)}
+.closing .lattice{position:absolute;inset:0;width:100%;height:100%;color:var(--saffron-lt);opacity:.12}
+.closing::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 70% at 50% 105%,rgba(225,164,88,.32),transparent 70%)}
+.closing .inner{position:relative}
+.closing h2{font-size:clamp(44px,5.6vw,92px);line-height:.98;letter-spacing:-.03em;font-weight:300;margin:24px auto 22px;max-width:14ch}
+.closing h2 em{font-style:italic;color:var(--saffron-lt)}
+.closing p{font-family:var(--serif);font-size:clamp(19px,1.6vw,23px);color:var(--ivory-2)}
+.closing .acts{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:36px}
+.closing .label{color:var(--saffron-lt)}
 
-/* Footer with the two forms */
-footer{padding-block:clamp(48px,6vw,80px) 28px}
-.foot{display:grid;grid-template-columns:1.1fr .9fr 1.3fr 1.3fr;gap:10px;align-items:start}
-.foot .mark{font-family:var(--serif);font-weight:300;font-size:clamp(30px,2.6vw,40px);letter-spacing:-.02em;line-height:1;display:flex;align-items:center;gap:10px}
-.foot .mark svg{width:26px;height:30px}
-.foot .tagline{margin-top:14px;font-size:13.5px;color:var(--ink-3);max-width:28ch}
-.foot .links{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;font-size:13.5px}
-.foot .links h4{font-size:12.5px;color:var(--ink-3);margin-bottom:10px;letter-spacing:0}
-.foot .links ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
-.foot .links a{color:var(--ink-2)}
-.foot .links a:hover{color:var(--ink)}
-.formcard{background:var(--soft);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px;min-height:100%}
-.formcard .hd{font-size:13.5px;color:var(--ink-2);padding:2px 2px 8px}
-.formcard .hd b{display:block;font-size:17px;color:var(--ink);font-weight:400;letter-spacing:-.01em;margin-bottom:2px}
-.formcard .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.formcard label.f{display:block}
-.formcard input[type=email],.formcard input[type=text],.formcard input[type=url],.formcard input:not([type]),.formcard select{width:100%;height:40px;border:0;border-radius:8px;background:#fff;padding:0 12px;font:400 14px var(--sans);color:var(--ink);box-shadow:0 0 0 1px transparent;transition:box-shadow .2s}
-.formcard select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239C9B98' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:30px;color:var(--ink)}
-.formcard input:focus,.formcard select:focus{outline:0;box-shadow:0 0 0 1.5px var(--ink)}
-.formcard input::placeholder{color:var(--ink-3)}
-.formcard .check{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink-2);line-height:1.45;padding:4px 2px}
-.formcard .check input{width:16px;height:16px;margin:1px 0 0;flex:none;accent-color:#2B2B2B}
-.formcard .check a{text-decoration:underline;text-underline-offset:2px}
-.formcard .pill{width:100%;justify-content:center;background:#fff;margin-top:auto}
-.formcard .pill:hover{background:var(--ink);color:#fff}
+/* Join + footer */
+.join{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,36px)}
+.panel{border:1px solid var(--rule-strong);padding:clamp(26px,3.4vw,52px);display:flex;flex-direction:column;gap:18px}
+.panel h3{font-size:clamp(32px,3vw,46px);letter-spacing:-.025em}
+.panel .sub{color:var(--ink-2);font-size:16px;max-width:42ch}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;margin-top:8px}
+.fields label{display:grid;gap:6px;font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.fields .full{grid-column:1/-1}
+.fields input:not([type=checkbox]),.fields select{width:100%;font:400 17px var(--sans);letter-spacing:0;text-transform:none;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #A9A296;border-radius:0;padding:8px 0 10px}
+.fields select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B8641A' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 4px center;padding-right:28px}
+.fields input:focus,.fields select:focus{outline:0;border-bottom-color:var(--saffron)}
+.fields input::placeholder{color:#A9A296}
+.fields .check{display:flex;gap:11px;align-items:flex-start;font-size:15px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink-2);line-height:1.5}
+.fields .check input{width:17px;height:17px;margin:3px 0 0;flex:none;accent-color:#1D1B18}
+.fields .check a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--saffron)}
+.panel .btn{align-self:flex-start;margin-top:auto}
+.panel .sp{flex:1}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(48px,6vw,80px);font-size:12.5px;color:var(--ink-3)}
-.legal a{text-decoration:underline;text-underline-offset:3px;color:var(--ink-2)}
-@media (max-width:1100px){.foot{grid-template-columns:1fr 1fr}.formcard{min-height:0}}
-@media (max-width:640px){.foot{grid-template-columns:1fr}.formcard .two{grid-template-columns:1fr}}
+@media (max-width:900px){.join{grid-template-columns:1fr}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start}
+.foot .mark{display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:clamp(30px,3vw,42px);letter-spacing:-.015em;line-height:1}
+.foot .mark svg{width:30px;height:35px;color:var(--saffron)}
+.foot .mark i{color:var(--saffron)}
+.foot .tag{margin-top:16px;font-family:var(--serif);font-size:19px;color:var(--ink-2);max-width:32ch}
+.foot h4{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot ul a{color:var(--ink-2)}
+.foot ul a:hover{color:var(--ink)}
+.legal{margin-top:clamp(48px,6vw,80px);padding-top:20px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot > div:first-child{grid-column:1/-1}}
 
 /* Entrance */
 @media (prefers-reduced-motion:no-preference){
-  .js .rise{opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .rise{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
   .js .rise.in{opacity:1;transform:none}
-  .js .plate{opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
-  .js .plate.big{transform:translateX(-36%) translateY(10px)}
-  .js .loaded .plate{opacity:1;transform:none}
-  .js .loaded .plate.big{transform:translateX(-36%)}
-  @media (max-width:760px){.js .loaded .plate.big,.js .plate.big{transform:translateX(-50%)}}
 }
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="markhor" viewBox="0 0 48 56"><path d="M22.46 52.11 L22.28 51.48 L22.08 50.85 L21.85 50.24 L21.56 49.65 L21.21 49.07 L20.81 48.51 L20.35 47.96 L19.85 47.43 L19.33 46.91 L18.79 46.40 L18.26 45.88 L17.75 45.35 L17.28 44.81 L16.87 44.25 L16.51 43.68 L16.20 43.09 L15.95 42.48 L15.74 41.86 L15.56 41.23 L15.39 40.60 L15.23 39.96 L15.04 39.33 L14.83 38.71 L14.58 38.11 L14.29 37.51 L13.96 36.93 L13.60 36.35 L13.21 35.79 L12.80 35.23 L12.39 34.68 L11.99 34.11 L11.61 33.55 L11.26 32.97 L10.95 32.38 L10.69 31.78 L10.46 31.16 L10.28 30.53 L10.12 29.90 L9.99 29.25 L9.87 28.60 L9.74 27.96 L9.61 27.31 L9.46 26.67 L9.29 26.04 L9.09 25.41 L8.87 24.80 L8.64 24.19 L8.38 23.58 L8.12 22.97 L7.87 22.37 L7.62 21.76 L7.39 21.15 L7.18 20.53 L7.00 19.90 L6.84 19.26 L6.71 18.61 L6.60 17.96 L6.51 17.31 L6.42 16.65 L6.35 15.98 L6.27 15.32 L6.18 14.67 L6.08 14.01 L5.98 13.36 L5.86 12.71 L5.73 12.06 L5.60 11.42 L5.46 10.77 L5.32 10.13 L5.19 9.49 L5.07 8.84 L4.95 8.19 L4.85 7.54 L4.75 6.88 L4.66 6.22 L4.58 5.56 L4.49 4.90 L4.41 4.24 L4.33 3.58 L4.24 2.93 L3.76 3.07 L3.79 3.75 L3.82 4.43 L3.85 5.10 L3.87 5.78 L3.90 6.46 L3.94 7.14 L3.98 7.81 L4.02 8.48 L4.08 9.15 L4.15 9.81 L4.23 10.47 L4.30 11.14 L4.38 11.80 L4.46 12.46 L4.53 13.12 L4.59 13.79 L4.64 14.46 L4.68 15.13 L4.71 15.81 L4.73 16.49 L4.75 17.17 L4.77 17.85 L4.81 18.52 L4.86 19.19 L4.93 19.85 L5.03 20.51 L5.15 21.16 L5.30 21.80 L5.47 22.43 L5.66 23.06 L5.86 23.68 L6.06 24.31 L6.25 24.93 L6.43 25.56 L6.59 26.20 L6.72 26.84 L6.83 27.49 L6.92 28.15 L6.99 28.81 L7.05 29.48 L7.11 30.15 L7.18 30.81 L7.28 31.47 L7.40 32.12 L7.56 32.75 L7.76 33.38 L8.00 33.99 L8.29 34.58 L8.60 35.17 L8.94 35.75 L9.29 36.33 L9.63 36.91 L9.96 37.49 L10.26 38.08 L10.52 38.69 L10.74 39.30 L10.92 39.93 L11.07 40.57 L11.18 41.22 L11.28 41.88 L11.38 42.53 L11.49 43.19 L11.63 43.83 L11.81 44.46 L12.04 45.07 L12.33 45.67 L12.68 46.24 L13.07 46.81 L13.50 47.36 L13.96 47.90 L14.42 48.44 L14.87 48.99 L15.29 49.54 L15.66 50.11 L15.98 50.70 L16.24 51.30 L16.44 51.93 L16.58 52.57 L16.68 53.23 L16.74 53.89 Z M25.54 52.11 L25.72 51.48 L25.92 50.85 L26.15 50.24 L26.44 49.65 L26.79 49.07 L27.19 48.51 L27.65 47.96 L28.15 47.43 L28.67 46.91 L29.21 46.40 L29.74 45.88 L30.25 45.35 L30.72 44.81 L31.13 44.25 L31.49 43.68 L31.80 43.09 L32.05 42.48 L32.26 41.86 L32.44 41.23 L32.61 40.60 L32.77 39.96 L32.96 39.33 L33.17 38.71 L33.42 38.11 L33.71 37.51 L34.04 36.93 L34.40 36.35 L34.79 35.79 L35.20 35.23 L35.61 34.68 L36.01 34.11 L36.39 33.55 L36.74 32.97 L37.05 32.38 L37.31 31.78 L37.54 31.16 L37.72 30.53 L37.88 29.90 L38.01 29.25 L38.13 28.60 L38.26 27.96 L38.39 27.31 L38.54 26.67 L38.71 26.04 L38.91 25.41 L39.13 24.80 L39.36 24.19 L39.62 23.58 L39.88 22.97 L40.13 22.37 L40.38 21.76 L40.61 21.15 L40.82 20.53 L41.00 19.90 L41.16 19.26 L41.29 18.61 L41.40 17.96 L41.49 17.31 L41.58 16.65 L41.65 15.98 L41.73 15.32 L41.82 14.67 L41.92 14.01 L42.02 13.36 L42.14 12.71 L42.27 12.06 L42.40 11.42 L42.54 10.77 L42.68 10.13 L42.81 9.49 L42.93 8.84 L43.05 8.19 L43.15 7.54 L43.25 6.88 L43.34 6.22 L43.42 5.56 L43.51 4.90 L43.59 4.24 L43.67 3.58 L43.76 2.93 L44.24 3.07 L44.21 3.75 L44.18 4.43 L44.15 5.10 L44.13 5.78 L44.10 6.46 L44.06 7.14 L44.02 7.81 L43.98 8.48 L43.92 9.15 L43.85 9.81 L43.77 10.47 L43.70 11.14 L43.62 11.80 L43.54 12.46 L43.47 13.12 L43.41 13.79 L43.36 14.46 L43.32 15.13 L43.29 15.81 L43.27 16.49 L43.25 17.17 L43.23 17.85 L43.19 18.52 L43.14 19.19 L43.07 19.85 L42.97 20.51 L42.85 21.16 L42.70 21.80 L42.53 22.43 L42.34 23.06 L42.14 23.68 L41.94 24.31 L41.75 24.93 L41.57 25.56 L41.41 26.20 L41.28 26.84 L41.17 27.49 L41.08 28.15 L41.01 28.81 L40.95 29.48 L40.89 30.15 L40.82 30.81 L40.72 31.47 L40.60 32.12 L40.44 32.75 L40.24 33.38 L40.00 33.99 L39.71 34.58 L39.40 35.17 L39.06 35.75 L38.71 36.33 L38.37 36.91 L38.04 37.49 L37.74 38.08 L37.48 38.69 L37.26 39.30 L37.08 39.93 L36.93 40.57 L36.82 41.22 L36.72 41.88 L36.62 42.53 L36.51 43.19 L36.37 43.83 L36.19 44.46 L35.96 45.07 L35.67 45.67 L35.32 46.24 L34.93 46.81 L34.50 47.36 L34.04 47.90 L33.58 48.44 L33.13 48.99 L32.71 49.54 L32.34 50.11 L32.02 50.70 L31.76 51.30 L31.56 51.93 L31.42 52.57 L31.32 53.23 L31.26 53.89 Z" fill="currentColor"/><path d="M19.51 46.17 Q 16.40 45.08 11.15 44.66 M16.01 40.40 Q 13.75 39.05 9.70 38.26 M12.90 34.51 Q 10.66 33.16 6.94 32.26 M10.29 28.47 Q 8.76 26.89 6.06 25.68 M8.20 22.27 Q 6.83 20.64 4.58 19.28 M6.59 15.91 Q 5.72 14.12 4.27 12.52 M5.35 9.44 Q 4.71 7.58 3.77 5.82 M28.49 46.17 Q 31.60 45.08 36.85 44.66 M31.99 40.40 Q 34.25 39.05 38.30 38.26 M35.10 34.51 Q 37.34 33.16 41.06 32.26 M37.71 28.47 Q 39.24 26.89 41.94 25.68 M39.80 22.27 Q 41.17 20.64 43.42 19.28 M41.41 15.91 Q 42.28 14.12 43.73 12.52 M42.65 9.44 Q 43.29 7.58 44.23 5.82" fill="none" stroke="var(--bg,#FFFFFF)" stroke-width="1.15" stroke-linecap="round"/></symbol>
-  <symbol id="lattice" viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-width=".8"><rect x="18" y="18" width="36" height="36"/><rect x="18" y="18" width="36" height="36" transform="rotate(45 36 36)"/><path d="M0 36H10.5M61.5 36H72M36 0V10.5M36 61.5V72M0 0L18 18M72 0L54 18M0 72L18 54M72 72L54 54"/></g></symbol>
-  <pattern id="latticeFill" width="72" height="72" patternUnits="userSpaceOnUse"><use href="#lattice" width="72" height="72" style="color:#fff"/></pattern>
+  <symbol id="markhor" viewBox="0 0 48 56"><path d="M22.46 52.11 L22.28 51.48 L22.08 50.85 L21.85 50.24 L21.56 49.65 L21.21 49.07 L20.81 48.51 L20.35 47.96 L19.85 47.43 L19.33 46.91 L18.79 46.40 L18.26 45.88 L17.75 45.35 L17.28 44.81 L16.87 44.25 L16.51 43.68 L16.20 43.09 L15.95 42.48 L15.74 41.86 L15.56 41.23 L15.39 40.60 L15.23 39.96 L15.04 39.33 L14.83 38.71 L14.58 38.11 L14.29 37.51 L13.96 36.93 L13.60 36.35 L13.21 35.79 L12.80 35.23 L12.39 34.68 L11.99 34.11 L11.61 33.55 L11.26 32.97 L10.95 32.38 L10.69 31.78 L10.46 31.16 L10.28 30.53 L10.12 29.90 L9.99 29.25 L9.87 28.60 L9.74 27.96 L9.61 27.31 L9.46 26.67 L9.29 26.04 L9.09 25.41 L8.87 24.80 L8.64 24.19 L8.38 23.58 L8.12 22.97 L7.87 22.37 L7.62 21.76 L7.39 21.15 L7.18 20.53 L7.00 19.90 L6.84 19.26 L6.71 18.61 L6.60 17.96 L6.51 17.31 L6.42 16.65 L6.35 15.98 L6.27 15.32 L6.18 14.67 L6.08 14.01 L5.98 13.36 L5.86 12.71 L5.73 12.06 L5.60 11.42 L5.46 10.77 L5.32 10.13 L5.19 9.49 L5.07 8.84 L4.95 8.19 L4.85 7.54 L4.75 6.88 L4.66 6.22 L4.58 5.56 L4.49 4.90 L4.41 4.24 L4.33 3.58 L4.24 2.93 L3.76 3.07 L3.79 3.75 L3.82 4.43 L3.85 5.10 L3.87 5.78 L3.90 6.46 L3.94 7.14 L3.98 7.81 L4.02 8.48 L4.08 9.15 L4.15 9.81 L4.23 10.47 L4.30 11.14 L4.38 11.80 L4.46 12.46 L4.53 13.12 L4.59 13.79 L4.64 14.46 L4.68 15.13 L4.71 15.81 L4.73 16.49 L4.75 17.17 L4.77 17.85 L4.81 18.52 L4.86 19.19 L4.93 19.85 L5.03 20.51 L5.15 21.16 L5.30 21.80 L5.47 22.43 L5.66 23.06 L5.86 23.68 L6.06 24.31 L6.25 24.93 L6.43 25.56 L6.59 26.20 L6.72 26.84 L6.83 27.49 L6.92 28.15 L6.99 28.81 L7.05 29.48 L7.11 30.15 L7.18 30.81 L7.28 31.47 L7.40 32.12 L7.56 32.75 L7.76 33.38 L8.00 33.99 L8.29 34.58 L8.60 35.17 L8.94 35.75 L9.29 36.33 L9.63 36.91 L9.96 37.49 L10.26 38.08 L10.52 38.69 L10.74 39.30 L10.92 39.93 L11.07 40.57 L11.18 41.22 L11.28 41.88 L11.38 42.53 L11.49 43.19 L11.63 43.83 L11.81 44.46 L12.04 45.07 L12.33 45.67 L12.68 46.24 L13.07 46.81 L13.50 47.36 L13.96 47.90 L14.42 48.44 L14.87 48.99 L15.29 49.54 L15.66 50.11 L15.98 50.70 L16.24 51.30 L16.44 51.93 L16.58 52.57 L16.68 53.23 L16.74 53.89 Z M25.54 52.11 L25.72 51.48 L25.92 50.85 L26.15 50.24 L26.44 49.65 L26.79 49.07 L27.19 48.51 L27.65 47.96 L28.15 47.43 L28.67 46.91 L29.21 46.40 L29.74 45.88 L30.25 45.35 L30.72 44.81 L31.13 44.25 L31.49 43.68 L31.80 43.09 L32.05 42.48 L32.26 41.86 L32.44 41.23 L32.61 40.60 L32.77 39.96 L32.96 39.33 L33.17 38.71 L33.42 38.11 L33.71 37.51 L34.04 36.93 L34.40 36.35 L34.79 35.79 L35.20 35.23 L35.61 34.68 L36.01 34.11 L36.39 33.55 L36.74 32.97 L37.05 32.38 L37.31 31.78 L37.54 31.16 L37.72 30.53 L37.88 29.90 L38.01 29.25 L38.13 28.60 L38.26 27.96 L38.39 27.31 L38.54 26.67 L38.71 26.04 L38.91 25.41 L39.13 24.80 L39.36 24.19 L39.62 23.58 L39.88 22.97 L40.13 22.37 L40.38 21.76 L40.61 21.15 L40.82 20.53 L41.00 19.90 L41.16 19.26 L41.29 18.61 L41.40 17.96 L41.49 17.31 L41.58 16.65 L41.65 15.98 L41.73 15.32 L41.82 14.67 L41.92 14.01 L42.02 13.36 L42.14 12.71 L42.27 12.06 L42.40 11.42 L42.54 10.77 L42.68 10.13 L42.81 9.49 L42.93 8.84 L43.05 8.19 L43.15 7.54 L43.25 6.88 L43.34 6.22 L43.42 5.56 L43.51 4.90 L43.59 4.24 L43.67 3.58 L43.76 2.93 L44.24 3.07 L44.21 3.75 L44.18 4.43 L44.15 5.10 L44.13 5.78 L44.10 6.46 L44.06 7.14 L44.02 7.81 L43.98 8.48 L43.92 9.15 L43.85 9.81 L43.77 10.47 L43.70 11.14 L43.62 11.80 L43.54 12.46 L43.47 13.12 L43.41 13.79 L43.36 14.46 L43.32 15.13 L43.29 15.81 L43.27 16.49 L43.25 17.17 L43.23 17.85 L43.19 18.52 L43.14 19.19 L43.07 19.85 L42.97 20.51 L42.85 21.16 L42.70 21.80 L42.53 22.43 L42.34 23.06 L42.14 23.68 L41.94 24.31 L41.75 24.93 L41.57 25.56 L41.41 26.20 L41.28 26.84 L41.17 27.49 L41.08 28.15 L41.01 28.81 L40.95 29.48 L40.89 30.15 L40.82 30.81 L40.72 31.47 L40.60 32.12 L40.44 32.75 L40.24 33.38 L40.00 33.99 L39.71 34.58 L39.40 35.17 L39.06 35.75 L38.71 36.33 L38.37 36.91 L38.04 37.49 L37.74 38.08 L37.48 38.69 L37.26 39.30 L37.08 39.93 L36.93 40.57 L36.82 41.22 L36.72 41.88 L36.62 42.53 L36.51 43.19 L36.37 43.83 L36.19 44.46 L35.96 45.07 L35.67 45.67 L35.32 46.24 L34.93 46.81 L34.50 47.36 L34.04 47.90 L33.58 48.44 L33.13 48.99 L32.71 49.54 L32.34 50.11 L32.02 50.70 L31.76 51.30 L31.56 51.93 L31.42 52.57 L31.32 53.23 L31.26 53.89 Z" fill="currentColor"/><path d="M19.51 46.17 Q 16.40 45.08 11.15 44.66 M16.01 40.40 Q 13.75 39.05 9.70 38.26 M12.90 34.51 Q 10.66 33.16 6.94 32.26 M10.29 28.47 Q 8.76 26.89 6.06 25.68 M8.20 22.27 Q 6.83 20.64 4.58 19.28 M6.59 15.91 Q 5.72 14.12 4.27 12.52 M5.35 9.44 Q 4.71 7.58 3.77 5.82 M28.49 46.17 Q 31.60 45.08 36.85 44.66 M31.99 40.40 Q 34.25 39.05 38.30 38.26 M35.10 34.51 Q 37.34 33.16 41.06 32.26 M37.71 28.47 Q 39.24 26.89 41.94 25.68 M39.80 22.27 Q 41.17 20.64 43.42 19.28 M41.41 15.91 Q 42.28 14.12 43.73 12.52 M42.65 9.44 Q 43.29 7.58 44.23 5.82" fill="none" stroke="var(--bg,#F7F4EE)" stroke-width="1.15" stroke-linecap="round"/></symbol>
+  <defs><pattern id="latticeFill" width="72" height="72" patternUnits="userSpaceOnUse"><g fill="none" stroke="#E1A458" stroke-width=".8"><rect x="18" y="18" width="36" height="36"/><rect x="18" y="18" width="36" height="36" transform="rotate(45 36 36)"/><path d="M0 36H10.5M61.5 36H72M36 0V10.5M36 61.5V72M0 0L18 18M72 0L54 18M0 72L18 54M72 72L54 54"/></g></pattern></defs>
 </svg>
 
-<div class="notice">Opening soon, starting in Srinagar. <a href="#artists">Artists can apply now</a></div>
-<header class="top">
+<header class="top" id="top-bar">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute</span></a>
+    <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute<i>.art</i></span></a>
     <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Collectors</a><a href="#curation">Curation</a><a href="/ai-policy.html">AI policy</a></nav>
-    <div class="right"><a class="pill ghosty" href="#artists" style="background:transparent">Apply</a><a class="pill" href="#first-access">First access</a></div>
+    <a class="cta" href="#first-access">First access</a>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero" aria-label="Introduction">
+  <section class="hero on-dark" aria-label="Introduction">
+    <div class="wrap copy">
+      <p class="kick"><span>Artist first</span><span>Human made</span><span><b>Opening soon</b> in Srinagar</span></p>
+      <h1>Contemporary art from <em>Kashmir</em> and the Silk Route</h1>
+      <p class="lede">Artists set their prices, keep the majority share, and are paid again on resale.</p>
+      <div class="acts"><a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Apply as an artist</a></div>
+    </div>
+    <div class="map">
+      <svg viewBox="0 0 1000 340" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
+    </div>
+    <div class="legend"><div class="wrap"><span>The route, Tabriz to Srinagar</span><i>Eight cities, plotted from their real coordinates</i></div></div>
+  </section>
+
+  <section class="room" id="artists-first">
     <div class="wrap">
-      <h1 class="intro"><span>Contemporary art from Kashmir and the Silk Route</span> <a class="pill" href="#first-access">Get first access</a></h1>
-      <div class="stage" id="stage">
-        <div class="wordmark" aria-hidden="true">SILKROUTE</div>
-        <span class="meta-l">Artist first. Human made.</span>
-        <span class="meta-r"><span class="dot" aria-hidden="true"></span>Srinagar <span class="t" id="clock"></span></span>
-        <div class="plate p1" title="Saffron, Pampore"><div class="m m-saffron"></div></div>
-        <div class="plate p2" title="Turquoise tile, Samarkand"><div class="m m-turquoise"></div></div>
-        <div class="plate p3" title="Walnut, Srinagar"><div class="m m-walnut"></div></div>
-        <div class="plate big" aria-hidden="true"><div class="m m-lapis"></div><div class="big-cap"><span>Lapis lazuli, Badakhshan</span><span>Material study</span></div></div>
-        <div class="plate p4" title="Pashmina, Changthang"><div class="m m-pashmina"></div></div>
-        <div class="plate p5" title="Felt, Bishkek"><div class="m m-felt"></div></div>
+      <div class="head">
+        <div><span class="label"><span class="n">i.</span> Artists</span><h2 class="rise">Built for <em>the artist</em></h2></div>
+        <p class="rise">Most curation is not artist first. silkroute.art is built the other way around, and our terms are public.</p>
       </div>
+      <ol class="terms">
+        <li class="rise"><span class="num">I</span><h3>The majority share</h3><p>Artists receive the majority of the revenue from every sale made through us.</p></li>
+        <li class="rise"><span class="num">II</span><h3>Paid again on resale</h3><p>Artists are paid again whenever their work is resold.</p></li>
+        <li class="rise"><span class="num">III</span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</p></li>
+      </ol>
+      <div class="terms-foot rise"><a class="btn" href="#artists">Apply to be shown <span class="a" aria-hidden="true">&rarr;</span></a><a class="link" href="/ai-policy.html">Human artists only</a></div>
     </div>
   </section>
 
-  <section class="sec" id="artists-first">
+  <section class="room statement" aria-label="Our promise">
     <div class="wrap">
-      <h2 class="sec-title rise">Built for the artist</h2>
-      <p class="sec-sub rise">Most curation is not artist first. silkroute.art is built the other way around, and our terms are public.</p>
-      <div class="cards">
-        <article class="card rise"><span class="lbl">Every sale</span><span class="num">I</span><h3>The majority share</h3><p>Artists receive the majority of the revenue from every sale made through us.</p></article>
-        <article class="card rise"><span class="lbl">Every resale</span><span class="num">II</span><h3>Paid again on resale</h3><p>Artists are paid again whenever their work is resold.</p></article>
-        <article class="card rise"><span class="lbl">After acquisition</span><span class="num">III</span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</p></article>
-      </div>
-      <div class="sec-actions rise"><a class="pill" href="#artists">Apply to be shown</a><a class="pill" href="/ai-policy.html" style="background:transparent">Human artists only</a></div>
+      <svg class="orn" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><rect x="12" y="12" width="32" height="32"/><rect x="12" y="12" width="32" height="32" transform="rotate(45 28 28)"/><circle cx="28" cy="28" r="5"/></g></svg>
+      <blockquote class="rise"><b>We visit every studio, document every work and agree every price with the artist,</b> so collectors can buy with confidence and artists keep the majority share.</blockquote>
+      <p class="small rise">Opening soon, starting in Srinagar</p>
     </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <p class="statement rise"><b>We visit every studio, document every work and agree every price with the artist,</b> so collectors can buy with confidence and artists keep the majority share.</p>
-    </div>
-  </section>
-
-  <section class="sec" id="collectors" style="padding-top:clamp(90px,11vw,160px)">
-    <div class="wrap">
-      <h2 class="sec-title rise">For first-time collectors</h2>
-      <p class="sec-sub rise">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
-      <div class="guide">
-        <div class="guide-index">
-          <span class="tag">Your first work, in five steps</span>
-          <ol id="guideIndex">
-            <li><a href="#step-1" class="on">Start with a conversation</a></li>
-            <li><a href="#step-2">Meet the artist</a></li>
-            <li><a href="#step-3">Every price in the open</a></li>
-            <li><a href="#step-4">Begin small, if you like</a></li>
-            <li><a href="#step-5">Know what you are buying</a></li>
+  <section class="room" id="collectors">
+    <div class="wrap collect">
+      <aside>
+        <span class="label"><span class="n">ii.</span> Collectors</span>
+        <h2 class="rise">For <em>first-time</em> collectors</h2>
+        <p class="rise">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
+        <a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a>
+      </aside>
+      <div>
+        <p class="intro rise">Galleries can feel closed. Prices are hidden behind "on request". It is hard to know which artists are serious, what a fair price is, or whether you are allowed to ask. We want your first work to feel as considered as your tenth, without needing to know anyone.</p>
+        <ol class="steps">
+          <li class="rise"><span class="n">01</span><div><h3>Start with a conversation, not a catalogue</h3><p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p></div></li>
+          <li class="rise"><span class="n">02</span><div><h3>Meet the artist</h3><p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p></div></li>
+          <li class="rise"><span class="n">03</span><div><h3>Every price in the open</h3><p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p></div></li>
+          <li class="rise"><span class="n">04</span><div><h3>A first work does not have to be a big one</h3><p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p></div></li>
+          <li class="rise"><span class="n">05</span><div><h3>Know exactly what you are buying</h3><p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p></div></li>
+        </ol>
+        <div class="rules rise on-dark">
+          <h3>A few honest rules for a <em>first purchase</em></h3>
+          <ol>
+            <li>Buy the work you keep looking at, not the one you think you should like.</li>
+            <li>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
+            <li>Ask the artist anything. Most are glad to be asked.</li>
+            <li>Your first work starts a relationship with an artist. When you buy here, most of the money goes to them, and they are paid again if the work is ever resold.</li>
           </ol>
         </div>
-        <div class="chapters">
-          <article class="chapter" id="step-1">
-            <span class="tag">01 · A conversation, not a catalogue</span>
-            <h3>Start with a conversation, not a catalogue</h3>
-            <p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p>
-            <div class="visual"><div class="pl" style="left:9%;top:12%;width:24%;aspect-ratio:4/5"><div class="m m-saffron"></div></div><div class="pl" style="left:38%;top:20%;width:24%;aspect-ratio:4/5"><div class="m m-walnut"></div></div><div class="pl" style="left:67%;top:8%;width:24%;aspect-ratio:4/5"><div class="m m-pashmina"></div></div><div class="note"><b>Your short list</b>Three artists, chosen for the room you described.</div></div>
-          </article>
-          <article class="chapter" id="step-2">
-            <span class="tag">02 · The person behind the work</span>
-            <h3>Meet the artist</h3>
-            <p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p>
-            <div class="visual"><div class="pl" style="left:50%;top:10%;width:40%;bottom:10%;transform:translateX(-50%)"><div class="m m-felt"></div></div><div class="note"><b>In the artist's words</b>How and why the work was made, written by the artist.</div></div>
-          </article>
-          <article class="chapter" id="step-3">
-            <span class="tag">03 · No "price on request"</span>
-            <h3>Every price in the open</h3>
-            <p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p>
-            <div class="visual"><div class="price-row"><div class="sw"><div class="m m-turquoise"></div></div><div><b>Price set by the artist</b><span>Shown on every work, the same for everyone</span></div><span class="pr">Listed</span></div></div>
-          </article>
-          <article class="chapter" id="step-4">
-            <span class="tag">04 · Smaller works and works on paper</span>
-            <h3>A first work does not have to be a big one</h3>
-            <p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p>
-            <div class="visual"><div class="pl" style="left:12%;top:14%;width:44%;aspect-ratio:4/5"><div class="m m-lapis"></div></div><div class="pl" style="left:62%;top:44%;width:18%;aspect-ratio:4/5"><div class="m m-saffron"></div></div></div>
-          </article>
-          <article class="chapter" id="step-5">
-            <span class="tag">05 · Seen in person, made by hand</span>
-            <h3>Know exactly what you are buying</h3>
-            <p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p>
-            <div class="visual"><div class="pl" style="left:9%;top:12%;width:34%;aspect-ratio:4/5"><div class="m m-walnut"></div></div><div class="note" style="left:auto;right:18px;top:50%;bottom:auto;transform:translateY(-50%);max-width:46%"><b>With every work</b>Medium, size and date. Where it came from. How to care for it. Made by human hands.</div></div>
-          </article>
-        </div>
-      </div>
-
-      <div class="rules rise">
-        <h3>A few honest rules for a first purchase</h3>
-        <ol>
-          <li><span>i.</span>Buy the work you keep looking at, not the one you think you should like.</li>
-          <li><span>ii.</span>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
-          <li><span>iii.</span>Ask the artist anything. Most are glad to be asked.</li>
-          <li><span>iv.</span>Your first work starts a relationship with an artist. When you buy here, most of the money goes to them, and they are paid again if the work is ever resold.</li>
-        </ol>
-        <div class="go"><a class="pill dark" href="#first-access">Get first access</a></div>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="route">
+  <section class="room" id="route">
     <div class="wrap">
-      <h2 class="sec-title rise">From Tabriz to Srinagar</h2>
-      <p class="sec-sub rise">Contemporary artists from Kashmir and the lands the old routes joined: Ladakh, Central Asia, Afghanistan, Persia and the Caucasus.</p>
-      <div class="route-card rise" id="routeCard">
-        <div class="hd"><span><b>The route</b>&ensp;Eight cities, west to east</span><span>We begin at home, in Srinagar</span></div>
-        <svg viewBox="0 0 1000 300" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
+      <div class="head">
+        <div><span class="label"><span class="n">iii.</span> The route</span><h2 class="rise">The lands the <em>old routes</em> joined</h2></div>
+        <p class="rise">Contemporary artists from Kashmir, Ladakh, Central Asia, Afghanistan, Persia and the Caucasus.</p>
       </div>
-      <div class="row" aria-label="Materials of the route">
-        <figure><div class="img"><div class="m m-lapis"></div></div><figcaption>Lapis lazuli<span>Badakhshan, Afghanistan</span></figcaption></figure>
-        <figure><div class="img"><div class="m m-turquoise"></div></div><figcaption>Turquoise tile<span>Samarkand, Uzbekistan</span></figcaption></figure>
-        <figure><div class="img"><div class="m m-felt"></div></div><figcaption>Felt<span>Bishkek, Kyrgyzstan</span></figcaption></figure>
-        <figure><div class="img"><div class="m m-pashmina"></div></div><figcaption>Pashmina<span>Changthang, Ladakh</span></figcaption></figure>
-        <figure><div class="img"><div class="m m-walnut"></div></div><figcaption>Walnut<span>Srinagar, Kashmir</span></figcaption></figure>
-        <figure><div class="img"><div class="m m-saffron"></div></div><figcaption>Saffron<span>Pampore, Kashmir</span></figcaption></figure>
+      <div class="mats" aria-label="Materials of the route">
+        <figure class="rise"><div class="img"><div class="m m-lapis"></div></div><figcaption>Lapis lazuli<span>Badakhshan</span></figcaption></figure>
+        <figure class="rise"><div class="img"><div class="m m-turquoise"></div></div><figcaption>Turquoise tile<span>Samarkand</span></figcaption></figure>
+        <figure class="rise"><div class="img"><div class="m m-felt"></div></div><figcaption>Felt<span>Bishkek</span></figcaption></figure>
+        <figure class="rise"><div class="img"><div class="m m-pashmina"></div></div><figcaption>Pashmina<span>Changthang, Ladakh</span></figcaption></figure>
+        <figure class="rise"><div class="img"><div class="m m-walnut"></div></div><figcaption>Walnut<span>Srinagar</span></figcaption></figure>
+        <figure class="rise"><div class="img"><div class="m m-saffron"></div></div><figcaption>Saffron<span>Pampore</span></figcaption></figure>
       </div>
+      <p class="mats-note">Material studies of the route. Artworks will appear here when we open.</p>
     </div>
   </section>
 
-  <section class="sec" id="curation">
+  <section class="room" id="curation">
     <div class="wrap">
-      <h2 class="sec-title rise">What we look for</h2>
-      <div class="founder rise">
-        <div class="portrait" aria-hidden="true"><svg viewBox="0 0 48 56"><use href="#markhor"/></svg></div>
-        <div>
-          <p><b>A note from the founder.</b> I recently started collecting contemporary art myself, including work by Tom Vattakuzhy, Misha Japanwala, Basita Shah, Aadil Malik and Monica. The more I collected, the clearer the gap became.</p>
-          <p>Most curation is not artist first. That is unfair. Artists spend so much of their lives grappling with uncertainty, yet the very practice of discovery and acquisition is loaded in favour of the gallery and the collector. silkroute.art is built the other way around.</p>
-          <div class="by"><span class="dot" aria-hidden="true"></span>Raheel Khursheed <span>Founder</span></div>
+      <div class="letter">
+        <aside>
+          <span class="label"><span class="n">iv.</span> Curation</span>
+          <h2 class="rise">What we <em>look for</em></h2>
+          <div class="sig"><span class="mono" aria-hidden="true">RK</span><div><b>Raheel Khursheed</b><span>Founder</span></div></div>
+        </aside>
+        <div class="body rise">
+          <p class="quote">I recently started collecting contemporary art myself, including work by Tom Vattakuzhy, Misha Japanwala, Basita Shah, Aadil Malik and Monica. The more I collected, the clearer the gap became.</p>
+          <p><strong>Most curation is not artist first. That is unfair.</strong> Artists spend so much of their lives grappling with uncertainty, yet the very practice of discovery and acquisition is loaded in favour of the gallery and the collector. silkroute.art is built the other way around.</p>
         </div>
       </div>
       <div class="principles">
-        <div class="rise"><div class="lbl">The practice</div><div class="box"><h3>Serious and sustained, whatever the medium</h3><p>Some artists work inside inherited traditions. Others have moved away from them. What matters is that the work could only have been made by this artist, from this place, now.</p><div class="chips"><span>Papier-mâché</span><span>Sozni</span><span>Miniature painting</span><span>Felt</span></div></div></div>
-        <div class="rise"><div class="lbl">The work</div><div class="box"><h3>We choose work, not followings</h3><p>We visit every artist in their studio, see every work in person before it is listed, and show nothing the artist has not approved.</p><div class="chips"><span>Studio visits</span><span>Seen in person</span><span>Artist approved</span></div></div></div>
-        <div class="rise"><div class="lbl">The pace</div><div class="box"><h3>Slowly, one region at a time</h3><p>We will grow slowly, one region at a time, beginning in Srinagar.</p><div class="chips"><span>Srinagar first</span></div></div></div>
+        <div class="rise"><span class="k">The practice</span><h3>Serious and sustained, whatever the medium</h3><p>Some artists work inside inherited traditions such as papier-mâché, sozni, miniature painting or felt. Others have moved away from them. What matters is that the work could only have been made by this artist, from this place, now.</p></div>
+        <div class="rise"><span class="k">The work</span><h3>We choose work, not followings</h3><p>We visit every artist in their studio, see every work in person before it is listed, and show nothing the artist has not approved.</p></div>
+        <div class="rise"><span class="k">The pace</span><h3>Slowly, one region at a time</h3><p>We will grow slowly, one region at a time, beginning in Srinagar.</p></div>
       </div>
+    </div>
+  </section>
 
-      <div class="closing rise">
-        <div class="bgm" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#latticeFill)"/></svg></div>
-        <div class="inner">
-          <span class="lbl">Before we open</span>
-          <h2>Be there from the first day</h2>
-          <p>Artists can apply to be shown. Collectors can ask for first access.</p>
-          <div class="acts"><a class="pill light" href="#first-access">Get first access</a><a class="pill glass" href="#artists">Apply as an artist</a></div>
+  <section class="closing on-dark" aria-label="Before we open">
+    <svg class="lattice" aria-hidden="true"><rect width="100%" height="100%" fill="url(#latticeFill)"/></svg>
+    <div class="wrap inner">
+      <span class="label"><span class="n" style="color:var(--ivory-2)">v.</span> Before we open</span>
+      <h2 class="rise">Be there from <em>the first day</em></h2>
+      <p class="rise">Artists can apply to be shown. Collectors can ask for first access.</p>
+      <div class="acts rise"><a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Apply as an artist</a></div>
+    </div>
+  </section>
+
+  <section class="room" aria-label="Sign up">
+    <div class="wrap join">
+      <form id="artists" class="panel" method="POST" action="/api/signup">
+        <input type="hidden" name="form-name" value="artists">
+        <div class="hp" aria-hidden="true"><label for="hp1">Leave this empty</label><input id="hp1" name="company-website" tabindex="-1" autocomplete="off"></div>
+        <span class="label">For artists</span>
+        <h3>Apply to be shown</h3>
+        <p class="sub">Tell us where you work and where we can see it.</p>
+        <div class="fields">
+          <label for="a-name">Name<input id="a-name" name="name" required maxlength="120" autocomplete="name"></label>
+          <label for="a-city">City<input id="a-city" name="city" required maxlength="120"></label>
+          <label class="full" for="a-email">Email<input id="a-email" name="email" type="email" required autocomplete="email"></label>
+          <label class="full" for="a-link">Portfolio or Instagram<input id="a-link" name="portfolio" type="url" placeholder="https://"></label>
+          <label class="full check" for="a-consent"><input id="a-consent" name="consent" type="checkbox" value="yes" required> <span>You may contact me about my work. <a href="/privacy.html">Privacy</a></span></label>
         </div>
-      </div>
+        <span class="sp"></span>
+        <button class="btn" type="submit">Apply <span class="a" aria-hidden="true">&rarr;</span></button>
+      </form>
+
+      <form id="first-access" class="panel" method="POST" action="/api/signup">
+        <input type="hidden" name="form-name" value="collectors">
+        <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
+        <span class="label">For collectors</span>
+        <h3>First access</h3>
+        <p class="sub">New to collecting? Say so below and we will start with a conversation.</p>
+        <div class="fields">
+          <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
+          <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
+        </div>
+        <span class="sp"></span>
+        <button class="btn fill" type="submit">Request access <span class="a" aria-hidden="true">&rarr;</span></button>
+      </form>
     </div>
   </section>
 </main>
@@ -421,82 +427,47 @@ footer{padding-block:clamp(48px,6vw,80px) 28px}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div>
-        <div class="mark"><svg aria-hidden="true"><use href="#markhor"/></svg>silkroute</div>
-        <p class="tagline">Contemporary art from Kashmir and the Silk Route. Human artists only.</p>
-      </div>
-      <div class="links">
-        <div><h4>Visit</h4><ul><li><a href="#artists-first">Artists</a></li><li><a href="#collectors">Collectors</a></li><li><a href="#curation">Curation</a></li></ul></div>
-        <div><h4>Legal</h4><ul><li><a href="/ai-policy.html">AI policy</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
-      </div>
-
-      <form id="artists" class="formcard" method="POST" action="/api/signup">
-        <input type="hidden" name="form-name" value="artists">
-        <div class="hp" aria-hidden="true"><label for="hp1">Leave this empty</label><input id="hp1" name="company-website" tabindex="-1" autocomplete="off"></div>
-        <div class="hd"><b>Apply to be shown</b>For artists. We reply to every application.</div>
-        <div class="two">
-          <label class="f"><input id="a-name" name="name" required maxlength="120" autocomplete="name" placeholder="Name" aria-label="Name"></label>
-          <label class="f"><input id="a-city" name="city" required maxlength="120" placeholder="City" aria-label="City"></label>
-        </div>
-        <label class="f"><input id="a-email" name="email" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></label>
-        <label class="f"><input id="a-link" name="portfolio" type="url" placeholder="Portfolio or Instagram (https://)" aria-label="Portfolio or Instagram"></label>
-        <label class="check" for="a-consent"><input id="a-consent" name="consent" type="checkbox" value="yes" required> <span>You may contact me about my work. <a href="/privacy.html">Privacy</a></span></label>
-        <button class="pill" type="submit">Apply</button>
-      </form>
-
-      <form id="first-access" class="formcard" method="POST" action="/api/signup">
-        <input type="hidden" name="form-name" value="collectors">
-        <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
-        <div class="hd"><b>First access</b>For collectors. New to collecting? Say so and we will start with a conversation.</div>
-        <label class="f"><input id="c-email" name="email" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></label>
-        <label class="f"><select id="c-interest" name="interest" aria-label="Where are you starting from?"><option value="">Where are you starting from? (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
-        <label class="check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
-        <button class="pill" type="submit">Request access</button>
-      </form>
+      <div><div class="mark"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute<i>.art</i></span></div><p class="tag">Contemporary art from Kashmir and the Silk Route. Human artists only.</p></div>
+      <div><h4>Visit</h4><ul><li><a href="#artists-first">Artists</a></li><li><a href="#collectors">Collectors</a></li><li><a href="#curation">Curation</a></li></ul></div>
+      <div><h4>Policies</h4><ul><li><a href="/ai-policy.html">AI policy</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
     </div>
-    <div class="legal"><span>&copy; 2026 silkroute.art</span><span><a href="/ai-policy.html">AI policy</a>&ensp;<a href="/privacy.html">Privacy</a></span></div>
+    <div class="legal"><span>&copy; 2026 silkroute.art</span><span>Srinagar, Kashmir</span></div>
   </div>
 </footer>
 
 <script>
 (function(){
 "use strict";
-/* Route map from real coordinates */
-const CITIES = [
+/* The route, plotted from real coordinates, with a faint graticule */
+const CITIES=[
   {name:"Tabriz",lat:38.08,lon:46.29},{name:"Herat",lat:34.35,lon:62.20},{name:"Bukhara",lat:39.77,lon:64.42},
   {name:"Samarkand",lat:39.65,lon:66.96},{name:"Bishkek",lat:42.87,lon:74.59},{name:"Kashgar",lat:39.47,lon:75.99},
   {name:"Leh",lat:34.16,lon:77.58},{name:"Srinagar",lat:34.08,lon:74.80,home:true}
 ];
-const svg=document.getElementById("routeSvg"), NS="http://www.w3.org/2000/svg";
-const x=lon=>40+(lon-44)/(80-44)*920, y=lat=>260-(lat-32.5)/(44-32.5)*230;
+const svg=document.getElementById("routeSvg"),NS="http://www.w3.org/2000/svg";
+const x=lon=>40+(lon-44)/(80-44)*920, y=lat=>300-(lat-32.5)/(44-32.5)*230;
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+for(let lat=35;lat<=45;lat+=5){svg.appendChild(el("path",{class:"grat",d:"M0 "+y(lat)+" H1000"}));const t=el("text",{class:"grat-l",x:6,y:y(lat)-6});t.textContent=lat+"°N";svg.appendChild(t);}
+for(let lon=50;lon<=75;lon+=5){svg.appendChild(el("path",{class:"grat",d:"M"+x(lon)+" 0 V340"}));const t=el("text",{class:"grat-l",x:x(lon)+6,y:332});t.textContent=lon+"°E";svg.appendChild(t);}
 const pts=CITIES.map(c=>[x(c.lon),y(c.lat)]);
-const ghost=document.createElementNS(NS,"path"); ghost.setAttribute("class","ghost-path"); ghost.setAttribute("d","M20 "+y(41)+" H980"); svg.appendChild(ghost);
-let d="M"+pts[0].join(" "); for(let i=1;i<pts.length;i++){ const [px,py]=pts[i-1],[cx,cy]=pts[i]; d+=" Q"+((px+cx)/2)+" "+(Math.min(py,cy)-18)+" "+cx+" "+cy; }
-const path=document.createElementNS(NS,"path"); path.setAttribute("class","path"); path.setAttribute("d",d); svg.appendChild(path);
-CITIES.forEach((c,i)=>{ const g=document.createElementNS(NS,"g"); g.setAttribute("class","city"+(c.home?" home":""));
-  const [cx,cy]=pts[i]; const below=["Srinagar","Herat","Samarkand"].includes(c.name);
-  const ty=below?cy+26:cy-30; const anchor=(c.name==="Kashgar"||c.name==="Leh")?"start":"middle"; const tx=anchor==="start"?cx+10:cx;
-  g.innerHTML='<circle cx="'+cx+'" cy="'+cy+'" r="'+(c.home?7:5.5)+'"></circle><text class="name" x="'+tx+'" y="'+ty+'" text-anchor="'+anchor+'">'+c.name+'</text><text x="'+tx+'" y="'+(ty+15)+'" text-anchor="'+anchor+'">'+c.lat.toFixed(2)+'°N '+c.lon.toFixed(2)+'°E</text>';
-  svg.appendChild(g); });
+let d="M"+pts[0].join(" ");for(let i=1;i<pts.length;i++){const [px,py]=pts[i-1],[cx,cy]=pts[i];d+=" Q"+((px+cx)/2)+" "+(Math.min(py,cy)-18)+" "+cx+" "+cy;}
+svg.appendChild(el("path",{class:"path-glow",d}));svg.appendChild(el("path",{class:"path",d}));
+CITIES.forEach((c,i)=>{const g=el("g",{class:"city"+(c.home?" home":"")});g.style.animationDelay=(0.6+i*0.38)+"s";
+  const [cx,cy]=pts[i];const below=["Srinagar","Herat","Samarkand"].includes(c.name);
+  const ty=below?cy+28:cy-32;const anchor=(c.name==="Kashgar"||c.name==="Leh")?"start":"middle";const tx=anchor==="start"?cx+12:cx;
+  g.innerHTML=(c.home?'<circle class="ring" cx="'+cx+'" cy="'+cy+'" r="7"></circle>':'')+'<circle cx="'+cx+'" cy="'+cy+'" r="'+(c.home?7:5)+'"></circle><text class="name" x="'+tx+'" y="'+ty+'" text-anchor="'+anchor+'">'+c.name+'</text><text x="'+tx+'" y="'+(ty+16)+'" text-anchor="'+anchor+'">'+c.lat.toFixed(2)+'°N '+c.lon.toFixed(2)+'°E</text>';
+  svg.appendChild(g);});
 
-/* Local time in Srinagar */
-const clock=document.getElementById("clock");
-const fmt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit"});
-const tick=()=>{ try{ clock.textContent=fmt.format(new Date()); }catch(e){} };
-tick(); setInterval(tick,20000);
+/* Header turns to paper once past the cover */
+const bar=document.getElementById("top-bar"),hero=document.querySelector(".hero");
+const setBar=()=>bar.classList.toggle("solid",window.scrollY>hero.offsetHeight-80);
+setBar();window.addEventListener("scroll",setBar,{passive:true});
 
-/* Entrances and the collectors index */
-const root=document.documentElement;
+/* Gentle entrances; everything stays visible without JS */
 if("IntersectionObserver" in window){
-  root.classList.add("js");
-  requestAnimationFrame(()=>setTimeout(()=>document.getElementById("stage").classList.add("loaded"),80));
-  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }),{rootMargin:"0px 0px -8% 0px"});
-  document.querySelectorAll(".rise").forEach(el=>io.observe(el));
-  const links=[...document.querySelectorAll("#guideIndex a")];
-  const spy=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-45% 0px -50% 0px"});
-  document.querySelectorAll(".chapter").forEach(c=>spy.observe(c));
-} else {
-  document.getElementById("routeCard").classList.add("in");
+  document.documentElement.classList.add("js");
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".rise").forEach(n=>io.observe(n));
 }
 })();
 </script>

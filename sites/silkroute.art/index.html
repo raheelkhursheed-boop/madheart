@@ -412,6 +412,26 @@ body{font-weight:400;font-size:18px}
 .brand small{font-weight:500}
 .route-wrap .city text.name{font-weight:600}
 .terms li span{font-weight:500}
+
+/* first-time collectors */
+.collect{padding-block:clamp(110px,14vw,200px) 0;scroll-margin-top:20px}
+.collect-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;border-top:1px solid var(--line);padding-top:48px}
+.collect .eyebrow{margin:0 0 18px}
+.collect h2{font-size:clamp(30px,3vw,42px);font-weight:500;margin:0}
+.collect-body{max-width:62ch}
+.collect-body p{margin:0 0 22px;font-size:18px;line-height:1.75}
+.collect-body p.lead{font-family:var(--f-display);font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;margin-bottom:30px}
+.steps{list-style:none;margin:8px 0 48px;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.steps li span{font-family:var(--f-display);font-style:italic;font-weight:500;color:var(--saffron);font-size:17px}
+.steps h3{font-size:22px;font-weight:500;margin:0 0 6px;line-height:1.25}
+.steps p{margin:0;font-size:17px;line-height:1.7;color:var(--muted)}
+.rules{margin:0;padding:0}
+.rules h3{font-family:var(--f-body);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);margin:0 0 18px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:10px}
+.rules li{font-size:17px;line-height:1.65}
+.collect-body p.collect-cta{margin:44px 0 0}
+@media (max-width:860px){.collect-grid{grid-template-columns:1fr;gap:28px}}
 </style>
 </head>
 <body>
@@ -441,6 +461,36 @@ body{font-weight:400;font-size:18px}
     <div class="wrap">
       <p>We visit every studio, document every work and agree every price with the artist, so collectors can buy with confidence and artists keep the majority share.</p>
       <p class="small">Opening soon, starting in Srinagar.</p>
+    </div>
+  </section>
+
+  <section class="collect" id="collectors">
+    <div class="wrap collect-grid">
+      <div>
+        <p class="eyebrow">Collectors</p>
+        <h2>For first-time collectors</h2>
+      </div>
+      <div class="collect-body">
+        <p class="lead">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
+        <p>Galleries can feel closed. Prices are hidden behind "on request". It is hard to know which artists are serious, what a fair price is, or whether you are allowed to ask. We want your first work to feel as considered as your tenth, without needing to know anyone.</p>
+        <ol class="steps">
+          <li><span>01</span><div><h3>Start with a conversation, not a catalogue</h3><p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p></div></li>
+          <li><span>02</span><div><h3>Meet the artist</h3><p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p></div></li>
+          <li><span>03</span><div><h3>Every price in the open</h3><p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p></div></li>
+          <li><span>04</span><div><h3>A first work does not have to be a big one</h3><p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p></div></li>
+          <li><span>05</span><div><h3>Know exactly what you are buying</h3><p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p></div></li>
+        </ol>
+        <div class="rules">
+          <h3>A few honest rules for a first purchase</h3>
+          <ul>
+            <li>Buy the work you keep looking at, not the one you think you should like.</li>
+            <li>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
+            <li>Ask the artist anything. Most are glad to be asked.</li>
+            <li>Your first work starts a relationship with an artist. When you buy here, most of the money goes to them, and they are paid again if the work is ever resold.</li>
+          </ul>
+        </div>
+        <p class="collect-cta"><a class="btn" href="#first-access">Get first access</a></p>
+      </div>
     </div>
   </section>
 
@@ -484,13 +534,15 @@ body{font-weight:400;font-size:18px}
         <button class="btn" type="submit">Apply</button>
       </form>
 
-      <form id="collectors" class="card dark" method="POST" action="/api/signup">
+      <form id="first-access" class="card dark" method="POST" action="/api/signup">
         <input type="hidden" name="form-name" value="collectors">
         <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
         <p class="eyebrow">Collectors</p>
         <h2>First access</h2>
+        <p class="sub">New to collecting? Say so below and we will start with a conversation.</p>
         <div class="form">
           <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
           <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></label>
         </div>
         <button class="btn" type="submit">Request access</button>

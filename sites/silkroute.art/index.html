@@ -108,9 +108,14 @@ nav.main a:hover{opacity:1}
 .hero h1 em{font-style:italic;color:var(--saffron-lt)}
 .hero .lede{margin-top:clamp(24px,2.6vw,34px);font-family:var(--serif);font-size:clamp(19px,1.6vw,23px);line-height:1.45;color:var(--ivory-2);max-width:34ch}
 .hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(28px,3vw,40px)}
-.hero .legend{position:relative;z-index:2;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.hero .legend .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-2)}
-.hero .legend i{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:0;text-transform:none}
+.hero .legend{position:relative;z-index:2;border-bottom:1px solid var(--hair)}
+.hero .legend .wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding-block:clamp(14px,2vw,26px) clamp(30px,3.4vw,48px);text-align:center}
+.hero .legend .motto{display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,26px);width:100%;margin:0}
+.hero .legend .motto i{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.3vw,34px);letter-spacing:-.01em;line-height:1.2;color:var(--ivory)}
+.hero .legend .motto b{font-weight:400;color:var(--saffron-lt)}
+.hero .legend .rule{flex:0 1 clamp(28px,8vw,120px);height:1px;background:linear-gradient(90deg,transparent,var(--saffron-lt))}
+.hero .legend .rule:last-child{background:linear-gradient(90deg,var(--saffron-lt),transparent)}
+.hero .legend .plate{margin:0;font-size:11.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ivory-2)}
 @media (max-width:760px){
   .hero{min-height:auto}
   .hero .map{padding:96px 4px 4px}
@@ -282,7 +287,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
     <div class="map">
       <svg viewBox="0 0 1000 340" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
     </div>
-    <div class="legend"><div class="wrap"><span>The route, Tabriz to Srinagar</span><i>Eight cities, plotted from their real coordinates</i></div></div>
+    <div class="legend"><div class="wrap"><p class="motto"><span class="rule" aria-hidden="true"></span><i><b>Eight</b> cities, <b>ten</b> centuries of mutual influence</i><span class="rule" aria-hidden="true"></span></p><p class="plate">The route &middot; Tabriz to Srinagar</p></div></div>
     <div class="wrap copy">
       <p class="kick"><span>Artist first</span><span>Human made</span></p>
       <h1>Contemporary art from <em>Kashmir</em> and the <em>Silk Route</em></h1>

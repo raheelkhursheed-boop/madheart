@@ -2,565 +2,466 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>silkroute.art · Contemporary art from Kashmir and the Silk Route</title>
 <meta name="description" content="An artist-first home for contemporary art from Kashmir and the Silk Route. Artists set their prices and keep the majority share. Opening soon.">
 <meta property="og:title" content="silkroute.art · Contemporary art from Kashmir and the Silk Route">
 <meta property="og:description" content="An artist-first home for contemporary art from Kashmir and the Silk Route. Artists set their prices and keep the majority share. Opening soon.">
 <meta property="og:url" content="https://silkroute.art/">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: the Silk Route as the spine of the page. A plotted route runs west to east across the hero,
-   and every artwork carries the city and coordinates it ships from. */
+/* silkroute.art. Quiet, white, image-led: the page steps back so the work can lead.
+   Grotesk for everything you read, a light serif only for the wordmark, soft grey rooms,
+   rounded plates, pill buttons, and one accent of saffron. */
 :root{
-  --paper:#F1F2EF; --card:#FFFFFF; --ink:#15171C; --muted:#5D626B; --line:#D6D9D5;
-  --lapis:#23419B; --saffron:#C4701C; --lapis-soft:#E3E8F6;
-  --f-display:"Gloock", "Times New Roman", Georgia, serif;
-  --f-body:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --bg:#FFFFFF; --soft:#F5F4F1; --soft-2:#ECEAE5; --line:#E6E3DD;
+  --ink:#2B2B2B; --ink-2:#6E6E6E; --ink-3:#9C9B98; --ghost:#E4E2DE;
+  --saffron:#C8701E; --saffron-soft:#F6E9DA; --night:#0E1424;
+  --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --serif:"Newsreader","Iowan Old Style",Georgia,serif;
+  --r:16px; --r-sm:10px;
+  --gutter:clamp(16px,2.2vw,28px);
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0D1019; --card:#151A28; --ink:#ECEBE5; --muted:#A0A5B0; --line:#272D3C;
-    --lapis:#93ABFF; --saffron:#E89C4B; --lapis-soft:#1B2340; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#0D1019; --card:#151A28; --ink:#ECEBE5; --muted:#A0A5B0; --line:#272D3C;
-  --lapis:#93ABFF; --saffron:#E89C4B; --lapis-soft:#1B2340; color-scheme:dark;
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-img,canvas{max-width:100%;display:block}
-button,select,input,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--lapis);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
-.mono{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.04em}
-h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1.05;text-wrap:balance}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+::selection{background:var(--saffron-soft)}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gutter)}
+.center{text-align:center}
+.muted{color:var(--ink-2)}
 
-/* prototype band */
-.proto{background:var(--ink);color:var(--paper);text-align:center;padding:7px 16px}
-.proto b{color:var(--saffron);font-weight:500}
+/* Pills */
+.pill{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 20px;border-radius:999px;background:var(--soft-2);color:var(--ink);font:500 14px/1 var(--sans);letter-spacing:0;border:0;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
+.pill:hover{background:#E0DDD6}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.dark:hover{background:#000}
+.pill.light{background:#fff;color:var(--ink)}
+.pill.light:hover{background:var(--soft)}
+.pill.glass{background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(8px)}
+.pill.glass:hover{background:rgba(255,255,255,.26)}
+.pill.sm{height:30px;padding:0 12px;font-size:13px}
+.tag{display:flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--soft);color:var(--ink-2);font-size:12.5px;width:100%}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--saffron);display:inline-block;flex:none}
 
-/* header */
-header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:28px;height:66px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand svg{width:30px;height:30px;color:var(--lapis)}
-.brand span{font-family:var(--f-display);font-size:25px;letter-spacing:-.01em}
-.brand small{font-family:var(--f-mono);font-size:12px;color:var(--saffron)}
+/* Announcement + header */
+.notice{background:var(--soft-2);color:var(--ink-2);font-size:12.5px;text-align:center;padding:7px 16px}
+.notice a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.brand{display:inline-flex;align-items:center;gap:9px}
+.brand svg{width:20px;height:24px;color:var(--ink)}
+.brand span{font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:.01em}
 nav.main{display:flex;gap:22px;flex:1}
-nav.main a{text-decoration:none;font-size:15px;color:var(--muted)}
-nav.main a:hover{color:var(--ink)}
-.tools{display:flex;align-items:center;gap:10px}
-.tools select{background:transparent;border:1px solid var(--line);border-radius:4px;padding:6px 8px;font-family:var(--f-mono);font-size:12.5px}
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:4px;padding:9px 16px;font-size:14.5px;font-weight:500;cursor:pointer;text-decoration:none}
-.btn:hover{background:var(--lapis);border-color:var(--lapis);color:#fff}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
-.cart-btn .count{font-family:var(--f-mono);font-size:12px;background:var(--saffron);color:#fff;border-radius:10px;padding:0 7px;min-width:20px;text-align:center}
-@media (max-width:900px){nav.main{display:none}}
+nav.main a{font-size:14px;color:var(--ink-3);transition:color .2s}
+nav.main a:hover,nav.main a.on{color:var(--ink)}
+.top .right{display:flex;gap:8px;align-items:center}
+@media (max-width:760px){nav.main{display:none}.top .right .pill.ghosty{display:none}}
 
-/* hero */
-.hero{padding-block:56px 20px}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:end}
-.hero h1{font-size:clamp(46px,7vw,92px);letter-spacing:-.025em}
-.hero h1 em{font-style:normal;color:var(--lapis)}
-.hero p.lede{font-size:clamp(18px,1.6vw,21px);max-width:44ch;color:var(--muted);margin:22px 0 28px}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.pron{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-bottom:18px}
-.pron b{color:var(--saffron);font-weight:500}
-@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
-
-/* route map */
-.route{margin-top:44px;border-top:2px solid var(--ink);padding-top:14px}
-.route-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted)}
-.route svg{width:100%;height:auto;display:block;overflow:visible}
-.route .path{fill:none;stroke:var(--lapis);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.route .ghost-path{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
-.route .city circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
-.route .city.home circle{fill:var(--saffron);stroke:var(--saffron)}
-.route .city text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
-.route .city text.name{font-family:var(--f-body);font-size:14px;fill:var(--ink);font-weight:500}
-@media (prefers-reduced-motion: no-preference){
-  .route .path{stroke-dasharray:1400;animation:draw 2.4s cubic-bezier(.6,.1,.2,1) both .2s}
-  @keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+/* Hero: a wordmark wall with plates floating over it */
+.hero{position:relative;padding-top:clamp(56px,9vw,120px)}
+.hero .intro{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px}
+.hero .intro .pill{height:28px;padding:0 12px;font-size:13px;background:var(--soft)}
+.stage{position:relative;height:clamp(560px,62vw,860px);margin-top:clamp(56px,8vw,110px)}
+.wordmark{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--serif);font-weight:300;font-size:clamp(84px,17.2vw,300px);line-height:.8;letter-spacing:-.035em;color:var(--ghost);white-space:nowrap;user-select:none;pointer-events:none;overflow:hidden}
+.plate{position:absolute;border-radius:4px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.plate.big{left:50%;top:0;bottom:0;width:min(31%,440px);transform:translateX(-36%)}
+.p1{left:8.6%;top:0;width:8.2%;aspect-ratio:4/5}
+.p2{left:19.4%;top:16%;width:8.2%;aspect-ratio:4/5}
+.p3{left:26.2%;bottom:3%;width:8.2%;aspect-ratio:4/5}
+.p4{right:21%;top:12%;width:8.2%;aspect-ratio:4/5}
+.p5{right:8%;bottom:14%;width:6.6%;aspect-ratio:1/1}
+.stage .meta-l,.stage .meta-r{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-3);z-index:3}
+.stage .meta-l{left:0}
+.stage .meta-r{right:0;display:flex;align-items:center;gap:8px;background:var(--soft);padding:7px 12px;border-radius:999px;color:var(--ink)}
+.stage .meta-r .t{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.big-cap{position:absolute;left:0;right:0;bottom:0;padding:16px;display:flex;justify-content:space-between;gap:10px;color:rgba(255,255,255,.92);font-size:12.5px;z-index:2;background:linear-gradient(transparent,rgba(0,0,0,.35))}
+.plate .cap{position:absolute;left:8px;bottom:6px;font-size:10.5px;color:rgba(255,255,255,.9)}
+@media (max-width:760px){
+  .stage{height:520px}
+  .plate.big{width:62%;transform:translateX(-50%);top:40px;bottom:40px}
+  .p1{left:0;top:0;width:24%}.p2{display:none}.p3{left:2%;bottom:0;width:26%}.p4{right:0;top:12%;width:24%}.p5{right:2%;bottom:6%;width:22%}
+  .stage .meta-l,.stage .meta-r{display:none}
+  .wordmark{font-size:23vw}
 }
 
-/* featured strip */
-.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:18px;overflow-x:auto;padding:28px 0 8px;scroll-snap-type:x mandatory}
-.strip .piece{scroll-snap-align:start}
-.strip canvas{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
-.strip .cap{margin-top:8px;display:flex;justify-content:space-between;gap:8px;color:var(--muted)}
+/* Material studies: CSS-painted surfaces standing in for photography until works are shot */
+.m{position:relative;width:100%;height:100%;min-height:100%}
+.m::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.35;pointer-events:none}
+.m-saffron{background:radial-gradient(120% 90% at 30% 20%,#F0A54A 0%,#D27322 45%,#A4470F 100%)}
+.m-lapis{background:radial-gradient(1.4px 1.4px at 22% 30%,#E9C77A 50%,transparent 51%),radial-gradient(1.2px 1.2px at 68% 62%,#E9C77A 50%,transparent 51%),radial-gradient(1px 1px at 41% 81%,#F2D592 50%,transparent 51%),radial-gradient(1.6px 1.6px at 83% 18%,#E9C77A 50%,transparent 51%),radial-gradient(1px 1px at 12% 70%,#F2D592 50%,transparent 51%),radial-gradient(130% 100% at 70% 10%,#2F4DAE 0%,#1B2F7A 50%,#0E1A4A 100%);background-size:90px 110px,70px 80px,60px 60px,120px 100px,50px 70px,100% 100%}
+.m-walnut{background:repeating-linear-gradient(94deg,rgba(0,0,0,.0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.04) 8px 15px,rgba(0,0,0,.14) 15px 16px),radial-gradient(140% 80% at 40% 40%,#8A5A36 0%,#5C3A22 55%,#3A2414 100%)}
+.m-turquoise{background:conic-gradient(from 45deg at 50% 50%,#1E8B8C 0 25%,#2BA3A1 0 50%,#1E8B8C 0 75%,#2BA3A1 0) 0 0/38px 38px,#1E8B8C;}
+.m-turquoise::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 37px,rgba(240,232,214,.75) 37px 38px),repeating-linear-gradient(90deg,transparent 0 37px,rgba(240,232,214,.75) 37px 38px)}
+.m-pashmina{background:repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 2px,transparent 2px 5px),repeating-linear-gradient(-45deg,rgba(255,255,255,.25) 0 2px,transparent 2px 5px),linear-gradient(160deg,#E8DDCB,#CDBB9F)}
+.m-felt{background:radial-gradient(90% 70% at 50% 50%,#A8352F 0%,#80211E 70%,#5E1614 100%)}
+.m-felt::before{content:"";position:absolute;inset:18%;border:2px solid rgba(241,227,200,.75);border-radius:46% 46% 46% 46%/30% 30% 30% 30%}
+.m-route{background:var(--night)}
+.m-route svg{position:absolute;inset:0;width:100%;height:100%}
 
-/* sections */
-section.block{padding-block:88px 8px}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:34px;border-top:1px solid var(--line);padding-top:22px}
-.sec-head h2{font-size:clamp(34px,4.4vw,56px);letter-spacing:-.02em}
-.sec-head p{margin:0;max-width:52ch;color:var(--muted)}
-.eyebrow{display:block;color:var(--saffron);margin-bottom:10px}
+/* Section rhythm */
+.sec{padding-block:clamp(110px,14vw,210px) 0}
+.sec-title{font-size:clamp(24px,2vw,28px);text-align:center}
+.sec-sub{max-width:540px;margin:18px auto 0;text-align:center;color:var(--ink-2);font-size:16px}
+.sec-actions{display:flex;justify-content:center;gap:8px;margin-top:28px}
 
-/* about */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.about .big{font-family:var(--f-display);font-size:clamp(26px,2.8vw,36px);line-height:1.22;letter-spacing:-.01em;text-wrap:balance;margin:0}
-.about .cols p{margin:0 0 16px;max-width:60ch}
-@media (max-width:860px){.about{grid-template-columns:1fr;gap:28px}}
+/* Terms: three soft cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(40px,5vw,64px)}
+.card{background:var(--soft);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;min-height:clamp(320px,30vw,420px)}
+.card .lbl{font-size:12.5px;color:var(--ink-3)}
+.card .num{font-family:var(--serif);font-weight:300;font-size:clamp(84px,9vw,140px);line-height:.85;letter-spacing:-.04em;margin:auto 0 22px;color:var(--ink)}
+.card h3{font-size:19px;letter-spacing:-.01em;margin-bottom:6px}
+.card p{color:var(--ink-2);font-size:15px;max-width:38ch}
+@media (max-width:860px){.cards{grid-template-columns:1fr}.card{min-height:260px}}
 
-/* artists */
-.artists{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
-.artist{padding:24px 24px 26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:84px 1fr;gap:18px;min-width:0}
-.artist canvas{width:84px;height:84px;border-radius:50%}
-.artist h3{font-size:24px}
-.artist .where{color:var(--muted);margin:4px 0 8px}
-.artist p{margin:0;font-size:15px;color:var(--muted)}
-.artist a{display:inline-block;margin-top:10px;font-size:14.5px;font-weight:500;color:var(--lapis);text-decoration:none}
-.artist a:hover{text-decoration:underline}
-@media (max-width:980px){.artists{grid-template-columns:1fr 1fr}}
-@media (max-width:620px){.artists{grid-template-columns:1fr}}
+/* Big two-tone statement */
+.statement{font-size:clamp(30px,3.9vw,56px);line-height:1.12;letter-spacing:-.028em;text-align:center;max-width:22ch;margin:0 auto;color:var(--ink-3);text-wrap:balance}
+.statement b{font-weight:400;color:var(--ink)}
+.statement-foot{margin-top:26px;display:flex;justify-content:center}
 
-/* artworks */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.chip{border:1px solid var(--line);background:transparent;border-radius:20px;padding:6px 14px;font-size:14px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.chip:hover{border-color:var(--ink)}
-.chip .n{font-family:var(--f-mono);font-size:11.5px;opacity:.7;margin-left:4px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:40px 28px}
-.work{display:flex;flex-direction:column;min-width:0}
-.work .frame{position:relative;background:var(--card);padding:14px;border:1px solid var(--line)}
-.work canvas{width:100%;height:auto}
-.tag{position:absolute;top:22px;left:22px;background:var(--paper);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:2px}
-.tag.sold{background:var(--saffron);color:#fff}
-.work h3{font-size:22px;margin-top:14px}
-.work .by{margin:2px 0 0;font-weight:500}
-.work .meta{color:var(--muted);margin:4px 0 0;line-height:1.5}
-.work .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-.price{font-family:var(--f-mono);font-size:15px;font-variant-numeric:tabular-nums}
-.work .actions{display:flex;gap:6px}
-.work .actions .btn{padding:7px 12px;font-size:13.5px}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-.rate-note{color:var(--muted);margin-top:22px}
+/* Collectors: sticky index on the left, chapters on the right */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,90px)}
+.guide-index{position:sticky;top:110px;align-self:start}
+.guide-index .tag{margin-bottom:46px}
+.guide-index ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.guide-index li a{display:flex;align-items:center;gap:12px;font-size:clamp(19px,1.6vw,23px);letter-spacing:-.015em;color:var(--ink-3);transition:color .3s}
+.guide-index li a::before{content:"";width:9px;height:9px;border:1.3px solid currentColor;transform:rotate(45deg);opacity:0;margin-left:-21px;transition:opacity .3s}
+.guide-index ol{padding-left:21px}
+.guide-index li a.on{color:var(--ink)}
+.guide-index li a.on::before{opacity:1}
+.chapters{display:grid;gap:clamp(70px,8vw,120px)}
+.chapter .tag{margin-bottom:18px}
+.chapter h3{font-size:clamp(19px,1.5vw,21px);letter-spacing:-.01em;margin-bottom:8px}
+.chapter p{color:var(--ink-2);font-size:16px;max-width:52ch}
+.chapter .visual{margin-top:26px;border-radius:var(--r);background:var(--soft);aspect-ratio:16/10;position:relative;overflow:hidden}
+.chapter .visual .pl{position:absolute;border-radius:3px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.12)}
+.visual .note{position:absolute;left:18px;bottom:16px;right:18px;background:#fff;border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.45;color:var(--ink-2);max-width:300px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.visual .note b{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+.price-row{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(78%,420px);background:#fff;border-radius:14px;padding:14px;display:grid;grid-template-columns:68px 1fr auto;gap:14px;align-items:center;box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.price-row .sw{height:68px;border-radius:6px;overflow:hidden}
+.price-row b{display:block;font-weight:500;font-size:14.5px}
+.price-row span{font-size:13px;color:var(--ink-3)}
+.price-row .pr{font-size:13px;background:var(--soft);padding:6px 10px;border-radius:999px;color:var(--ink)}
+.rules{margin-top:clamp(70px,8vw,120px);background:var(--soft);border-radius:var(--r);padding:clamp(22px,3vw,36px)}
+.rules h3{font-size:clamp(21px,1.7vw,24px);margin-bottom:22px}
+.rules ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rules li{background:#fff;border-radius:12px;padding:18px;font-size:15.5px;color:var(--ink);display:grid;grid-template-columns:28px 1fr;gap:6px}
+.rules li span{color:var(--saffron);font-size:13px;padding-top:2px}
+.rules .go{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:860px){.guide{grid-template-columns:1fr}.guide-index{position:static}.guide-index ol{display:none}.guide-index .tag{margin-bottom:0}.rules ol{grid-template-columns:1fr}}
 
-/* why */
-.why{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
-.why div{padding:22px 22px 26px 0;border-right:1px solid var(--line);min-width:0}
-.why div+div{padding-left:22px}
-.why div:last-child{border-right:0}
-.why .num{color:var(--saffron)}
-.why h3{font-size:25px;margin:10px 0 10px}
-.why p{margin:0;color:var(--muted);font-size:15.5px}
-@media (max-width:900px){.why{grid-template-columns:1fr 1fr}.why div:nth-child(2){border-right:0}.why div:nth-child(3){padding-left:0}}
-@media (max-width:560px){.why{grid-template-columns:1fr}.why div{border-right:0;padding-left:0!important;border-bottom:1px solid var(--line)}}
+/* Route plates row */
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:4px;margin-top:clamp(40px,5vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.row figure{margin:0;scroll-snap-align:start}
+.row .img{aspect-ratio:3/4;position:relative;overflow:hidden}
+.row figure:nth-child(even) .img{aspect-ratio:3/3.4}
+.row figcaption{padding:10px 2px 0;font-size:12.5px;line-height:1.4}
+.row figcaption span{display:block;color:var(--ink-3)}
+.route-card{margin-top:10px;border-radius:var(--r);background:var(--night);color:#fff;padding:clamp(20px,3vw,36px);position:relative;overflow:hidden}
+.route-card .hd{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.62)}
+.route-card .hd b{color:#fff;font-weight:500}
+.route-card svg{width:100%;height:auto;display:block;overflow:visible;margin-top:18px}
+.route-card .path{fill:none;stroke:#E1A458;stroke-width:1.5;stroke-linecap:round}
+.route-card .ghost-path{fill:none;stroke:rgba(255,255,255,.10);stroke-width:1;stroke-dasharray:2 6}
+.route-card .city circle{fill:var(--night);stroke:#fff;stroke-width:1.3}
+.route-card .city.home circle{fill:#E1A458;stroke:#E1A458}
+.route-card .city text{font-family:var(--sans);font-size:10.5px;fill:rgba(255,255,255,.55)}
+.route-card .city text.name{font-size:15px;fill:#fff;font-weight:500}
+@media (prefers-reduced-motion:no-preference){.route-card .path{stroke-dasharray:1400;stroke-dashoffset:1400}.route-card.in .path{animation:draw 3s cubic-bezier(.6,.1,.2,1) forwards}@keyframes draw{to{stroke-dashoffset:0}}}
+@media (max-width:700px){.route-card svg{width:calc(100% + 16px);margin-inline:-8px}.route-card .city text:not(.name){display:none}.route-card .city text.name{font-size:28px}.route-card .city circle{r:9px}}
 
-/* journal */
-.journal{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.post{border-top:1px solid var(--ink);padding-top:14px;text-decoration:none;display:block}
-.post .k{color:var(--saffron)}
-.post h3{font-size:24px;margin:8px 0 8px}
-.post p{margin:0;color:var(--muted);font-size:15px}
-.post:hover h3{color:var(--lapis)}
-@media (max-width:860px){.journal{grid-template-columns:1fr}}
+/* Curation */
+.founder{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:start;max-width:920px;margin:clamp(40px,5vw,64px) auto 0}
+.founder .portrait{width:clamp(140px,16vw,220px);aspect-ratio:4/5;border-radius:var(--r);background:var(--soft);display:grid;place-items:center;--bg:var(--soft)}
+.founder .portrait svg{width:34%;height:auto;color:var(--saffron)}
+.founder p{font-size:clamp(17px,1.35vw,19px);line-height:1.55;color:var(--ink-2);max-width:56ch}
+.founder p+p{margin-top:16px}
+.founder p b{font-weight:500;color:var(--ink)}
+.founder .by{display:flex;align-items:center;gap:10px;margin-top:24px;font-size:14px;color:var(--ink)}
+.founder .by span{color:var(--ink-3)}
+@media (max-width:640px){.founder{grid-template-columns:1fr}}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(70px,8vw,120px)}
+.principles .lbl{font-size:12.5px;color:var(--ink-3);padding:0 4px 12px}
+.principles .box{background:var(--soft);border-radius:var(--r);padding:22px;height:calc(100% - 31px);display:flex;flex-direction:column;gap:10px}
+.principles h3{font-size:19px;letter-spacing:-.01em}
+.principles p{font-size:15px;color:var(--ink-2)}
+.principles .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:22px}
+.principles .chips span{background:#fff;border-radius:999px;padding:6px 11px;font-size:12.5px;color:var(--ink)}
+@media (max-width:860px){.principles{grid-template-columns:1fr}}
 
-/* for artists */
-.for-artists{margin-top:96px;background:var(--lapis);color:#fff}
-:root[data-theme="dark"] .for-artists{background:#1C2C66}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .for-artists{background:#1C2C66}}
-.for-artists .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;padding-block:64px;align-items:end}
-.for-artists h2{font-size:clamp(34px,4.4vw,56px)}
-.for-artists p{margin:14px 0 0;max-width:52ch;opacity:.88}
-.for-artists ul{list-style:none;margin:0;padding:0}
-.for-artists li{border-bottom:1px solid rgba(255,255,255,.25);padding:11px 0;display:flex;justify-content:space-between;gap:10px}
-.for-artists .btn{background:#fff;color:#15171C;border-color:#fff;margin-top:22px}
-.for-artists .btn:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
-@media (max-width:860px){.for-artists .wrap{grid-template-columns:1fr}}
+/* Closing panel */
+.closing{margin-top:clamp(110px,14vw,210px);border-radius:var(--r);overflow:hidden;position:relative;min-height:clamp(460px,52vw,700px);display:grid;place-items:center;text-align:center;color:#fff;background:var(--night)}
+.closing .bgm{position:absolute;inset:0}
+.closing .bgm::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 110%,rgba(225,164,88,.45),transparent 70%),radial-gradient(50% 60% at 15% 0%,rgba(53,87,196,.55),transparent 70%)}
+.closing .bgm svg{position:absolute;inset:0;width:100%;height:100%;opacity:.16}
+.closing .inner{position:relative;padding:40px 20px}
+.closing .lbl{font-size:12.5px;color:rgba(255,255,255,.7)}
+.closing h2{font-size:clamp(28px,3vw,40px);margin:14px 0 10px;letter-spacing:-.025em}
+.closing p{color:rgba(255,255,255,.75);font-size:16px}
+.closing .acts{display:flex;justify-content:center;gap:8px;margin-top:26px;flex-wrap:wrap}
 
-/* footer */
-footer{padding-block:56px 40px;color:var(--muted);font-size:15px}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:32px}
-.foot h4{font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0 0 12px}
-.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
-.news{display:flex;gap:8px;margin-top:6px}
-.news input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:9px 10px}
-.legal{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}}
-
-/* dialogs */
-dialog{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:0;width:min(520px,calc(100% - 32px))}
-dialog::backdrop{background:rgba(10,12,20,.55)}
-.dlg{padding:26px}
-.dlg h3{font-size:30px}
-.dlg .sub{color:var(--muted);margin:6px 0 18px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form label{display:grid;gap:4px;font-size:13.5px;color:var(--muted)}
-.form label.full{grid-column:1/-1}
-.form input,.form textarea{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:9px 10px;color:var(--ink)}
-.form textarea{min-height:84px;resize:vertical}
-.dlg .bar{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
-.notice{background:var(--lapis-soft);border-left:3px solid var(--lapis);padding:10px 12px;margin-top:14px;font-size:14.5px}
-.notice[hidden]{display:none}
-.cart-list{list-style:none;margin:0;padding:0}
-.cart-list li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-.cart-list li span{color:var(--muted);font-size:14px}
-.cart-list button{background:none;border:0;color:var(--lapis);cursor:pointer;padding:0;font-size:13.5px}
-.total{display:flex;justify-content:space-between;margin-top:14px;font-weight:600}
-.empty{color:var(--muted)}
-
-/* coming-soon forms */
-.forms{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
-.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:30px;display:grid;gap:14px;scroll-margin-top:90px}
-.card h3{font-size:32px}
-.card .sub{margin:0;color:var(--muted)}
-.card .eyebrow{margin:0}
-.card.dark{background:var(--lapis);border-color:var(--lapis);color:#fff}
-:root[data-theme="dark"] .card.dark{background:#1C2C66;border-color:#1C2C66}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card.dark{background:#1C2C66;border-color:#1C2C66}}
-.card.dark .eyebrow{color:#FFD3A1}.card.dark .sub,.card.dark label{color:rgba(255,255,255,.85)}
-.card.dark input,.card.dark select{background:#fff;color:#15171C;border-color:transparent}
-.card.dark .btn{background:#fff;color:#15171C;border-color:#fff}.card.dark .btn:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
-.card.dark a{color:#fff}
-.form select{border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:9px 10px;color:var(--ink)}
-.form label.check{display:flex;gap:10px;align-items:flex-start;font-size:14px}
-.form label.check input{margin-top:4px}
-.card .btn{justify-self:start;padding:11px 20px}
+/* Footer with the two forms */
+footer{padding-block:clamp(48px,6vw,80px) 28px}
+.foot{display:grid;grid-template-columns:1.1fr .9fr 1.3fr 1.3fr;gap:10px;align-items:start}
+.foot .mark{font-family:var(--serif);font-weight:300;font-size:clamp(30px,2.6vw,40px);letter-spacing:-.02em;line-height:1;display:flex;align-items:center;gap:10px}
+.foot .mark svg{width:26px;height:30px}
+.foot .tagline{margin-top:14px;font-size:13.5px;color:var(--ink-3);max-width:28ch}
+.foot .links{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;font-size:13.5px}
+.foot .links h4{font-size:12.5px;color:var(--ink-3);margin-bottom:10px;letter-spacing:0}
+.foot .links ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.foot .links a{color:var(--ink-2)}
+.foot .links a:hover{color:var(--ink)}
+.formcard{background:var(--soft);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px;min-height:100%}
+.formcard .hd{font-size:13.5px;color:var(--ink-2);padding:2px 2px 8px}
+.formcard .hd b{display:block;font-size:17px;color:var(--ink);font-weight:400;letter-spacing:-.01em;margin-bottom:2px}
+.formcard .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.formcard label.f{display:block}
+.formcard input[type=email],.formcard input[type=text],.formcard input[type=url],.formcard input:not([type]),.formcard select{width:100%;height:40px;border:0;border-radius:8px;background:#fff;padding:0 12px;font:400 14px var(--sans);color:var(--ink);box-shadow:0 0 0 1px transparent;transition:box-shadow .2s}
+.formcard select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239C9B98' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:30px;color:var(--ink)}
+.formcard input:focus,.formcard select:focus{outline:0;box-shadow:0 0 0 1.5px var(--ink)}
+.formcard input::placeholder{color:var(--ink-3)}
+.formcard .check{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink-2);line-height:1.45;padding:4px 2px}
+.formcard .check input{width:16px;height:16px;margin:1px 0 0;flex:none;accent-color:#2B2B2B}
+.formcard .check a{text-decoration:underline;text-underline-offset:2px}
+.formcard .pill{width:100%;justify-content:center;background:#fff;margin-top:auto}
+.formcard .pill:hover{background:var(--ink);color:#fff}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-footer{padding-block:72px 40px}
-@media (max-width:860px){.forms{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(48px,6vw,80px);font-size:12.5px;color:var(--ink-3)}
+.legal a{text-decoration:underline;text-underline-offset:3px;color:var(--ink-2)}
+@media (max-width:1100px){.foot{grid-template-columns:1fr 1fr}.formcard{min-height:0}}
+@media (max-width:640px){.foot{grid-template-columns:1fr}.formcard .two{grid-template-columns:1fr}}
 
-/* ===== Premium direction: one world, Kashmir at night. Midnight lapis ground, ivory type,
-   a single hairline of saffron gold. Fashion-house serif, generous space, no filled blocks. ===== */
-:root,:root[data-theme="dark"],:root[data-theme="light"]{
-  --paper:#0B0E17; --card:#0F1320; --ink:#EEE9DE; --muted:#9097A6; --line:rgba(238,233,222,.13);
-  --lapis:#C9A46B; --saffron:#C9A46B; --lapis-soft:rgba(201,164,107,.10);
-  --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  color-scheme:dark;
+/* Entrance */
+@media (prefers-reduced-motion:no-preference){
+  .js .rise{opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .rise.in{opacity:1;transform:none}
+  .js .plate{opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .js .plate.big{transform:translateX(-36%) translateY(10px)}
+  .js .loaded .plate{opacity:1;transform:none}
+  .js .loaded .plate.big{transform:translateX(-36%)}
+  @media (max-width:760px){.js .loaded .plate.big,.js .plate.big{transform:translateX(-50%)}}
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0B0E17;--card:#0F1320;--ink:#EEE9DE;--muted:#9097A6;--line:rgba(238,233,222,.13);--lapis:#C9A46B;--saffron:#C9A46B;--lapis-soft:rgba(201,164,107,.10);color-scheme:dark}}
-body{font-weight:300;font-size:17px;letter-spacing:.005em;background:var(--paper)}
-::selection{background:#C9A46B;color:#0B0E17}
-.wrap{max-width:1320px;padding-inline:clamp(20px,5vw,72px)}
-h1,h2,h3{font-weight:400;letter-spacing:-.01em}
-.mono{font-size:11.5px;letter-spacing:.08em}
-.eyebrow{font-family:var(--f-body);font-weight:500;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--saffron)}
-header.top{background:rgba(11,14,23,.82);border-bottom:1px solid var(--line)}
-.top .wrap{height:78px}
-.brand svg{color:var(--saffron);width:26px;height:26px}
-.brand span{font-family:var(--f-display);font-size:24px;font-weight:400;letter-spacing:.02em}
-.brand small{font-family:var(--f-display);font-style:italic;font-size:17px;color:var(--saffron);letter-spacing:.02em}
-nav.main{justify-content:center}
-nav.main a{font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.btn{background:transparent;color:var(--ink);border:1px solid rgba(238,233,222,.55);border-radius:0;padding:13px 26px;font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s}
-.btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.ghost{border-color:transparent;color:var(--muted);padding-inline:6px;text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--line)}
-.btn.ghost:hover{background:transparent;color:var(--ink);border-color:transparent;text-decoration-color:var(--saffron)}
-.hero{padding-block:clamp(72px,11vw,150px) 40px}
-.hero-grid{grid-template-columns:1.25fr .75fr;gap:72px}
-.hero h1{font-size:clamp(52px,8.2vw,124px);line-height:.98;letter-spacing:-.03em}
-.hero h1 em{font-style:italic;color:var(--saffron)}
-.hero p.lede{font-size:clamp(17px,1.35vw,19px);line-height:1.7;color:var(--muted);max-width:40ch}
-.pron{font-family:var(--f-body);font-weight:500;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:34px}
-.pron b{color:var(--saffron);font-weight:500}
-.route{margin-top:96px;border-top:1px solid var(--line);padding-top:18px}
-.route .path{stroke:var(--saffron);stroke-width:1.2}
-.route .ghost-path{stroke:rgba(238,233,222,.10)}
-.route .city circle{fill:var(--paper);stroke:var(--ink);stroke-width:1}
-.route .city.home circle{fill:var(--saffron);stroke:var(--saffron)}
-.route .city text.name{font-family:var(--f-display);font-size:17px;font-weight:400;fill:var(--ink)}
-.route .city text{fill:var(--muted);font-size:10px}
-section.block{padding-block:clamp(96px,12vw,168px) 0}
-.sec-head{border-top:0;padding-top:0;margin-bottom:56px}
-.sec-head h2{font-size:clamp(40px,5vw,72px);line-height:1}
-.sec-head p{font-size:16px;line-height:1.7}
-.about{gap:96px}
-.about .big{font-size:clamp(26px,2.6vw,38px);line-height:1.3;font-weight:400}
-.about .cols p{color:var(--muted);line-height:1.8}
-.why{border-top:1px solid var(--line)}
-.why div{padding:32px 32px 8px 0;border-right:1px solid var(--line)}
-.why div+div{padding-left:32px}
-.why h3{font-size:28px;margin:18px 0 14px}
-.why .num{font-family:var(--f-display);font-style:italic;font-size:15px;letter-spacing:.02em;color:var(--saffron)}
-.why p{line-height:1.75}
-.forms{gap:0;border-top:1px solid var(--line);grid-template-columns:1fr 1fr}
-.card,.card.dark,:root[data-theme="dark"] .card.dark{background:transparent;border:0;border-radius:0;padding:44px 48px 8px 0;gap:18px;color:var(--ink)}
-.card.dark{padding-left:48px;padding-right:0;border-left:1px solid var(--line)}
-.card h3{font-size:clamp(30px,3vw,42px)}
-.card .sub,.card.dark .sub{color:var(--muted);line-height:1.75}
-.card.dark .eyebrow{color:var(--saffron)}
-.card.dark label,.form label{color:var(--muted);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;gap:8px}
-.form{gap:22px 28px}
-.form input,.form textarea,.form select,.card.dark input,.card.dark select{background:transparent;color:var(--ink);border:0;border-bottom:1px solid rgba(238,233,222,.28);border-radius:0;padding:8px 0 10px;font-size:16px;font-weight:300;letter-spacing:0;text-transform:none}
-.form select option{background:#0F1320;color:#EEE9DE}
-.form input:focus,.form textarea:focus,.form select:focus{outline:0;border-bottom-color:var(--saffron)}
-.form input::placeholder,.form textarea::placeholder{color:rgba(238,233,222,.32)}
-.form label.check{font-size:13px;letter-spacing:.02em;text-transform:none;font-weight:300}
-.form label.check input{accent-color:#C9A46B}
-.card.dark .btn,.card .btn{background:transparent;color:var(--ink);border-color:rgba(238,233,222,.55)}
-.card.dark .btn:hover,.card .btn:hover{background:var(--ink);color:var(--paper)}
-.card a,.card.dark a{color:var(--ink);text-underline-offset:4px;text-decoration-color:var(--saffron)}
-footer{padding-block:120px 48px}
-.legal{border-top:1px solid var(--line);color:var(--muted)}
-.legal a{text-decoration:none}
-/* preview-only elements */
-.strip .cap,.work .meta{color:var(--muted)}
-.work .frame{background:transparent;border:0;padding:0}
-.tag{background:rgba(11,14,23,.75);color:var(--ink);border:1px solid var(--line);top:12px;left:12px}
-.tag.sold{background:var(--saffron);color:#0B0E17}
-.work h3{font-size:26px}
-.work .row{border-top:1px solid var(--line)}
-.chip{border-color:var(--line);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:0}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.artist p,.artist .where{color:var(--muted)}
-.for-artists,:root[data-theme="dark"] .for-artists{background:#0F1320;border-block:1px solid var(--line)}
-.for-artists .btn{background:transparent;color:var(--ink);border-color:rgba(238,233,222,.55)}
-.post{border-top:1px solid var(--line)}
-.proto{background:#C9A46B;color:#0B0E17}.proto b{color:#0B0E17}
-dialog{background:#0F1320;color:var(--ink);border-color:var(--line);border-radius:0}
-.cart-btn .count{background:var(--saffron);color:#0B0E17}
-@media (max-width:860px){.forms{grid-template-columns:1fr}.card.dark{padding-left:0;border-left:0;border-top:1px solid var(--line)}.hero-grid{grid-template-columns:1fr;gap:32px}.about{gap:32px}}
-
-/* ===== Minimal: wordmark, one line, the route, one statement, two forms. ===== */
-header.top.min{position:static;background:transparent;border-bottom:0}
-.top.min .wrap{height:96px;justify-content:space-between}
-.top.min nav.main{flex:0;display:flex;gap:36px}
-.hero.min{padding-block:clamp(64px,10vw,140px) 0}
-.hero.min .eyebrow{margin:0 0 36px}
-.hero.min h1{font-size:clamp(48px,7.4vw,112px);max-width:12ch}
-.hero.min .lede{margin:40px 0 0;max-width:none;font-size:clamp(17px,1.4vw,20px)}
-.route-wrap{padding-block:clamp(72px,9vw,128px) 0}
-.route-wrap svg{width:100%;height:auto;overflow:visible}
-.route-wrap .path{fill:none;stroke:var(--saffron);stroke-width:1.1;stroke-linecap:round}
-.route-wrap .ghost-path{fill:none;stroke:rgba(238,233,222,.08);stroke-width:1;stroke-dasharray:2 6}
-.route-wrap .city circle{fill:var(--paper);stroke:var(--ink);stroke-width:.9}
-.route-wrap .city.home circle{fill:var(--saffron);stroke:var(--saffron)}
-.route-wrap .city text{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;fill:var(--muted)}
-.route-wrap .city text.name{font-family:var(--f-display);font-size:16px;letter-spacing:0;fill:var(--ink)}
-@media (prefers-reduced-motion: no-preference){.route-wrap .path{stroke-dasharray:1400;animation:draw 2.8s cubic-bezier(.6,.1,.2,1) both .3s}}
-.statement{padding-block:clamp(110px,14vw,200px) 0}
-.statement p{font-family:var(--f-display);font-size:clamp(26px,2.9vw,42px);line-height:1.3;margin:0;max-width:30ch;text-wrap:balance}
-.statement p.small{font-family:var(--f-body);font-size:11.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:40px}
-.join{padding-block:clamp(110px,14vw,200px) 0}
-.join .card h2{font-size:clamp(30px,3vw,42px);margin:0}
-.join .card .eyebrow{margin:0}
-.join .forms{border-top:1px solid var(--line)}
-.join .card{padding-top:48px}
-.join .card .btn{margin-top:8px}
-footer{padding-block:140px 44px}
-.top.min .brand{gap:2px}
-.statement p.small{max-width:none}
-footer .legal{margin-top:0;padding-top:20px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase}
-@media (max-width:620px){.top.min nav.main{gap:20px}}
-@media (max-width:700px){.route-wrap svg{margin-inline:-8px;width:calc(100% + 16px)}.route-wrap .city text:not(.name){display:none}.route-wrap .city text.name{font-size:30px}.route-wrap .city circle{r:9px}}
-
-/* ===== Legibility pass: brighter text, heavier body weight, larger small type. ===== */
-:root,:root[data-theme="dark"],:root[data-theme="light"]{--ink:#F5F1E8;--muted:#C3C7D0;--saffron:#DDB97E;--lapis:#DDB97E;--line:rgba(245,241,232,.18)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#F5F1E8;--muted:#C3C7D0;--saffron:#DDB97E;--lapis:#DDB97E;--line:rgba(245,241,232,.18)}}
-body{font-weight:400;font-size:18px}
-.eyebrow,.statement p.small,.top.min nav.main a,footer .legal{font-size:13px;letter-spacing:.2em;font-weight:500}
-.top.min nav.main a{color:var(--ink)}
-.top.min nav.main a{white-space:nowrap}
-@media (max-width:760px){.top.min .wrap{height:auto;padding-block:24px;flex-wrap:wrap;row-gap:16px}.top.min nav.main{flex:1 1 100%;flex-wrap:wrap;justify-content:flex-start;gap:12px 22px}}
-.hero.min .lede{font-size:clamp(19px,1.6vw,23px);color:var(--ink);font-weight:400}
-.statement p{font-weight:500}
-.statement p.small{color:var(--muted)}
-.join .card h2{font-weight:500}
-.form label,.card.dark label{font-size:12.5px;letter-spacing:.16em;color:var(--muted)}
-.form input,.form textarea,.form select,.card.dark input,.card.dark select{font-size:18px;font-weight:400;color:var(--ink);border-bottom-color:rgba(245,241,232,.45)}
-.form input::placeholder,.form textarea::placeholder{color:rgba(245,241,232,.5)}
-.form label.check{font-size:15px;color:var(--ink);letter-spacing:0}
-.btn,.card .btn,.card.dark .btn{font-size:13px;letter-spacing:.18em;color:var(--ink);border-color:rgba(245,241,232,.8)}
-.route-wrap .city text{fill:#B7BBC6;font-size:11px}
-.route-wrap .city text.name{font-weight:500;font-size:17px}
-.route-wrap .city circle{stroke-width:1.3}
-.route-wrap .path{stroke-width:1.5}
-.hero.min h1{font-weight:500}
-@media (max-width:700px){.route-wrap .city text.name{font-size:30px}}
-
-/* curation statement */
-.curation{padding-block:clamp(110px,14vw,200px) 0}
-.curation-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;border-top:1px solid var(--line);padding-top:48px}
-.curation .eyebrow{margin:0 0 18px}
-.curation h2{font-size:clamp(30px,3vw,42px);font-weight:500;margin:0}
-.curation-body{max-width:62ch}
-.curation-body p{margin:0 0 22px;font-size:18px;line-height:1.75;color:var(--ink)}
-.curation-body p.lead{font-family:var(--f-display);font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;margin-bottom:30px}
-.curation-body p:last-child{margin-bottom:0;color:var(--muted)}
-@media (max-width:860px){.curation-grid{grid-template-columns:1fr;gap:28px}}
-.curation-body p.sign{font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);margin:-10px 0 44px}
-.curation-body p.sign{margin:6px 0 40px}
-.terms{list-style:none;margin:0 0 56px;padding:0;border-top:1px solid var(--line)}
-.terms li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);font-size:18px;line-height:1.6;color:var(--ink)}
-.terms li span{font-family:var(--f-display);font-style:italic;color:var(--saffron);font-size:17px}
-.brand .mark{width:30px;height:35px;color:var(--saffron);margin-right:12px;flex:none}
-.top.min .brand{align-items:center}
-.foot-brand{display:inline-flex;align-items:center;gap:12px}
-.foot-brand .mark{width:18px;height:21px;color:var(--saffron)}
-
-/* Display face: Newsreader replaces Bodoni Moda, whose hairlines vanished on the dark ground. */
-:root,:root[data-theme="dark"],:root[data-theme="light"]{--f-display:"Newsreader", "Iowan Old Style", Georgia, serif}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--f-display:"Newsreader", "Iowan Old Style", Georgia, serif}}
-.hero.min h1{font-weight:500;letter-spacing:-.025em;line-height:1.02}
-.statement p,.curation-body p.lead{font-weight:500;letter-spacing:-.005em}
-.join .card h2,.curation h2{font-weight:500}
-.brand span{font-weight:500;letter-spacing:0}
-.brand small{font-weight:500}
-.route-wrap .city text.name{font-weight:600}
-.terms li span{font-weight:500}
-
-/* first-time collectors */
-.collect{padding-block:clamp(110px,14vw,200px) 0;scroll-margin-top:20px}
-.collect-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;border-top:1px solid var(--line);padding-top:48px}
-.collect .eyebrow{margin:0 0 18px}
-.collect h2{font-size:clamp(30px,3vw,42px);font-weight:500;margin:0}
-.collect-body{max-width:62ch}
-.collect-body p{margin:0 0 22px;font-size:18px;line-height:1.75}
-.collect-body p.lead{font-family:var(--f-display);font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;margin-bottom:30px}
-.steps{list-style:none;margin:8px 0 48px;padding:0;border-top:1px solid var(--line)}
-.steps li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
-.steps li span{font-family:var(--f-display);font-style:italic;font-weight:500;color:var(--saffron);font-size:17px}
-.steps h3{font-size:22px;font-weight:500;margin:0 0 6px;line-height:1.25}
-.steps p{margin:0;font-size:17px;line-height:1.7;color:var(--muted)}
-.rules{margin:0;padding:0}
-.rules h3{font-family:var(--f-body);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);margin:0 0 18px}
-.rules ul{margin:0;padding-left:20px;display:grid;gap:10px}
-.rules li{font-size:17px;line-height:1.65}
-.collect-body p.collect-cta{margin:44px 0 0}
-@media (max-width:860px){.collect-grid{grid-template-columns:1fr;gap:28px}}
 </style>
 </head>
 <body>
-<header class="top min">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="markhor" viewBox="0 0 48 56"><path d="M22.46 52.11 L22.28 51.48 L22.08 50.85 L21.85 50.24 L21.56 49.65 L21.21 49.07 L20.81 48.51 L20.35 47.96 L19.85 47.43 L19.33 46.91 L18.79 46.40 L18.26 45.88 L17.75 45.35 L17.28 44.81 L16.87 44.25 L16.51 43.68 L16.20 43.09 L15.95 42.48 L15.74 41.86 L15.56 41.23 L15.39 40.60 L15.23 39.96 L15.04 39.33 L14.83 38.71 L14.58 38.11 L14.29 37.51 L13.96 36.93 L13.60 36.35 L13.21 35.79 L12.80 35.23 L12.39 34.68 L11.99 34.11 L11.61 33.55 L11.26 32.97 L10.95 32.38 L10.69 31.78 L10.46 31.16 L10.28 30.53 L10.12 29.90 L9.99 29.25 L9.87 28.60 L9.74 27.96 L9.61 27.31 L9.46 26.67 L9.29 26.04 L9.09 25.41 L8.87 24.80 L8.64 24.19 L8.38 23.58 L8.12 22.97 L7.87 22.37 L7.62 21.76 L7.39 21.15 L7.18 20.53 L7.00 19.90 L6.84 19.26 L6.71 18.61 L6.60 17.96 L6.51 17.31 L6.42 16.65 L6.35 15.98 L6.27 15.32 L6.18 14.67 L6.08 14.01 L5.98 13.36 L5.86 12.71 L5.73 12.06 L5.60 11.42 L5.46 10.77 L5.32 10.13 L5.19 9.49 L5.07 8.84 L4.95 8.19 L4.85 7.54 L4.75 6.88 L4.66 6.22 L4.58 5.56 L4.49 4.90 L4.41 4.24 L4.33 3.58 L4.24 2.93 L3.76 3.07 L3.79 3.75 L3.82 4.43 L3.85 5.10 L3.87 5.78 L3.90 6.46 L3.94 7.14 L3.98 7.81 L4.02 8.48 L4.08 9.15 L4.15 9.81 L4.23 10.47 L4.30 11.14 L4.38 11.80 L4.46 12.46 L4.53 13.12 L4.59 13.79 L4.64 14.46 L4.68 15.13 L4.71 15.81 L4.73 16.49 L4.75 17.17 L4.77 17.85 L4.81 18.52 L4.86 19.19 L4.93 19.85 L5.03 20.51 L5.15 21.16 L5.30 21.80 L5.47 22.43 L5.66 23.06 L5.86 23.68 L6.06 24.31 L6.25 24.93 L6.43 25.56 L6.59 26.20 L6.72 26.84 L6.83 27.49 L6.92 28.15 L6.99 28.81 L7.05 29.48 L7.11 30.15 L7.18 30.81 L7.28 31.47 L7.40 32.12 L7.56 32.75 L7.76 33.38 L8.00 33.99 L8.29 34.58 L8.60 35.17 L8.94 35.75 L9.29 36.33 L9.63 36.91 L9.96 37.49 L10.26 38.08 L10.52 38.69 L10.74 39.30 L10.92 39.93 L11.07 40.57 L11.18 41.22 L11.28 41.88 L11.38 42.53 L11.49 43.19 L11.63 43.83 L11.81 44.46 L12.04 45.07 L12.33 45.67 L12.68 46.24 L13.07 46.81 L13.50 47.36 L13.96 47.90 L14.42 48.44 L14.87 48.99 L15.29 49.54 L15.66 50.11 L15.98 50.70 L16.24 51.30 L16.44 51.93 L16.58 52.57 L16.68 53.23 L16.74 53.89 Z M25.54 52.11 L25.72 51.48 L25.92 50.85 L26.15 50.24 L26.44 49.65 L26.79 49.07 L27.19 48.51 L27.65 47.96 L28.15 47.43 L28.67 46.91 L29.21 46.40 L29.74 45.88 L30.25 45.35 L30.72 44.81 L31.13 44.25 L31.49 43.68 L31.80 43.09 L32.05 42.48 L32.26 41.86 L32.44 41.23 L32.61 40.60 L32.77 39.96 L32.96 39.33 L33.17 38.71 L33.42 38.11 L33.71 37.51 L34.04 36.93 L34.40 36.35 L34.79 35.79 L35.20 35.23 L35.61 34.68 L36.01 34.11 L36.39 33.55 L36.74 32.97 L37.05 32.38 L37.31 31.78 L37.54 31.16 L37.72 30.53 L37.88 29.90 L38.01 29.25 L38.13 28.60 L38.26 27.96 L38.39 27.31 L38.54 26.67 L38.71 26.04 L38.91 25.41 L39.13 24.80 L39.36 24.19 L39.62 23.58 L39.88 22.97 L40.13 22.37 L40.38 21.76 L40.61 21.15 L40.82 20.53 L41.00 19.90 L41.16 19.26 L41.29 18.61 L41.40 17.96 L41.49 17.31 L41.58 16.65 L41.65 15.98 L41.73 15.32 L41.82 14.67 L41.92 14.01 L42.02 13.36 L42.14 12.71 L42.27 12.06 L42.40 11.42 L42.54 10.77 L42.68 10.13 L42.81 9.49 L42.93 8.84 L43.05 8.19 L43.15 7.54 L43.25 6.88 L43.34 6.22 L43.42 5.56 L43.51 4.90 L43.59 4.24 L43.67 3.58 L43.76 2.93 L44.24 3.07 L44.21 3.75 L44.18 4.43 L44.15 5.10 L44.13 5.78 L44.10 6.46 L44.06 7.14 L44.02 7.81 L43.98 8.48 L43.92 9.15 L43.85 9.81 L43.77 10.47 L43.70 11.14 L43.62 11.80 L43.54 12.46 L43.47 13.12 L43.41 13.79 L43.36 14.46 L43.32 15.13 L43.29 15.81 L43.27 16.49 L43.25 17.17 L43.23 17.85 L43.19 18.52 L43.14 19.19 L43.07 19.85 L42.97 20.51 L42.85 21.16 L42.70 21.80 L42.53 22.43 L42.34 23.06 L42.14 23.68 L41.94 24.31 L41.75 24.93 L41.57 25.56 L41.41 26.20 L41.28 26.84 L41.17 27.49 L41.08 28.15 L41.01 28.81 L40.95 29.48 L40.89 30.15 L40.82 30.81 L40.72 31.47 L40.60 32.12 L40.44 32.75 L40.24 33.38 L40.00 33.99 L39.71 34.58 L39.40 35.17 L39.06 35.75 L38.71 36.33 L38.37 36.91 L38.04 37.49 L37.74 38.08 L37.48 38.69 L37.26 39.30 L37.08 39.93 L36.93 40.57 L36.82 41.22 L36.72 41.88 L36.62 42.53 L36.51 43.19 L36.37 43.83 L36.19 44.46 L35.96 45.07 L35.67 45.67 L35.32 46.24 L34.93 46.81 L34.50 47.36 L34.04 47.90 L33.58 48.44 L33.13 48.99 L32.71 49.54 L32.34 50.11 L32.02 50.70 L31.76 51.30 L31.56 51.93 L31.42 52.57 L31.32 53.23 L31.26 53.89 Z" fill="currentColor"/><path d="M19.51 46.17 Q 16.40 45.08 11.15 44.66 M16.01 40.40 Q 13.75 39.05 9.70 38.26 M12.90 34.51 Q 10.66 33.16 6.94 32.26 M10.29 28.47 Q 8.76 26.89 6.06 25.68 M8.20 22.27 Q 6.83 20.64 4.58 19.28 M6.59 15.91 Q 5.72 14.12 4.27 12.52 M5.35 9.44 Q 4.71 7.58 3.77 5.82 M28.49 46.17 Q 31.60 45.08 36.85 44.66 M31.99 40.40 Q 34.25 39.05 38.30 38.26 M35.10 34.51 Q 37.34 33.16 41.06 32.26 M37.71 28.47 Q 39.24 26.89 41.94 25.68 M39.80 22.27 Q 41.17 20.64 43.42 19.28 M41.41 15.91 Q 42.28 14.12 43.73 12.52 M42.65 9.44 Q 43.29 7.58 44.23 5.82" fill="none" stroke="var(--bg,#FFFFFF)" stroke-width="1.15" stroke-linecap="round"/></symbol>
+  <symbol id="lattice" viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-width=".8"><rect x="18" y="18" width="36" height="36"/><rect x="18" y="18" width="36" height="36" transform="rotate(45 36 36)"/><path d="M0 36H10.5M61.5 36H72M36 0V10.5M36 61.5V72M0 0L18 18M72 0L54 18M0 72L18 54M72 72L54 54"/></g></symbol>
+  <pattern id="latticeFill" width="72" height="72" patternUnits="userSpaceOnUse"><use href="#lattice" width="72" height="72" style="color:#fff"/></pattern>
+</svg>
+
+<div class="notice">Opening soon, starting in Srinagar. <a href="#artists">Artists can apply now</a></div>
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="silkroute.art home"><svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" aria-hidden="true"><path d="M22.46 52.11 L22.28 51.48 L22.08 50.85 L21.85 50.24 L21.56 49.65 L21.21 49.07 L20.81 48.51 L20.35 47.96 L19.85 47.43 L19.33 46.91 L18.79 46.40 L18.26 45.88 L17.75 45.35 L17.28 44.81 L16.87 44.25 L16.51 43.68 L16.20 43.09 L15.95 42.48 L15.74 41.86 L15.56 41.23 L15.39 40.60 L15.23 39.96 L15.04 39.33 L14.83 38.71 L14.58 38.11 L14.29 37.51 L13.96 36.93 L13.60 36.35 L13.21 35.79 L12.80 35.23 L12.39 34.68 L11.99 34.11 L11.61 33.55 L11.26 32.97 L10.95 32.38 L10.69 31.78 L10.46 31.16 L10.28 30.53 L10.12 29.90 L9.99 29.25 L9.87 28.60 L9.74 27.96 L9.61 27.31 L9.46 26.67 L9.29 26.04 L9.09 25.41 L8.87 24.80 L8.64 24.19 L8.38 23.58 L8.12 22.97 L7.87 22.37 L7.62 21.76 L7.39 21.15 L7.18 20.53 L7.00 19.90 L6.84 19.26 L6.71 18.61 L6.60 17.96 L6.51 17.31 L6.42 16.65 L6.35 15.98 L6.27 15.32 L6.18 14.67 L6.08 14.01 L5.98 13.36 L5.86 12.71 L5.73 12.06 L5.60 11.42 L5.46 10.77 L5.32 10.13 L5.19 9.49 L5.07 8.84 L4.95 8.19 L4.85 7.54 L4.75 6.88 L4.66 6.22 L4.58 5.56 L4.49 4.90 L4.41 4.24 L4.33 3.58 L4.24 2.93 L3.76 3.07 L3.79 3.75 L3.82 4.43 L3.85 5.10 L3.87 5.78 L3.90 6.46 L3.94 7.14 L3.98 7.81 L4.02 8.48 L4.08 9.15 L4.15 9.81 L4.23 10.47 L4.30 11.14 L4.38 11.80 L4.46 12.46 L4.53 13.12 L4.59 13.79 L4.64 14.46 L4.68 15.13 L4.71 15.81 L4.73 16.49 L4.75 17.17 L4.77 17.85 L4.81 18.52 L4.86 19.19 L4.93 19.85 L5.03 20.51 L5.15 21.16 L5.30 21.80 L5.47 22.43 L5.66 23.06 L5.86 23.68 L6.06 24.31 L6.25 24.93 L6.43 25.56 L6.59 26.20 L6.72 26.84 L6.83 27.49 L6.92 28.15 L6.99 28.81 L7.05 29.48 L7.11 30.15 L7.18 30.81 L7.28 31.47 L7.40 32.12 L7.56 32.75 L7.76 33.38 L8.00 33.99 L8.29 34.58 L8.60 35.17 L8.94 35.75 L9.29 36.33 L9.63 36.91 L9.96 37.49 L10.26 38.08 L10.52 38.69 L10.74 39.30 L10.92 39.93 L11.07 40.57 L11.18 41.22 L11.28 41.88 L11.38 42.53 L11.49 43.19 L11.63 43.83 L11.81 44.46 L12.04 45.07 L12.33 45.67 L12.68 46.24 L13.07 46.81 L13.50 47.36 L13.96 47.90 L14.42 48.44 L14.87 48.99 L15.29 49.54 L15.66 50.11 L15.98 50.70 L16.24 51.30 L16.44 51.93 L16.58 52.57 L16.68 53.23 L16.74 53.89 Z M25.54 52.11 L25.72 51.48 L25.92 50.85 L26.15 50.24 L26.44 49.65 L26.79 49.07 L27.19 48.51 L27.65 47.96 L28.15 47.43 L28.67 46.91 L29.21 46.40 L29.74 45.88 L30.25 45.35 L30.72 44.81 L31.13 44.25 L31.49 43.68 L31.80 43.09 L32.05 42.48 L32.26 41.86 L32.44 41.23 L32.61 40.60 L32.77 39.96 L32.96 39.33 L33.17 38.71 L33.42 38.11 L33.71 37.51 L34.04 36.93 L34.40 36.35 L34.79 35.79 L35.20 35.23 L35.61 34.68 L36.01 34.11 L36.39 33.55 L36.74 32.97 L37.05 32.38 L37.31 31.78 L37.54 31.16 L37.72 30.53 L37.88 29.90 L38.01 29.25 L38.13 28.60 L38.26 27.96 L38.39 27.31 L38.54 26.67 L38.71 26.04 L38.91 25.41 L39.13 24.80 L39.36 24.19 L39.62 23.58 L39.88 22.97 L40.13 22.37 L40.38 21.76 L40.61 21.15 L40.82 20.53 L41.00 19.90 L41.16 19.26 L41.29 18.61 L41.40 17.96 L41.49 17.31 L41.58 16.65 L41.65 15.98 L41.73 15.32 L41.82 14.67 L41.92 14.01 L42.02 13.36 L42.14 12.71 L42.27 12.06 L42.40 11.42 L42.54 10.77 L42.68 10.13 L42.81 9.49 L42.93 8.84 L43.05 8.19 L43.15 7.54 L43.25 6.88 L43.34 6.22 L43.42 5.56 L43.51 4.90 L43.59 4.24 L43.67 3.58 L43.76 2.93 L44.24 3.07 L44.21 3.75 L44.18 4.43 L44.15 5.10 L44.13 5.78 L44.10 6.46 L44.06 7.14 L44.02 7.81 L43.98 8.48 L43.92 9.15 L43.85 9.81 L43.77 10.47 L43.70 11.14 L43.62 11.80 L43.54 12.46 L43.47 13.12 L43.41 13.79 L43.36 14.46 L43.32 15.13 L43.29 15.81 L43.27 16.49 L43.25 17.17 L43.23 17.85 L43.19 18.52 L43.14 19.19 L43.07 19.85 L42.97 20.51 L42.85 21.16 L42.70 21.80 L42.53 22.43 L42.34 23.06 L42.14 23.68 L41.94 24.31 L41.75 24.93 L41.57 25.56 L41.41 26.20 L41.28 26.84 L41.17 27.49 L41.08 28.15 L41.01 28.81 L40.95 29.48 L40.89 30.15 L40.82 30.81 L40.72 31.47 L40.60 32.12 L40.44 32.75 L40.24 33.38 L40.00 33.99 L39.71 34.58 L39.40 35.17 L39.06 35.75 L38.71 36.33 L38.37 36.91 L38.04 37.49 L37.74 38.08 L37.48 38.69 L37.26 39.30 L37.08 39.93 L36.93 40.57 L36.82 41.22 L36.72 41.88 L36.62 42.53 L36.51 43.19 L36.37 43.83 L36.19 44.46 L35.96 45.07 L35.67 45.67 L35.32 46.24 L34.93 46.81 L34.50 47.36 L34.04 47.90 L33.58 48.44 L33.13 48.99 L32.71 49.54 L32.34 50.11 L32.02 50.70 L31.76 51.30 L31.56 51.93 L31.42 52.57 L31.32 53.23 L31.26 53.89 Z" fill="currentColor"/><path d="M19.51 46.17 Q 16.40 45.08 11.15 44.66 M16.01 40.40 Q 13.75 39.05 9.70 38.26 M12.90 34.51 Q 10.66 33.16 6.94 32.26 M10.29 28.47 Q 8.76 26.89 6.06 25.68 M8.20 22.27 Q 6.83 20.64 4.58 19.28 M6.59 15.91 Q 5.72 14.12 4.27 12.52 M5.35 9.44 Q 4.71 7.58 3.77 5.82 M28.49 46.17 Q 31.60 45.08 36.85 44.66 M31.99 40.40 Q 34.25 39.05 38.30 38.26 M35.10 34.51 Q 37.34 33.16 41.06 32.26 M37.71 28.47 Q 39.24 26.89 41.94 25.68 M39.80 22.27 Q 41.17 20.64 43.42 19.28 M41.41 15.91 Q 42.28 14.12 43.73 12.52 M42.65 9.44 Q 43.29 7.58 44.23 5.82" fill="none" stroke="var(--paper,#0B0E17)" stroke-width="1.15" stroke-linecap="round"/></svg><span>silkroute</span><small>.art</small></a>
-    <nav class="main" aria-label="Main"><a href="#artists">Artists</a><a href="#collectors">Collectors</a><a href="#curation">Curation</a><a href="/ai-policy.html">AI policy</a></nav>
+    <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute</span></a>
+    <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Collectors</a><a href="#curation">Curation</a><a href="/ai-policy.html">AI policy</a></nav>
+    <div class="right"><a class="pill ghosty" href="#artists" style="background:transparent">Apply</a><a class="pill" href="#first-access">First access</a></div>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero min">
+  <section class="hero" aria-label="Introduction">
     <div class="wrap">
-      <p class="eyebrow">Artist first</p>
-      <h1>Contemporary art from <em>Kashmir</em> and the Silk Route</h1>
-      <p class="lede">Artists set their prices, keep the majority share, and are paid again on resale.</p>
-    </div>
-  </section>
-
-  <section class="route-wrap">
-    <div class="wrap">
-      <svg viewBox="0 0 1000 300" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
-    </div>
-  </section>
-
-  <section class="statement">
-    <div class="wrap">
-      <p>We visit every studio, document every work and agree every price with the artist, so collectors can buy with confidence and artists keep the majority share.</p>
-      <p class="small">Opening soon, starting in Srinagar.</p>
-    </div>
-  </section>
-
-  <section class="collect" id="collectors">
-    <div class="wrap collect-grid">
-      <div>
-        <p class="eyebrow">Collectors</p>
-        <h2>For first-time collectors</h2>
+      <h1 class="intro"><span>Contemporary art from Kashmir and the Silk Route</span> <a class="pill" href="#first-access">Get first access</a></h1>
+      <div class="stage" id="stage">
+        <div class="wordmark" aria-hidden="true">SILKROUTE</div>
+        <span class="meta-l">Artist first. Human made.</span>
+        <span class="meta-r"><span class="dot" aria-hidden="true"></span>Srinagar <span class="t" id="clock"></span></span>
+        <div class="plate p1" title="Saffron, Pampore"><div class="m m-saffron"></div></div>
+        <div class="plate p2" title="Turquoise tile, Samarkand"><div class="m m-turquoise"></div></div>
+        <div class="plate p3" title="Walnut, Srinagar"><div class="m m-walnut"></div></div>
+        <div class="plate big" aria-hidden="true"><div class="m m-lapis"></div><div class="big-cap"><span>Lapis lazuli, Badakhshan</span><span>Material study</span></div></div>
+        <div class="plate p4" title="Pashmina, Changthang"><div class="m m-pashmina"></div></div>
+        <div class="plate p5" title="Felt, Bishkek"><div class="m m-felt"></div></div>
       </div>
-      <div class="collect-body">
-        <p class="lead">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
-        <p>Galleries can feel closed. Prices are hidden behind "on request". It is hard to know which artists are serious, what a fair price is, or whether you are allowed to ask. We want your first work to feel as considered as your tenth, without needing to know anyone.</p>
-        <ol class="steps">
-          <li><span>01</span><div><h3>Start with a conversation, not a catalogue</h3><p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p></div></li>
-          <li><span>02</span><div><h3>Meet the artist</h3><p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p></div></li>
-          <li><span>03</span><div><h3>Every price in the open</h3><p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p></div></li>
-          <li><span>04</span><div><h3>A first work does not have to be a big one</h3><p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p></div></li>
-          <li><span>05</span><div><h3>Know exactly what you are buying</h3><p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p></div></li>
+    </div>
+  </section>
+
+  <section class="sec" id="artists-first">
+    <div class="wrap">
+      <h2 class="sec-title rise">Built for the artist</h2>
+      <p class="sec-sub rise">Most curation is not artist first. silkroute.art is built the other way around, and our terms are public.</p>
+      <div class="cards">
+        <article class="card rise"><span class="lbl">Every sale</span><span class="num">I</span><h3>The majority share</h3><p>Artists receive the majority of the revenue from every sale made through us.</p></article>
+        <article class="card rise"><span class="lbl">Every resale</span><span class="num">II</span><h3>Paid again on resale</h3><p>Artists are paid again whenever their work is resold.</p></article>
+        <article class="card rise"><span class="lbl">After acquisition</span><span class="num">III</span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</p></article>
+      </div>
+      <div class="sec-actions rise"><a class="pill" href="#artists">Apply to be shown</a><a class="pill" href="/ai-policy.html" style="background:transparent">Human artists only</a></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <p class="statement rise"><b>We visit every studio, document every work and agree every price with the artist,</b> so collectors can buy with confidence and artists keep the majority share.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="collectors" style="padding-top:clamp(90px,11vw,160px)">
+    <div class="wrap">
+      <h2 class="sec-title rise">For first-time collectors</h2>
+      <p class="sec-sub rise">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
+      <div class="guide">
+        <div class="guide-index">
+          <span class="tag">Your first work, in five steps</span>
+          <ol id="guideIndex">
+            <li><a href="#step-1" class="on">Start with a conversation</a></li>
+            <li><a href="#step-2">Meet the artist</a></li>
+            <li><a href="#step-3">Every price in the open</a></li>
+            <li><a href="#step-4">Begin small, if you like</a></li>
+            <li><a href="#step-5">Know what you are buying</a></li>
+          </ol>
+        </div>
+        <div class="chapters">
+          <article class="chapter" id="step-1">
+            <span class="tag">01 · A conversation, not a catalogue</span>
+            <h3>Start with a conversation, not a catalogue</h3>
+            <p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p>
+            <div class="visual"><div class="pl" style="left:9%;top:12%;width:24%;aspect-ratio:4/5"><div class="m m-saffron"></div></div><div class="pl" style="left:38%;top:20%;width:24%;aspect-ratio:4/5"><div class="m m-walnut"></div></div><div class="pl" style="left:67%;top:8%;width:24%;aspect-ratio:4/5"><div class="m m-pashmina"></div></div><div class="note"><b>Your short list</b>Three artists, chosen for the room you described.</div></div>
+          </article>
+          <article class="chapter" id="step-2">
+            <span class="tag">02 · The person behind the work</span>
+            <h3>Meet the artist</h3>
+            <p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p>
+            <div class="visual"><div class="pl" style="left:50%;top:10%;width:40%;bottom:10%;transform:translateX(-50%)"><div class="m m-felt"></div></div><div class="note"><b>In the artist's words</b>How and why the work was made, written by the artist.</div></div>
+          </article>
+          <article class="chapter" id="step-3">
+            <span class="tag">03 · No "price on request"</span>
+            <h3>Every price in the open</h3>
+            <p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p>
+            <div class="visual"><div class="price-row"><div class="sw"><div class="m m-turquoise"></div></div><div><b>Price set by the artist</b><span>Shown on every work, the same for everyone</span></div><span class="pr">Listed</span></div></div>
+          </article>
+          <article class="chapter" id="step-4">
+            <span class="tag">04 · Smaller works and works on paper</span>
+            <h3>A first work does not have to be a big one</h3>
+            <p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p>
+            <div class="visual"><div class="pl" style="left:12%;top:14%;width:44%;aspect-ratio:4/5"><div class="m m-lapis"></div></div><div class="pl" style="left:62%;top:44%;width:18%;aspect-ratio:4/5"><div class="m m-saffron"></div></div></div>
+          </article>
+          <article class="chapter" id="step-5">
+            <span class="tag">05 · Seen in person, made by hand</span>
+            <h3>Know exactly what you are buying</h3>
+            <p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p>
+            <div class="visual"><div class="pl" style="left:9%;top:12%;width:34%;aspect-ratio:4/5"><div class="m m-walnut"></div></div><div class="note" style="left:auto;right:18px;top:50%;bottom:auto;transform:translateY(-50%);max-width:46%"><b>With every work</b>Medium, size and date. Where it came from. How to care for it. Made by human hands.</div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="rules rise">
+        <h3>A few honest rules for a first purchase</h3>
+        <ol>
+          <li><span>i.</span>Buy the work you keep looking at, not the one you think you should like.</li>
+          <li><span>ii.</span>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
+          <li><span>iii.</span>Ask the artist anything. Most are glad to be asked.</li>
+          <li><span>iv.</span>Your first work starts a relationship with an artist. When you buy here, most of the money goes to them, and they are paid again if the work is ever resold.</li>
         </ol>
-        <div class="rules">
-          <h3>A few honest rules for a first purchase</h3>
-          <ul>
-            <li>Buy the work you keep looking at, not the one you think you should like.</li>
-            <li>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
-            <li>Ask the artist anything. Most are glad to be asked.</li>
-            <li>Your first work starts a relationship with an artist. When you buy here, most of the money goes to them, and they are paid again if the work is ever resold.</li>
-          </ul>
-        </div>
-        <p class="collect-cta"><a class="btn" href="#first-access">Get first access</a></p>
+        <div class="go"><a class="pill dark" href="#first-access">Get first access</a></div>
       </div>
     </div>
   </section>
 
-  <section class="curation" id="curation">
-    <div class="wrap curation-grid">
-      <div>
-        <p class="eyebrow">Curation</p>
-        <h2>What we look for</h2>
+  <section class="sec" id="route">
+    <div class="wrap">
+      <h2 class="sec-title rise">From Tabriz to Srinagar</h2>
+      <p class="sec-sub rise">Contemporary artists from Kashmir and the lands the old routes joined: Ladakh, Central Asia, Afghanistan, Persia and the Caucasus.</p>
+      <div class="route-card rise" id="routeCard">
+        <div class="hd"><span><b>The route</b>&ensp;Eight cities, west to east</span><span>We begin at home, in Srinagar</span></div>
+        <svg viewBox="0 0 1000 300" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
       </div>
-      <div class="curation-body">
-        <p class="lead">I recently started collecting contemporary art myself, including work by Tom Vattakuzhy, Misha Japanwala, Basita Shah, Aadil Malik and Monica. The more I collected, the clearer the gap became.</p>
-        <p>Most curation is not artist first. That is unfair. Artists spend so much of their lives grappling with uncertainty, yet the very practice of discovery and acquisition is loaded in favour of the gallery and the collector. silkroute.art is built the other way around.</p>
-        <p class="sign">Raheel Khursheed, founder</p>
-        <ul class="terms">
-          <li><span>01</span>Artists receive the majority of the revenue from every sale made through us.</li>
-          <li><span>02</span>Artists are paid again whenever their work is resold.</li>
-          <li><span>03</span>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</li>
-        </ul>
-        <p>silkroute.art shows contemporary artists from Kashmir and the lands the old routes joined: Ladakh, Central Asia, Afghanistan, Persia and the Caucasus.</p>
-        <p>We look for a serious, sustained practice, whatever the medium or training. Some artists work inside inherited traditions such as papier-mâché, sozni, miniature painting or felt. Others have moved away from them. What matters is that the work could only have been made by this artist, from this place, now.</p>
-        <p>We choose work, not followings. We visit every artist in their studio, see every work in person before it is listed, and show nothing the artist has not approved.</p>
-        <p>We will grow slowly, one region at a time, beginning in Srinagar.</p>
+      <div class="row" aria-label="Materials of the route">
+        <figure><div class="img"><div class="m m-lapis"></div></div><figcaption>Lapis lazuli<span>Badakhshan, Afghanistan</span></figcaption></figure>
+        <figure><div class="img"><div class="m m-turquoise"></div></div><figcaption>Turquoise tile<span>Samarkand, Uzbekistan</span></figcaption></figure>
+        <figure><div class="img"><div class="m m-felt"></div></div><figcaption>Felt<span>Bishkek, Kyrgyzstan</span></figcaption></figure>
+        <figure><div class="img"><div class="m m-pashmina"></div></div><figcaption>Pashmina<span>Changthang, Ladakh</span></figcaption></figure>
+        <figure><div class="img"><div class="m m-walnut"></div></div><figcaption>Walnut<span>Srinagar, Kashmir</span></figcaption></figure>
+        <figure><div class="img"><div class="m m-saffron"></div></div><figcaption>Saffron<span>Pampore, Kashmir</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <section class="join">
-    <div class="wrap forms">
-      <form id="artists" class="card" method="POST" action="/api/signup">
-        <input type="hidden" name="form-name" value="artists">
-        <div class="hp" aria-hidden="true"><label for="hp1">Leave this empty</label><input id="hp1" name="company-website" tabindex="-1" autocomplete="off"></div>
-        <p class="eyebrow">Artists</p>
-        <h2>Apply to be shown</h2>
-        <div class="form">
-          <label for="a-name">Name<input id="a-name" name="name" required maxlength="120" autocomplete="name"></label>
-          <label for="a-city">City<input id="a-city" name="city" required maxlength="120"></label>
-          <label class="full" for="a-email">Email<input id="a-email" name="email" type="email" required autocomplete="email"></label>
-          <label class="full" for="a-link">Portfolio or Instagram<input id="a-link" name="portfolio" type="url" placeholder="https://"></label>
-          <label class="full check" for="a-consent"><input id="a-consent" name="consent" type="checkbox" value="yes" required> You may contact me about my work. <a href="/privacy.html">Privacy</a></label>
+  <section class="sec" id="curation">
+    <div class="wrap">
+      <h2 class="sec-title rise">What we look for</h2>
+      <div class="founder rise">
+        <div class="portrait" aria-hidden="true"><svg viewBox="0 0 48 56"><use href="#markhor"/></svg></div>
+        <div>
+          <p><b>A note from the founder.</b> I recently started collecting contemporary art myself, including work by Tom Vattakuzhy, Misha Japanwala, Basita Shah, Aadil Malik and Monica. The more I collected, the clearer the gap became.</p>
+          <p>Most curation is not artist first. That is unfair. Artists spend so much of their lives grappling with uncertainty, yet the very practice of discovery and acquisition is loaded in favour of the gallery and the collector. silkroute.art is built the other way around.</p>
+          <div class="by"><span class="dot" aria-hidden="true"></span>Raheel Khursheed <span>Founder</span></div>
         </div>
-        <button class="btn" type="submit">Apply</button>
-      </form>
+      </div>
+      <div class="principles">
+        <div class="rise"><div class="lbl">The practice</div><div class="box"><h3>Serious and sustained, whatever the medium</h3><p>Some artists work inside inherited traditions. Others have moved away from them. What matters is that the work could only have been made by this artist, from this place, now.</p><div class="chips"><span>Papier-mâché</span><span>Sozni</span><span>Miniature painting</span><span>Felt</span></div></div></div>
+        <div class="rise"><div class="lbl">The work</div><div class="box"><h3>We choose work, not followings</h3><p>We visit every artist in their studio, see every work in person before it is listed, and show nothing the artist has not approved.</p><div class="chips"><span>Studio visits</span><span>Seen in person</span><span>Artist approved</span></div></div></div>
+        <div class="rise"><div class="lbl">The pace</div><div class="box"><h3>Slowly, one region at a time</h3><p>We will grow slowly, one region at a time, beginning in Srinagar.</p><div class="chips"><span>Srinagar first</span></div></div></div>
+      </div>
 
-      <form id="first-access" class="card dark" method="POST" action="/api/signup">
-        <input type="hidden" name="form-name" value="collectors">
-        <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
-        <p class="eyebrow">Collectors</p>
-        <h2>First access</h2>
-        <p class="sub">New to collecting? Say so below and we will start with a conversation.</p>
-        <div class="form">
-          <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
-          <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
-          <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></label>
+      <div class="closing rise">
+        <div class="bgm" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#latticeFill)"/></svg></div>
+        <div class="inner">
+          <span class="lbl">Before we open</span>
+          <h2>Be there from the first day</h2>
+          <p>Artists can apply to be shown. Collectors can ask for first access.</p>
+          <div class="acts"><a class="pill light" href="#first-access">Get first access</a><a class="pill glass" href="#artists">Apply as an artist</a></div>
         </div>
-        <button class="btn" type="submit">Request access</button>
-      </form>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap legal">
-    <span class="foot-brand"><svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" aria-hidden="true"><path d="M22.46 52.11 L22.28 51.48 L22.08 50.85 L21.85 50.24 L21.56 49.65 L21.21 49.07 L20.81 48.51 L20.35 47.96 L19.85 47.43 L19.33 46.91 L18.79 46.40 L18.26 45.88 L17.75 45.35 L17.28 44.81 L16.87 44.25 L16.51 43.68 L16.20 43.09 L15.95 42.48 L15.74 41.86 L15.56 41.23 L15.39 40.60 L15.23 39.96 L15.04 39.33 L14.83 38.71 L14.58 38.11 L14.29 37.51 L13.96 36.93 L13.60 36.35 L13.21 35.79 L12.80 35.23 L12.39 34.68 L11.99 34.11 L11.61 33.55 L11.26 32.97 L10.95 32.38 L10.69 31.78 L10.46 31.16 L10.28 30.53 L10.12 29.90 L9.99 29.25 L9.87 28.60 L9.74 27.96 L9.61 27.31 L9.46 26.67 L9.29 26.04 L9.09 25.41 L8.87 24.80 L8.64 24.19 L8.38 23.58 L8.12 22.97 L7.87 22.37 L7.62 21.76 L7.39 21.15 L7.18 20.53 L7.00 19.90 L6.84 19.26 L6.71 18.61 L6.60 17.96 L6.51 17.31 L6.42 16.65 L6.35 15.98 L6.27 15.32 L6.18 14.67 L6.08 14.01 L5.98 13.36 L5.86 12.71 L5.73 12.06 L5.60 11.42 L5.46 10.77 L5.32 10.13 L5.19 9.49 L5.07 8.84 L4.95 8.19 L4.85 7.54 L4.75 6.88 L4.66 6.22 L4.58 5.56 L4.49 4.90 L4.41 4.24 L4.33 3.58 L4.24 2.93 L3.76 3.07 L3.79 3.75 L3.82 4.43 L3.85 5.10 L3.87 5.78 L3.90 6.46 L3.94 7.14 L3.98 7.81 L4.02 8.48 L4.08 9.15 L4.15 9.81 L4.23 10.47 L4.30 11.14 L4.38 11.80 L4.46 12.46 L4.53 13.12 L4.59 13.79 L4.64 14.46 L4.68 15.13 L4.71 15.81 L4.73 16.49 L4.75 17.17 L4.77 17.85 L4.81 18.52 L4.86 19.19 L4.93 19.85 L5.03 20.51 L5.15 21.16 L5.30 21.80 L5.47 22.43 L5.66 23.06 L5.86 23.68 L6.06 24.31 L6.25 24.93 L6.43 25.56 L6.59 26.20 L6.72 26.84 L6.83 27.49 L6.92 28.15 L6.99 28.81 L7.05 29.48 L7.11 30.15 L7.18 30.81 L7.28 31.47 L7.40 32.12 L7.56 32.75 L7.76 33.38 L8.00 33.99 L8.29 34.58 L8.60 35.17 L8.94 35.75 L9.29 36.33 L9.63 36.91 L9.96 37.49 L10.26 38.08 L10.52 38.69 L10.74 39.30 L10.92 39.93 L11.07 40.57 L11.18 41.22 L11.28 41.88 L11.38 42.53 L11.49 43.19 L11.63 43.83 L11.81 44.46 L12.04 45.07 L12.33 45.67 L12.68 46.24 L13.07 46.81 L13.50 47.36 L13.96 47.90 L14.42 48.44 L14.87 48.99 L15.29 49.54 L15.66 50.11 L15.98 50.70 L16.24 51.30 L16.44 51.93 L16.58 52.57 L16.68 53.23 L16.74 53.89 Z M25.54 52.11 L25.72 51.48 L25.92 50.85 L26.15 50.24 L26.44 49.65 L26.79 49.07 L27.19 48.51 L27.65 47.96 L28.15 47.43 L28.67 46.91 L29.21 46.40 L29.74 45.88 L30.25 45.35 L30.72 44.81 L31.13 44.25 L31.49 43.68 L31.80 43.09 L32.05 42.48 L32.26 41.86 L32.44 41.23 L32.61 40.60 L32.77 39.96 L32.96 39.33 L33.17 38.71 L33.42 38.11 L33.71 37.51 L34.04 36.93 L34.40 36.35 L34.79 35.79 L35.20 35.23 L35.61 34.68 L36.01 34.11 L36.39 33.55 L36.74 32.97 L37.05 32.38 L37.31 31.78 L37.54 31.16 L37.72 30.53 L37.88 29.90 L38.01 29.25 L38.13 28.60 L38.26 27.96 L38.39 27.31 L38.54 26.67 L38.71 26.04 L38.91 25.41 L39.13 24.80 L39.36 24.19 L39.62 23.58 L39.88 22.97 L40.13 22.37 L40.38 21.76 L40.61 21.15 L40.82 20.53 L41.00 19.90 L41.16 19.26 L41.29 18.61 L41.40 17.96 L41.49 17.31 L41.58 16.65 L41.65 15.98 L41.73 15.32 L41.82 14.67 L41.92 14.01 L42.02 13.36 L42.14 12.71 L42.27 12.06 L42.40 11.42 L42.54 10.77 L42.68 10.13 L42.81 9.49 L42.93 8.84 L43.05 8.19 L43.15 7.54 L43.25 6.88 L43.34 6.22 L43.42 5.56 L43.51 4.90 L43.59 4.24 L43.67 3.58 L43.76 2.93 L44.24 3.07 L44.21 3.75 L44.18 4.43 L44.15 5.10 L44.13 5.78 L44.10 6.46 L44.06 7.14 L44.02 7.81 L43.98 8.48 L43.92 9.15 L43.85 9.81 L43.77 10.47 L43.70 11.14 L43.62 11.80 L43.54 12.46 L43.47 13.12 L43.41 13.79 L43.36 14.46 L43.32 15.13 L43.29 15.81 L43.27 16.49 L43.25 17.17 L43.23 17.85 L43.19 18.52 L43.14 19.19 L43.07 19.85 L42.97 20.51 L42.85 21.16 L42.70 21.80 L42.53 22.43 L42.34 23.06 L42.14 23.68 L41.94 24.31 L41.75 24.93 L41.57 25.56 L41.41 26.20 L41.28 26.84 L41.17 27.49 L41.08 28.15 L41.01 28.81 L40.95 29.48 L40.89 30.15 L40.82 30.81 L40.72 31.47 L40.60 32.12 L40.44 32.75 L40.24 33.38 L40.00 33.99 L39.71 34.58 L39.40 35.17 L39.06 35.75 L38.71 36.33 L38.37 36.91 L38.04 37.49 L37.74 38.08 L37.48 38.69 L37.26 39.30 L37.08 39.93 L36.93 40.57 L36.82 41.22 L36.72 41.88 L36.62 42.53 L36.51 43.19 L36.37 43.83 L36.19 44.46 L35.96 45.07 L35.67 45.67 L35.32 46.24 L34.93 46.81 L34.50 47.36 L34.04 47.90 L33.58 48.44 L33.13 48.99 L32.71 49.54 L32.34 50.11 L32.02 50.70 L31.76 51.30 L31.56 51.93 L31.42 52.57 L31.32 53.23 L31.26 53.89 Z" fill="currentColor"/><path d="M19.51 46.17 Q 16.40 45.08 11.15 44.66 M16.01 40.40 Q 13.75 39.05 9.70 38.26 M12.90 34.51 Q 10.66 33.16 6.94 32.26 M10.29 28.47 Q 8.76 26.89 6.06 25.68 M8.20 22.27 Q 6.83 20.64 4.58 19.28 M6.59 15.91 Q 5.72 14.12 4.27 12.52 M5.35 9.44 Q 4.71 7.58 3.77 5.82 M28.49 46.17 Q 31.60 45.08 36.85 44.66 M31.99 40.40 Q 34.25 39.05 38.30 38.26 M35.10 34.51 Q 37.34 33.16 41.06 32.26 M37.71 28.47 Q 39.24 26.89 41.94 25.68 M39.80 22.27 Q 41.17 20.64 43.42 19.28 M41.41 15.91 Q 42.28 14.12 43.73 12.52 M42.65 9.44 Q 43.29 7.58 44.23 5.82" fill="none" stroke="var(--paper,#0B0E17)" stroke-width="1.15" stroke-linecap="round"/></svg>silkroute.art</span>
-    <span><a href="/ai-policy.html">AI policy</a><span aria-hidden="true">&ensp;·&ensp;</span><a href="/privacy.html">Privacy</a></span>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="mark"><svg aria-hidden="true"><use href="#markhor"/></svg>silkroute</div>
+        <p class="tagline">Contemporary art from Kashmir and the Silk Route. Human artists only.</p>
+      </div>
+      <div class="links">
+        <div><h4>Visit</h4><ul><li><a href="#artists-first">Artists</a></li><li><a href="#collectors">Collectors</a></li><li><a href="#curation">Curation</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="/ai-policy.html">AI policy</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
+      </div>
+
+      <form id="artists" class="formcard" method="POST" action="/api/signup">
+        <input type="hidden" name="form-name" value="artists">
+        <div class="hp" aria-hidden="true"><label for="hp1">Leave this empty</label><input id="hp1" name="company-website" tabindex="-1" autocomplete="off"></div>
+        <div class="hd"><b>Apply to be shown</b>For artists. We reply to every application.</div>
+        <div class="two">
+          <label class="f"><input id="a-name" name="name" required maxlength="120" autocomplete="name" placeholder="Name" aria-label="Name"></label>
+          <label class="f"><input id="a-city" name="city" required maxlength="120" placeholder="City" aria-label="City"></label>
+        </div>
+        <label class="f"><input id="a-email" name="email" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></label>
+        <label class="f"><input id="a-link" name="portfolio" type="url" placeholder="Portfolio or Instagram (https://)" aria-label="Portfolio or Instagram"></label>
+        <label class="check" for="a-consent"><input id="a-consent" name="consent" type="checkbox" value="yes" required> <span>You may contact me about my work. <a href="/privacy.html">Privacy</a></span></label>
+        <button class="pill" type="submit">Apply</button>
+      </form>
+
+      <form id="first-access" class="formcard" method="POST" action="/api/signup">
+        <input type="hidden" name="form-name" value="collectors">
+        <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
+        <div class="hd"><b>First access</b>For collectors. New to collecting? Say so and we will start with a conversation.</div>
+        <label class="f"><input id="c-email" name="email" type="email" required autocomplete="email" placeholder="Email" aria-label="Email"></label>
+        <label class="f"><select id="c-interest" name="interest" aria-label="Where are you starting from?"><option value="">Where are you starting from? (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
+        <label class="check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
+        <button class="pill" type="submit">Request access</button>
+      </form>
+    </div>
+    <div class="legal"><span>&copy; 2026 silkroute.art</span><span><a href="/ai-policy.html">AI policy</a>&ensp;<a href="/privacy.html">Privacy</a></span></div>
   </div>
 </footer>
 
 <script>
 (function(){
 "use strict";
+/* Route map from real coordinates */
 const CITIES = [
   {name:"Tabriz",lat:38.08,lon:46.29},{name:"Herat",lat:34.35,lon:62.20},{name:"Bukhara",lat:39.77,lon:64.42},
   {name:"Samarkand",lat:39.65,lon:66.96},{name:"Bishkek",lat:42.87,lon:74.59},{name:"Kashgar",lat:39.47,lon:75.99},
@@ -577,6 +478,26 @@ CITIES.forEach((c,i)=>{ const g=document.createElementNS(NS,"g"); g.setAttribute
   const ty=below?cy+26:cy-30; const anchor=(c.name==="Kashgar"||c.name==="Leh")?"start":"middle"; const tx=anchor==="start"?cx+10:cx;
   g.innerHTML='<circle cx="'+cx+'" cy="'+cy+'" r="'+(c.home?7:5.5)+'"></circle><text class="name" x="'+tx+'" y="'+ty+'" text-anchor="'+anchor+'">'+c.name+'</text><text x="'+tx+'" y="'+(ty+15)+'" text-anchor="'+anchor+'">'+c.lat.toFixed(2)+'°N '+c.lon.toFixed(2)+'°E</text>';
   svg.appendChild(g); });
+
+/* Local time in Srinagar */
+const clock=document.getElementById("clock");
+const fmt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit"});
+const tick=()=>{ try{ clock.textContent=fmt.format(new Date()); }catch(e){} };
+tick(); setInterval(tick,20000);
+
+/* Entrances and the collectors index */
+const root=document.documentElement;
+if("IntersectionObserver" in window){
+  root.classList.add("js");
+  requestAnimationFrame(()=>setTimeout(()=>document.getElementById("stage").classList.add("loaded"),80));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }),{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".rise").forEach(el=>io.observe(el));
+  const links=[...document.querySelectorAll("#guideIndex a")];
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-45% 0px -50% 0px"});
+  document.querySelectorAll(".chapter").forEach(c=>spy.observe(c));
+} else {
+  document.getElementById("routeCard").classList.add("in");
+}
 })();
 </script>
 </body>

@@ -357,6 +357,28 @@ footer{padding-block:140px 44px}
 footer .legal{margin-top:0;padding-top:20px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase}
 @media (max-width:620px){.top.min nav.main{gap:20px}}
 @media (max-width:700px){.route-wrap svg{margin-inline:-8px;width:calc(100% + 16px)}.route-wrap .city text:not(.name){display:none}.route-wrap .city text.name{font-size:30px}.route-wrap .city circle{r:9px}}
+
+/* ===== Legibility pass: brighter text, heavier body weight, larger small type. ===== */
+:root,:root[data-theme="dark"],:root[data-theme="light"]{--ink:#F5F1E8;--muted:#C3C7D0;--saffron:#DDB97E;--lapis:#DDB97E;--line:rgba(245,241,232,.18)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#F5F1E8;--muted:#C3C7D0;--saffron:#DDB97E;--lapis:#DDB97E;--line:rgba(245,241,232,.18)}}
+body{font-weight:400;font-size:18px}
+.eyebrow,.statement p.small,.top.min nav.main a,footer .legal{font-size:13px;letter-spacing:.2em;font-weight:500}
+.top.min nav.main a{color:var(--ink)}
+.hero.min .lede{font-size:clamp(19px,1.6vw,23px);color:var(--ink);font-weight:400}
+.statement p{font-weight:500}
+.statement p.small{color:var(--muted)}
+.join .card h2{font-weight:500}
+.form label,.card.dark label{font-size:12.5px;letter-spacing:.16em;color:var(--muted)}
+.form input,.form textarea,.form select,.card.dark input,.card.dark select{font-size:18px;font-weight:400;color:var(--ink);border-bottom-color:rgba(245,241,232,.45)}
+.form input::placeholder,.form textarea::placeholder{color:rgba(245,241,232,.5)}
+.form label.check{font-size:15px;color:var(--ink);letter-spacing:0}
+.btn,.card .btn,.card.dark .btn{font-size:13px;letter-spacing:.18em;color:var(--ink);border-color:rgba(245,241,232,.8)}
+.route-wrap .city text{fill:#B7BBC6;font-size:11px}
+.route-wrap .city text.name{font-weight:500;font-size:17px}
+.route-wrap .city circle{stroke-width:1.3}
+.route-wrap .path{stroke-width:1.5}
+.hero.min h1{font-weight:500}
+@media (max-width:700px){.route-wrap .city text.name{font-size:30px}}
 </style>
 </head>
 <body>

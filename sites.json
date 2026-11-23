@@ -17,6 +17,14 @@
       "preview_url": "https://secondresponder-ai.pages.dev",
       "forms": "functions/api/waitlist.js -> Workers KV secondresponder-waitlist (binding WAITLIST)",
       "check_text": "No one should face a disaster alone"
+    },
+    {
+      "domain": "silkroute.art",
+      "folder": "sites/silkroute.art",
+      "cloudflare_project": "silkroute-art",
+      "preview_url": "https://silkroute-art.pages.dev",
+      "forms": "functions/api/signup.js -> Workers KV silkroute-signups (binding SIGNUPS)",
+      "check_text": "Contemporary art from"
     }
   ]
 }

@@ -12,7 +12,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: the Silk Route as the spine of the page. A plotted route runs west to east across the hero,
    and every artwork carries the city and coordinates it ships from. */
@@ -399,6 +399,17 @@ body{font-weight:400;font-size:18px}
 .top.min .brand{align-items:center}
 .foot-brand{display:inline-flex;align-items:center;gap:12px}
 .foot-brand .mark{width:18px;height:21px;color:var(--saffron)}
+
+/* Display face: Newsreader replaces Bodoni Moda, whose hairlines vanished on the dark ground. */
+:root,:root[data-theme="dark"],:root[data-theme="light"]{--f-display:"Newsreader", "Iowan Old Style", Georgia, serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--f-display:"Newsreader", "Iowan Old Style", Georgia, serif}}
+.hero.min h1{font-weight:500;letter-spacing:-.025em;line-height:1.02}
+.statement p,.curation-body p.lead{font-weight:500;letter-spacing:-.005em}
+.join .card h2,.curation h2{font-weight:500}
+.brand span{font-weight:500;letter-spacing:0}
+.brand small{font-weight:500}
+.route-wrap .city text.name{font-weight:600}
+.terms li span{font-weight:500}
 </style>
 </head>
 <body>

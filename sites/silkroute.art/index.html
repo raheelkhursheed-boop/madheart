@@ -71,7 +71,11 @@ nav.main a:hover{opacity:1}
 .top.solid{background:rgba(247,244,238,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);border-bottom-color:var(--rule);--bg:var(--paper)}
 .top.solid .brand svg,.top.solid .brand span i{color:var(--saffron)}
 .top.solid .cta:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.top .cta{white-space:nowrap}
 @media (max-width:860px){nav.main{display:none}.top .cta{margin-left:auto}}
+@media (max-width:420px){.top .cta{height:36px;padding:0 12px;letter-spacing:.14em;font-size:11px}.brand span{font-size:21px}}
+.who{margin-top:14px;font-size:14px;color:var(--ivory-2)}
+.who b{color:var(--ivory);font-weight:500}
 
 /* Hero: the route is the cover */
 .hero{position:relative;background:var(--night);color:var(--ivory);display:flex;flex-direction:column;overflow:hidden;--bg:var(--night)}
@@ -267,7 +271,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
   <div class="wrap">
     <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute<i>.art</i></span></a>
     <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Collectors</a><a href="#curation">Curation</a><a href="/ai-policy.html">AI policy</a></nav>
-    <a class="cta" href="#first-access">First access</a>
+    <a class="cta" href="#first-access">Join the waitlist</a>
   </div>
 </header>
 
@@ -277,7 +281,8 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
       <p class="kick"><span>Artist first</span><span>Human made</span><span><b>From Srinagar to the World</b>, soon</span></p>
       <h1>Contemporary art from <em>Kashmir</em> and the Silk Route</h1>
       <p class="lede">Artists set their prices, keep the majority share, and are paid again on resale.</p>
-      <div class="acts"><a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Apply as an artist</a></div>
+      <div class="acts"><a class="btn fill" href="#first-access">Join the journey <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Join the route</a></div>
+      <p class="who">Collectors, <b>join the journey</b>. Artists, <b>join the route</b>.</p>
     </div>
     <div class="map">
       <svg viewBox="0 0 1000 340" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Map of the route through Tabriz, Herat, Bukhara, Samarkand, Bishkek, Kashgar, Leh and Srinagar" id="routeSvg"></svg>
@@ -296,7 +301,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
         <li class="rise"><span class="num">II</span><h3>Paid again on resale</h3><p>Artists are paid again whenever their work is resold.</p></li>
         <li class="rise"><span class="num">III</span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</p></li>
       </ol>
-      <div class="terms-foot rise"><a class="btn" href="#artists">Apply to be shown <span class="a" aria-hidden="true">&rarr;</span></a><a class="link" href="/ai-policy.html">Human artists only</a></div>
+      <div class="terms-foot rise"><a class="btn" href="#artists">Join the route <span class="a" aria-hidden="true">&rarr;</span></a><a class="link" href="/ai-policy.html">Human artists only</a></div>
     </div>
   </section>
 
@@ -314,7 +319,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
         <span class="label"><span class="n">ii.</span> Collectors</span>
         <h2 class="rise">For <em>first-time</em> collectors</h2>
         <p class="rise">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
-        <a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a>
+        <a class="btn fill" href="#first-access">Join the journey <span class="a" aria-hidden="true">&rarr;</span></a>
       </aside>
       <div>
         <p class="intro rise">Galleries can feel closed. Prices are hidden behind "on request". It is hard to know which artists are serious, what a fair price is, or whether you are allowed to ask. We want your first work to feel as considered as your tenth, without needing to know anyone.</p>
@@ -382,8 +387,9 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
     <div class="wrap inner">
       <span class="label"><span class="n" style="color:var(--ivory-2)">v.</span> Before we open</span>
       <h2 class="rise">Be there from <em>the first day</em></h2>
-      <p class="rise">Artists can apply to be shown. Collectors can ask for first access.</p>
-      <div class="acts rise"><a class="btn fill" href="#first-access">Get first access <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Apply as an artist</a></div>
+      <p class="rise">Artists can apply to be shown. Collectors can join the waitlist for new work.</p>
+      <div class="acts rise"><a class="btn fill" href="#first-access">Join the journey <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn" href="#artists">Join the route</a></div>
+      <p class="who">Collectors, <b>join the journey</b>. Artists, <b>join the route</b>.</p>
     </div>
   </section>
 
@@ -393,7 +399,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
         <input type="hidden" name="form-name" value="artists">
         <div class="hp" aria-hidden="true"><label for="hp1">Leave this empty</label><input id="hp1" name="company-website" tabindex="-1" autocomplete="off"></div>
         <span class="label">For artists</span>
-        <h3>Apply to be shown</h3>
+        <h3>Join the route</h3>
         <p class="sub">Tell us where you work and where we can see it.</p>
         <div class="fields">
           <label for="a-name">Name<input id="a-name" name="name" required maxlength="120" autocomplete="name"></label>
@@ -403,22 +409,22 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
           <label class="full check" for="a-consent"><input id="a-consent" name="consent" type="checkbox" value="yes" required> <span>You may contact me about my work. <a href="/privacy.html">Privacy</a></span></label>
         </div>
         <span class="sp"></span>
-        <button class="btn" type="submit">Apply <span class="a" aria-hidden="true">&rarr;</span></button>
+        <button class="btn" type="submit">Join the route <span class="a" aria-hidden="true">&rarr;</span></button>
       </form>
 
       <form id="first-access" class="panel" method="POST" action="/api/signup">
         <input type="hidden" name="form-name" value="collectors">
         <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
         <span class="label">For collectors</span>
-        <h3>First access</h3>
-        <p class="sub">New to collecting? Say so below and we will start with a conversation.</p>
+        <h3>Join the waitlist</h3>
+        <p class="sub">We will write when we open. New to collecting? Say so below and we will start with a conversation.</p>
         <div class="fields">
           <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
           <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
           <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
         </div>
         <span class="sp"></span>
-        <button class="btn fill" type="submit">Request access <span class="a" aria-hidden="true">&rarr;</span></button>
+        <button class="btn fill" type="submit">Join the waitlist <span class="a" aria-hidden="true">&rarr;</span></button>
       </form>
     </div>
   </section>

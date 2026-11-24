@@ -129,6 +129,7 @@ nav.main a:hover{opacity:1}
 /* Who-joins-what pair: equal buttons in inverse colours */
 .pair{display:grid;gap:12px;width:min(100%,440px);margin-top:clamp(28px,3vw,40px)}
 .pair.center{margin-inline:auto}
+.pair-note{margin-top:14px;width:min(100%,440px);text-align:center;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ivory-2)}
 .on-dark .btn.duo{width:100%;height:60px;justify-content:center;gap:12px;padding:0 22px;border:1px solid var(--saffron-lt)}
 .on-dark .duo-a{background:var(--saffron-lt);color:var(--night)}
 .on-dark .duo-c{background:transparent;color:var(--saffron-lt)}
@@ -299,7 +300,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
 <header class="top" id="top-bar">
   <div class="wrap">
     <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute<i>.art</i></span></a>
-    <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Collectors</a><a href="#curation">Manifesto</a><a href="/ai-policy.html">AI policy</a></nav>
+    <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Custodians</a><a href="#curation">Manifesto</a><a href="/ai-policy.html">AI policy</a></nav>
     <a class="cta" href="#first-access">Join the waitlist</a>
   </div>
 </header>
@@ -313,7 +314,8 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
     <div class="wrap copy">
       <h1>Contemporary art from <em>Kashmir</em> and the <em>Silk Route</em></h1>
       <p class="from">From Srinagar to the World</p>
-      <div class="pair"><a class="btn duo duo-a" href="#artists"><span class="who-k">Artists</span><span class="sep" aria-hidden="true"></span>Join the Route <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn duo duo-c" href="#first-access"><span class="a" aria-hidden="true">&rarr;</span> <span class="who-k">Collectors</span><span class="sep" aria-hidden="true"></span>Join the Journey</a></div>
+      <div class="pair"><a class="btn duo duo-a" href="#artists"><span class="who-k">Artists</span><span class="sep" aria-hidden="true"></span>Join the Route <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn duo duo-c" href="#first-access"><span class="a" aria-hidden="true">&rarr;</span> <span class="who-k">Custodians</span><span class="sep" aria-hidden="true"></span>Join the Journey</a></div>
+      <p class="pair-note">Custodians: those who will care for the work.</p>
     </div>
   </section>
 
@@ -325,7 +327,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
       <ol class="terms">
         <li class="rise"><span class="num" role="img" aria-label="1"><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>The majority share</h3><p>Artists receive the majority of the revenue from every sale made through us.</p></li>
         <li class="rise"><span class="num" role="img" aria-label="2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>Paid again on resale</h3><p>Artists are paid again whenever their work is resold.</p></li>
-        <li class="rise"><span class="num" role="img" aria-label="3"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it has been acquired.</p></li>
+        <li class="rise"><span class="num" role="img" aria-label="3"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>The right to exhibit</h3><p>For works that are foundational to their practice, artists can negotiate the right to exhibit the work after it finds its custodian.</p></li>
       </ol>
       <div class="terms-foot rise"><a class="btn" href="#artists">Join the route <span class="a" aria-hidden="true">&rarr;</span></a><a class="link" href="/ai-policy.html">Human artists only</a></div>
     </div>
@@ -341,8 +343,8 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
   <section class="room" id="collectors">
     <div class="wrap collect">
       <aside>
-        <span class="label"><span class="horns" role="img" aria-label="Section 2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span> Collectors</span>
-        <h2 class="rise">For <em>first-time</em> collectors</h2>
+        <span class="label"><span class="horns" role="img" aria-label="Section 2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span> Custodians</span>
+        <h2 class="rise">For <em>first-time</em> custodians</h2>
         <p class="rise">Many people would love to live with original art but have never bought a piece. Not for lack of taste, but because nobody shows them where to start.</p>
         <a class="btn fill" href="#first-access">Join the journey <span class="a" aria-hidden="true">&rarr;</span></a>
       </aside>
@@ -415,7 +417,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
     <div class="wrap inner">
       <span class="label"><span class="horns" role="img" aria-label="Section 5"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span> Before we open</span>
       <h2 class="rise">Be there on <em>day one</em></h2>
-      <div class="pair center rise"><a class="btn duo duo-a" href="#artists"><span class="who-k">Artists</span><span class="sep" aria-hidden="true"></span>Join the Route <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn duo duo-c" href="#first-access"><span class="a" aria-hidden="true">&rarr;</span> <span class="who-k">Collectors</span><span class="sep" aria-hidden="true"></span>Join the Journey</a></div>
+      <div class="pair center rise"><a class="btn duo duo-a" href="#artists"><span class="who-k">Artists</span><span class="sep" aria-hidden="true"></span>Join the Route <span class="a" aria-hidden="true">&rarr;</span></a><a class="btn duo duo-c" href="#first-access"><span class="a" aria-hidden="true">&rarr;</span> <span class="who-k">Custodians</span><span class="sep" aria-hidden="true"></span>Join the Journey</a></div>
     </div>
   </section>
 
@@ -441,12 +443,12 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
       <form id="first-access" class="panel" method="POST" action="/api/signup">
         <input type="hidden" name="form-name" value="collectors">
         <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
-        <span class="label">Collectors</span>
+        <span class="label">Custodians</span>
         <h3>Join the Journey</h3>
-        <p class="sub">We will write when we open. New to collecting? Say so below and we will start with a conversation.</p>
+        <p class="sub">We will write when we open. Is this your first work? Say so below and we will start with a conversation.</p>
         <div class="fields">
           <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
-          <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I collect regularly</option></select></label>
+          <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I own many works</option></select></label>
           <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
         </div>
         <span class="sp"></span>

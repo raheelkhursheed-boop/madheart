@@ -147,13 +147,12 @@ nav.main a:hover{opacity:1}
 .head h2 em{font-style:italic;color:var(--saffron)}
 .head p{font-family:var(--serif);font-size:clamp(20px,1.7vw,25px);line-height:1.42;color:var(--ink-2);max-width:40ch}
 @media (max-width:900px){.head{grid-template-columns:1fr;gap:22px}}
-.head-r{grid-template-columns:7fr 5fr}
-.head-r > div{text-align:right}
-.head-r .label{justify-content:flex-end}
+.head-r{grid-template-columns:5fr 7fr}
+.head-r > div{order:-1}
 .head-r h2 em{white-space:nowrap}
-.head-r .lead{margin:26px 0 0 auto;max-width:34ch}
+.head-r .lead{margin-top:26px;max-width:34ch}
 .head-r > p{font-size:clamp(18px,1.4vw,21px);max-width:52ch}
-@media (max-width:900px){.head-r{grid-template-columns:1fr}.head-r > div{order:-1}}
+@media (max-width:900px){.head-r{grid-template-columns:1fr}}
 
 /* Artist terms: three ruled columns */
 .terms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-strong)}

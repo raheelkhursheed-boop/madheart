@@ -25,7 +25,7 @@
   --serif:"Newsreader","Iowan Old Style",Georgia,serif;
   --sans:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
   --gutter:clamp(20px,4.4vw,72px);
-  --room:clamp(104px,13vw,200px);
+  --room:clamp(72px,8vw,128px);
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -102,7 +102,7 @@ nav.main a:hover{opacity:1}
   .map .city.home .ring{transform-origin:center;transform-box:fill-box;animation:pulse 2.8s ease-out 3.6s infinite}
   @keyframes pulse{from{transform:scale(1);opacity:.7}to{transform:scale(3.2);opacity:0}}
 }
-.hero .copy{position:relative;z-index:2;padding-block:clamp(56px,6vw,96px) clamp(80px,9vw,140px);width:100%}
+.hero .copy{position:relative;z-index:2;padding-block:clamp(56px,6vw,96px) clamp(60px,6.5vw,104px);width:100%}
 .hero .kick{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-2);margin-bottom:clamp(26px,3.4vw,40px)}
 .hero .kick b{color:var(--saffron-lt);font-weight:600}
 .hero .from{margin-top:clamp(20px,2.2vw,30px);font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--saffron-lt)}
@@ -147,6 +147,13 @@ nav.main a:hover{opacity:1}
 .head h2 em{font-style:italic;color:var(--saffron)}
 .head p{font-family:var(--serif);font-size:clamp(20px,1.7vw,25px);line-height:1.42;color:var(--ink-2);max-width:40ch}
 @media (max-width:900px){.head{grid-template-columns:1fr;gap:22px}}
+.head-r{grid-template-columns:7fr 5fr}
+.head-r > div{text-align:right}
+.head-r .label{justify-content:flex-end}
+.head-r h2 em{white-space:nowrap}
+.head-r .lead{margin:26px 0 0 auto;max-width:34ch}
+.head-r > p{font-size:clamp(18px,1.4vw,21px);max-width:52ch}
+@media (max-width:900px){.head-r{grid-template-columns:1fr}.head-r > div{order:-1}}
 
 /* Artist terms: three ruled columns */
 .terms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-strong)}
@@ -241,7 +248,7 @@ nav.main a:hover{opacity:1}
 @media (max-width:900px){.letter{grid-template-columns:1fr}.principles{grid-template-columns:1fr}.principles div,.principles div+div{padding:26px 0;border-left:0;border-top:1px solid var(--rule)}.principles div:first-child{border-top:0}}
 
 /* Closing: back to the night of the cover */
-.closing{position:relative;background:var(--night);color:var(--ivory);overflow:hidden;text-align:center;padding-block:clamp(120px,15vw,220px);--bg:var(--night)}
+.closing{position:relative;background:var(--night);color:var(--ivory);overflow:hidden;text-align:center;padding-block:clamp(88px,10vw,150px);--bg:var(--night)}
 .closing .lattice{position:absolute;inset:0;width:100%;height:100%;color:var(--saffron-lt);opacity:.12}
 .closing::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 70% at 50% 105%,rgba(225,164,88,.32),transparent 70%)}
 .closing .inner{position:relative}
@@ -337,34 +344,29 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
     <div class="wrap">
       <svg class="orn" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><rect x="12" y="12" width="32" height="32"/><rect x="12" y="12" width="32" height="32" transform="rotate(45 28 28)"/><circle cx="28" cy="28" r="5"/></g></svg>
       <blockquote class="rise"><b>Built with artists</b> &mdash;<br>for artists and art lovers.</blockquote>
+      <p class="small rise">All works verified for medium, size, date &amp; provenance.</p>
     </div>
   </section>
 
   <section class="room" id="collectors">
-    <div class="wrap collect">
-      <aside>
-        <span class="label"><span class="horns" role="img" aria-label="Section 2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span> Custodians</span>
-        <h2 class="rise">For <em>first-time</em> custodians</h2>
-        <p class="rise">We are reimagining the idea of a collector. Instead, we want you to think of yourself as a custodian. This encourages an ongoing relationship, both with the artist and the art work that is in your care.</p>
-        <a class="btn fill" href="#first-access">Join the journey <span class="a" aria-hidden="true">&rarr;</span></a>
-      </aside>
-      <div>
-        <p class="intro rise">Many people would love to live with original art but don&rsquo;t know where to start. Not for lack of taste, but because nobody shows them how. Galleries often feel closed. Prices are hidden behind "on request" and it is hard to assess what a fair price is, or whether you are even allowed to ask. We want to make this process such that your first custodianship feels as considered as your tenth, without needing to know anyone.</p>
-        <ol class="steps">
-          <li class="rise"><span class="n">01</span><div><h3>Start with a conversation, not a catalogue</h3><p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short list of artists and works to look at, not a hundred.</p></div></li>
-          <li class="rise"><span class="n">02</span><div><h3>Meet the artist</h3><p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p></div></li>
-          <li class="rise"><span class="n">03</span><div><h3>Every price in the open</h3><p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p></div></li>
-          <li class="rise"><span class="n">04</span><div><h3>A first work does not have to be a big one</h3><p>We show smaller works and works on paper alongside major pieces, so you can begin with something you love at a price you are comfortable with.</p></div></li>
-          <li class="rise"><span class="n">05</span><div><h3>Know exactly what you are buying</h3><p>We have seen every work in person. Each one comes with its medium, size, date, the story of where it came from and how to care for it, and the guarantee that it was made by human hands.</p></div></li>
-        </ol>
-        <div class="rules rise on-dark">
+    <div class="wrap">
+      <div class="head head-r">
+        <p class="rise">Many people would love to live with original art but don&rsquo;t know where to start. Not for lack of taste, but because nobody shows them how. Galleries often feel closed. Prices are hidden behind "on request" and it is hard to assess what a fair price is, or whether you are even allowed to ask. We want to make this process such that your first custodianship feels as considered as your tenth, without needing to know anyone.</p>
+        <div><span class="label"><span class="horns" role="img" aria-label="Section 2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span> Custodians</span><h2 class="rise">For <em>first-time</em> custodians</h2><p class="lead rise">We are reimagining the idea of a collector. Instead, we want you to think of yourself as a custodian. This encourages an ongoing relationship, both with the artist and the art work that is in your care.</p></div>
+      </div>
+      <ol class="terms">
+        <li class="rise"><span class="num" role="img" aria-label="1"><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>Start with a conversation, not a catalogue</h3><p>Tell us what you keep coming back to, where the work will live and what you want to spend. We send back a short curated list of artists and works to look at.</p></li>
+        <li class="rise"><span class="num" role="img" aria-label="2"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>Get to know the artist</h3><p>Every work comes with the artist's own account of how and why it was made. Where the artist is willing, you can speak with them or visit the studio before you decide.</p></li>
+        <li class="rise"><span class="num" role="img" aria-label="3"><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg><svg aria-hidden="true"><use href="#markhor"/></svg></span><h3>Every price in the open</h3><p>Prices are set by the artist and shown on every work. No "price on request", and no different price for people we know.</p></li>
+      </ol>
+      <div class="terms-foot rise"><a class="btn fill" href="#first-access">Join the Journey <span class="a" aria-hidden="true">&rarr;</span></a></div>
+      <div class="rules rise on-dark">
           <h3>A few honest rules for a <em>first purchase</em></h3>
           <ol>
             <li>Buy the work you keep looking at, not the one you think you should like.</li>
             <li>Decide on a budget before you fall in love, and tell us. It helps us, not just you.</li>
             <li>Ask the artist questions. Most are glad to be asked.</li>
           </ol>
-        </div>
       </div>
     </div>
   </section>

@@ -7,7 +7,7 @@
 //   - a short thank-you to the person who signed up
 // Set in Cloudflare Pages → silkroute-art → Settings → Variables and Secrets:
 //   RESEND_API_KEY (secret), NOTIFY_EMAIL (secret, the inbox that gets notifications).
-// If either is missing, sign-ups are still saved and no email is sent.
+// If either is missing, sign-ups are still saved and no email is sent. (Both set for Production and Preview on 2026-11-26.)
 const FORMS = {
   artists: ["name", "email", "city", "portfolio", "practice", "consent"],
   collectors: ["email", "country", "interest", "consent"],

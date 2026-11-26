@@ -207,7 +207,7 @@ nav.main a:hover{opacity:1}
 .track:focus-visible{outline:1px solid var(--saffron);outline-offset:6px}
 .slide{flex:0 0 clamp(250px,30vw,400px);scroll-snap-align:start;min-width:0}
 .slide figure{margin:0}
-.slide .frame{display:grid;place-items:center;aspect-ratio:4/5;background:var(--paper-2);padding:clamp(18px,2.4vw,34px);border:1px solid var(--rule)}
+.slide .frame{display:grid;grid-template:minmax(0,1fr)/minmax(0,1fr);place-items:center;aspect-ratio:4/5;background:var(--paper-2);padding:clamp(18px,2.4vw,34px);border:1px solid var(--rule)}
 .slide img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 14px 30px -18px rgba(29,27,24,.55);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .slide .frame:hover img{transform:scale(1.025)}
 .slide figcaption{margin-top:16px}

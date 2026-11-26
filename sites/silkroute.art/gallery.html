@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12100D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+<title>The gallery · silkroute.art</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+.page.wide{max-width:1400px}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:clamp(28px,3vw,44px);margin-top:clamp(36px,5vw,56px)}
+.w img,.w .ph{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--paper-2);display:block}
+.w h3{font-size:24px;margin:14px 0 2px}
+.w h3 i{font-style:italic}
+.w p{font-size:14.5px;color:var(--ink-2)}
+.w .price{margin-top:6px;font-family:var(--serif);font-size:19px;color:var(--ink)}
+.w .price.gone{color:var(--ink-3);font-style:italic}
+.quiet{margin-top:48px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a class="brand" href="/"><img src="/markhor.svg" alt=""><span>silkroute<i>.art</i></span></a>
+  <nav class="who"><a href="/account">Your account</a></nav>
+</div></header>
+
+<main class="page wide">
+  <p class="kicker">Private gallery · custodians only</p>
+  <h1>The <em>gallery</em></h1>
+  <p class="lede">Contemporary art from Kashmir and the Silk Route, made by human hands.</p>
+  <div class="notice" id="msg" hidden></div>
+  <div class="works" id="works"></div>
+  <footer class="foot"><a href="/">silkroute.art</a><a href="/ai-policy.html">AI policy</a><a href="/first-purchase.html">First purchase</a><a href="/privacy.html">Privacy</a></footer>
+</main>
+
+<script>
+(async () => {
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const r = await fetch("/api/gallery", { credentials: "same-origin" });
+  if (r.status === 401) return location.replace("/signin");
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) { $("#msg").innerHTML = esc(d.error || "The gallery isn't available just now.") + ' <a href="/account">Back to your account</a>'; $("#msg").hidden = false; return; }
+  if (!d.works.length) { $("#works").outerHTML = '<p class="quiet">The first works are being hung. We&rsquo;ll write when they&rsquo;re ready.</p>'; return; }
+  const size = (w) => { const s = [w.height_cm, w.width_cm, w.depth_cm].filter((x) => x != null); return s.length ? s.join(" × ") + " cm" : ""; };
+  $("#works").innerHTML = d.works.map((w) => `
+    <article class="w">
+      ${w.cover ? `<img loading="lazy" src="${esc(w.cover)}" alt="${esc(w.title)} by ${esc(w.artist_name)}">` : '<div class="ph"></div>'}
+      <h3><i>${esc(w.title)}</i>${w.year ? ", " + esc(w.year) : ""}</h3>
+      <p>${esc(w.artist_name)}${w.artist_city ? " · " + esc(w.artist_city) : ""}</p>
+      <p>${[esc(w.medium), size(w)].filter(Boolean).join(" · ")}</p>
+      ${w.available ? `<p class="price">${w.price_usd ? "$" + Number(w.price_usd).toLocaleString("en-US") : "Price on request"}</p>` : '<p class="price gone">Found its custodian</p>'}
+    </article>`).join("");
+})();
+</script>
+</body>
+</html>

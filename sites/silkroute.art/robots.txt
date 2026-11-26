@@ -45,3 +45,10 @@ Disallow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /submit
+Disallow: /submission
+Disallow: /api/
+Disallow: /account
+Disallow: /gallery
+Disallow: /signin

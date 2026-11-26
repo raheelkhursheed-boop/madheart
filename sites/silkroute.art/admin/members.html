@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12100D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+<title>Custodians · Curation desk · silkroute.art</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+body{font-size:16px}
+.desk{max-width:1400px;margin:0 auto;padding:28px var(--gutter) 80px}
+.desk h1{font-size:clamp(34px,3.6vw,48px);font-weight:300;letter-spacing:-.03em}
+.desk h1 em{font-style:italic;color:var(--saffron)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin:22px 0 0;border-bottom:1px solid var(--ink)}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 14px;font:600 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);cursor:pointer}
+.tabs button b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;letter-spacing:0;margin-left:6px}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--saffron)}
+.tabs button[aria-selected=true] b{color:var(--saffron)}
+.m{display:grid;grid-template-columns:minmax(220px,1.4fr) 1fr 1fr auto;gap:18px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--rule)}
+.m h3{font-size:20px;line-height:1.25;word-break:break-word}
+.m .em{font-size:14px;color:var(--ink-2);word-break:break-all}
+.m .meta{font-size:14px;color:var(--ink-2)}
+.m .btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--rule);color:var(--ink-2);margin-right:6px}
+.tag.warn{border-color:var(--warn);color:var(--warn)}
+.empty{padding:40px 16px;text-align:center;color:var(--ink-3);font-family:var(--serif);font-style:italic;font-size:19px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--night);color:var(--ivory);padding:12px 18px;font-size:14px;z-index:9}
+@media (max-width:860px){.m{grid-template-columns:1fr}.m .btns{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a class="brand" href="/"><img src="/markhor.svg" alt=""><span>silkroute<i>.art</i></span></a>
+  <nav class="who"><a href="/admin/">Works</a><a href="/admin/members" style="color:var(--saffron-lt)">Custodians</a></nav>
+</div></header>
+
+<main class="desk">
+  <div class="top">
+    <h1>The <em>custodians</em></h1>
+    <button class="btn sm quiet" id="import" title="Copy everyone from the old waitlist form into accounts on the waitlist">Bring in the old waitlist</button>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="list"><div class="empty">Loading…</div></div>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const when = (s) => (s ? new Date(s).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" }) : "");
+  const TABS = [["waitlist", "Waiting"], ["approved", "Approved"], ["paused", "Paused"], ["", "All"]];
+  const START = { "first-work": "First work", "a-few": "Owns a few", collector: "Owns many" };
+  let tab = (location.hash.match(/tab=(\w*)/) || [])[1] ?? "waitlist";
+  const toast = (m) => { const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => (t.hidden = true), 2600); };
+  async function api(path, body) {
+    const r = await fetch(path, body ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) } : {});
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || "Request failed (" + r.status + ")");
+    return d;
+  }
+  const btn = (id, status, label, fill) => `<button class="btn sm ${fill ? "fill" : "quiet"}" data-id="${esc(id)}" data-s="${status}">${label}</button>`;
+
+  async function load() {
+    const d = await api("/admin/api/members" + (tab ? "?status=" + tab : ""));
+    const total = Object.values(d.counts).reduce((a, b) => a + b, 0);
+    $("#tabs").innerHTML = TABS.map(([k, l]) => `<button role="tab" data-k="${k}" aria-selected="${k === tab}">${l}<b>${k ? d.counts[k] || 0 : total}</b></button>`).join("");
+    $("#tabs").querySelectorAll("button").forEach((b) => (b.onclick = () => { tab = b.dataset.k; location.hash = "tab=" + tab; load(); }));
+    $("#list").innerHTML = d.members.map((m) => `
+      <div class="m">
+        <div><h3>${esc(m.name || m.email)}</h3>${m.name ? `<div class="em">${esc(m.email)}</div>` : ""}
+          <div style="margin-top:6px">${m.is_artist ? '<span class="tag">Artist</span>' : ""}${m.verified_at ? "" : '<span class="tag warn" title="Has not entered a code yet">Email not confirmed</span>'}${m.source === "waitlist-import" ? '<span class="tag">Old waitlist</span>' : ""}</div></div>
+        <div class="meta">${esc(m.country || "—")}<br>${esc(START[m.interest] || "")}${m.updates_ok ? " · monthly letter" : ""}</div>
+        <div class="meta">Joined ${when(m.created_at)}${m.approved_at ? "<br>Approved " + when(m.approved_at) : ""}${m.last_seen_at ? "<br>Last in " + when(m.last_seen_at) : ""}</div>
+        <div class="btns">${m.status === "approved" ? btn(m.id, "paused", "Pause") : m.status === "paused" ? btn(m.id, "approved", "Approve", 1) + btn(m.id, "waitlist", "Back to waitlist") : btn(m.id, "approved", "Approve", 1) + btn(m.id, "paused", "Pause")}</div>
+      </div>`).join("") || '<div class="empty">Nobody here.</div>';
+    $("#list").querySelectorAll("button[data-s]").forEach((b) => (b.onclick = async () => {
+      b.disabled = true;
+      try { await api("/admin/api/members/" + encodeURIComponent(b.dataset.id), { status: b.dataset.s }); toast(b.dataset.s === "approved" ? "Approved. They’ll get an email." : "Done."); load(); }
+      catch (e) { toast(e.message); b.disabled = false; }
+    }));
+  }
+  $("#import").onclick = async () => {
+    if (!confirm("Copy everyone from the old waitlist form into accounts on the waitlist? People already here are skipped, and nobody is emailed.")) return;
+    try { const r = await api("/admin/api/members/import", {}); toast(`Added ${r.added}, skipped ${r.skipped}.`); load(); } catch (e) { toast(e.message); }
+  };
+  load().catch((e) => ($("#list").innerHTML = '<div class="empty">' + esc(e.message) + "</div>"));
+})();
+</script>
+</body>
+</html>

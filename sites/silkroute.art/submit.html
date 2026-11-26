@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Submit your work · silkroute.art</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12100D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a class="brand" href="/"><img src="/markhor.svg" alt=""><span>silkroute<i>.art</i></span></a>
+  <span class="where">For artists</span>
+</div></header>
+
+<main class="page">
+  <p class="kicker" id="kicker">Submit your work</p>
+  <h1 id="title">Show us the <em>work</em></h1>
+  <p class="lede" id="lede">Send the works you would like SilkRoute to show, with photos, a few words about each, and your price in US dollars. Every submission is read by our curator.</p>
+
+  <form id="f" novalidate>
+    <input type="hidden" name="token" id="token">
+    <input type="hidden" name="work_id" id="work_id">
+    <input type="hidden" name="work_count" id="work_count" value="1">
+    <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Company website <input name="company-website" tabindex="-1" autocomplete="off"></label></div>
+
+    <section class="sect" id="about">
+      <h2>About you</h2>
+      <p class="small">This becomes your artist profile if your work is selected. You can refine it with us later.</p>
+      <div class="fields">
+        <label>Name <input name="name" autocomplete="name" required></label>
+        <label>Email <input name="email" type="email" autocomplete="email" required></label>
+        <label>City <input name="city" autocomplete="address-level2"></label>
+        <label>Country <input name="country" autocomplete="country-name"></label>
+        <label>Website <span class="opt">optional</span><input name="website" type="url" placeholder="https://"></label>
+        <label>Instagram <span class="opt">optional</span><input name="instagram" placeholder="@"></label>
+        <label class="full">Your practice <textarea name="bio" required placeholder="Where you work, what you make and why. A short paragraph is plenty."></textarea></label>
+      </div>
+    </section>
+    <section class="sect" id="as" hidden>
+      <h2>Submitting as <i id="as-name" style="color:var(--saffron)"></i></h2>
+      <p class="small">From your private link. <a href="#" id="as-status">See your submissions</a>.</p>
+    </section>
+
+    <section class="sect">
+      <h2 id="works-h">The works</h2>
+      <p class="small" id="works-p">Up to five works per submission. Clear, even light and the whole work in frame help most; add a detail or an installation view if you have them.</p>
+      <div id="works"></div>
+      <div class="actions" id="add-wrap"><button type="button" class="link" id="add">+ Add another work</button></div>
+    </section>
+
+    <section class="sect" id="agree">
+      <h2>Before you send</h2>
+      <div class="fields">
+        <label class="check full"><input type="checkbox" name="consent" value="yes" required><span>I agree that SilkRoute may review these works and contact me about them, and I have read the <a href="/ai-policy.html" target="_blank" rel="noopener">AI policy</a>: SilkRoute shows only work made by human artists.</span></label>
+      </div>
+    </section>
+
+    <div class="notice bad" id="err" role="alert" hidden></div>
+    <div class="progress" id="prog" hidden><i></i></div>
+    <div class="actions">
+      <button class="btn fill" id="send" type="submit">Send to the curator <span class="a">→</span></button>
+      <span class="small" id="sending" hidden>Sending photos, this can take a minute…</span>
+    </div>
+  </form>
+
+  <section id="done" hidden>
+    <div class="notice ok" style="margin-top:0">
+      <p id="done-msg"><strong>Thank you. Your work is with the curator.</strong></p>
+    </div>
+    <div id="link-box" hidden>
+      <p class="lede" style="margin-top:28px">Keep this private link. It shows where each work stands, and lets you revise a work or send more.</p>
+      <p style="margin-top:16px;word-break:break-all"><a id="link" class="link" style="letter-spacing:.04em;text-transform:none;font-size:15px"></a></p>
+      <div class="actions"><button type="button" class="btn sm" id="copy">Copy link</button><a class="btn sm fill" id="go">Open it</a></div>
+    </div>
+  </section>
+
+  <footer class="foot"><a href="/">silkroute.art</a><a href="/ai-policy.html">AI policy</a><a href="/privacy.html">Privacy</a></footer>
+</main>
+
+<template id="work-tpl">
+  <div class="work">
+    <div class="work-head"><h3>Work <i class="n">1</i></h3><button type="button" class="link rm">Remove</button></div>
+    <div class="fields">
+      <label class="full">Title <input data-f="title" required></label>
+      <label>Year <input data-f="year" inputmode="numeric" placeholder="2026"></label>
+      <label>Medium <input data-f="medium" placeholder="Oil on linen"></label>
+      <div class="full fl">Size in centimetres
+        <div class="dims">
+          <input data-f="height_cm" inputmode="decimal" placeholder="Height" aria-label="Height in cm">
+          <input data-f="width_cm" inputmode="decimal" placeholder="Width" aria-label="Width in cm">
+          <input data-f="depth_cm" inputmode="decimal" placeholder="Depth (optional)" aria-label="Depth in cm">
+        </div>
+      </div>
+      <div class="fl">Framed?
+        <div class="radios"><label><input type="radio" data-f="framed" value="yes"> Yes</label><label><input type="radio" data-f="framed" value="no" checked> No</label></div>
+      </div>
+      <label>Your price, US dollars <span class="money"><input data-f="price" inputmode="numeric" placeholder="2,400" required></span></label>
+      <label class="full">About this work <textarea data-f="description" placeholder="What it is, how it was made, what it holds for you."></textarea></label>
+      <div class="full fl">Photos <span class="opt" style="letter-spacing:.04em;text-transform:none;font-weight:400">up to 6 · the first is the cover</span>
+        <label class="drop"><input type="file" accept="image/jpeg,image/png,image/webp" multiple><b>Add photos</b><span>Drop them here or choose from your device. JPEG, PNG or WebP.</span></label>
+        <div class="thumbs"></div>
+      </div>
+      <label class="check full"><input type="checkbox" data-f="human_made" value="yes"><span>I made this work myself. It was not made with generative AI.</span></label>
+    </div>
+  </div>
+</template>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const q = new URLSearchParams(location.search);
+  const token = q.get("t"), editId = q.get("work");
+  const form = $("#f"), list = $("#works"), tpl = $("#work-tpl");
+  const MAX_WORKS = 5, MAX_PHOTOS = 6, MAX_EDGE = 2400;
+  const blocks = []; // { el, files: [{blob, url}], keep: [{id, url}] }
+
+  // Resize large photos in the browser before upload: long edge 2400px, JPEG.
+  async function shrink(file) {
+    try {
+      const bmp = await createImageBitmap(file);
+      const scale = Math.min(1, MAX_EDGE / Math.max(bmp.width, bmp.height));
+      if (scale === 1 && file.size < 3e6) return file;
+      const c = document.createElement("canvas");
+      c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+      c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+      const blob = await new Promise((r) => c.toBlob(r, "image/jpeg", 0.88));
+      return blob ? new File([blob], file.name.replace(/\.\w+$/, "") + ".jpg", { type: "image/jpeg" }) : file;
+    } catch { return file; }
+  }
+
+  function renumber() {
+    blocks.forEach((b, i) => { $(".n", b.el).textContent = i + 1; $(".rm", b.el).hidden = blocks.length < 2 || !!editId; });
+    $("#work_count").value = blocks.length;
+    $("#add-wrap").hidden = blocks.length >= MAX_WORKS || !!editId;
+  }
+
+  function drawThumbs(b) {
+    const box = $(".thumbs", b.el);
+    box.innerHTML = "";
+    const all = [...b.keep.map((k) => ({ url: k.url, kind: "keep", ref: k })), ...b.files.map((f) => ({ url: f.url, kind: "new", ref: f }))];
+    all.forEach((p, i) => {
+      const t = document.createElement("div");
+      t.className = "thumb";
+      t.innerHTML = `<img alt="">${i === 0 ? '<span class="first">Cover</span>' : ""}<button type="button" aria-label="Remove photo">×</button>`;
+      $("img", t).src = p.url;
+      $("button", t).onclick = () => {
+        if (p.kind === "keep") b.keep = b.keep.filter((k) => k !== p.ref);
+        else { URL.revokeObjectURL(p.ref.url); b.files = b.files.filter((f) => f !== p.ref); }
+        drawThumbs(b);
+      };
+      box.append(t);
+    });
+    $(".drop", b.el).hidden = all.length >= MAX_PHOTOS;
+  }
+
+  async function addFiles(b, fileList) {
+    for (const f of [...fileList]) {
+      if (b.keep.length + b.files.length >= MAX_PHOTOS) break;
+      if (!/^image\/(jpeg|png|webp)$/.test(f.type)) { showErr("Photos must be JPEG, PNG or WebP. HEIC photos from iPhone: export them as JPEG first, or choose them from Photos, which converts them."); continue; }
+      const s = await shrink(f);
+      b.files.push({ blob: s, url: URL.createObjectURL(s) });
+    }
+    drawThumbs(b);
+  }
+
+  function addWork(data) {
+    const el = tpl.content.firstElementChild.cloneNode(true);
+    const b = { el, files: [], keep: [] };
+    blocks.push(b);
+    list.append(el);
+    const input = $("input[type=file]", el), drop = $(".drop", el);
+    input.onchange = () => { addFiles(b, input.files); input.value = ""; };
+    drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+    drop.ondragleave = () => drop.classList.remove("over");
+    drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(b, e.dataTransfer.files); };
+    $(".rm", el).onclick = () => { blocks.splice(blocks.indexOf(b), 1); el.remove(); renumber(); };
+    // Unique radio group per block
+    el.querySelectorAll("[data-f=framed]").forEach((r) => (r.name = "framed-" + Math.random().toString(36).slice(2)));
+    if (data) {
+      for (const k of ["title", "year", "medium", "height_cm", "width_cm", "depth_cm", "description"]) {
+        const i = $(`[data-f=${k}]`, el); if (i && data[k] != null) i.value = data[k];
+      }
+      $("[data-f=price]", el).value = data.asking_price_usd ?? "";
+      el.querySelector(`[data-f=framed][value=${data.framed ? "yes" : "no"}]`).checked = true;
+      b.keep = (data.photos || []).map((p) => ({ id: p.id, url: p.url }));
+      drawThumbs(b);
+    }
+    renumber();
+    return b;
+  }
+
+  function showErr(msg) { const e = $("#err"); e.textContent = msg; e.hidden = !msg; if (msg) e.scrollIntoView({ block: "center", behavior: "smooth" }); }
+
+  $("#add").onclick = () => { const b = addWork(); $("[data-f=title]", b.el).focus(); };
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    showErr("");
+    const fd = new FormData();
+    for (const el of form.elements) {
+      if (!el.name || el.type === "file" || el.dataset.f) continue;
+      if (el.type === "checkbox") { if (el.checked) fd.append(el.name, el.value); continue; }
+      if (!el.closest("[hidden]") || el.type === "hidden") fd.append(el.name, el.value);
+    }
+    if (!token) {
+      for (const n of ["name", "email", "bio"]) if (!form.elements[n].value.trim()) return showErr("Please fill in your name, email and a few words about your practice.");
+      if (!form.elements.consent.checked) return showErr("Please tick the box before you send.");
+    }
+    for (const [i, b] of blocks.entries()) {
+      const v = (f) => { const el = $(`[data-f=${f}]`, b.el); return el ? el.value.trim() : ""; };
+      const n = i + 1;
+      if (!v("title")) return showErr(`Work ${n}: please add a title.`);
+      if (!v("price")) return showErr(`Work ${n}: please add your price in US dollars.`);
+      if (!b.keep.length && !b.files.length) return showErr(`Work ${n}: please add at least one photo.`);
+      if (!$("[data-f=human_made]", b.el).checked) return showErr(`Work ${n}: please confirm you made this work without generative AI.`);
+      for (const f of ["title", "year", "medium", "height_cm", "width_cm", "depth_cm", "description", "price"]) fd.append(`works[${i}][${f}]`, v(f));
+      fd.append(`works[${i}][framed]`, b.el.querySelector("[data-f=framed]:checked").value);
+      fd.append(`works[${i}][human_made]`, "yes");
+      fd.append(`works[${i}][keep_photos]`, b.keep.map((k) => k.id).join(","));
+      b.files.forEach((f, j) => fd.append(`works[${i}][photos]`, f.blob, f.blob.name || `photo-${j + 1}.jpg`));
+    }
+
+    const send = $("#send"), prog = $("#prog"), bar = $("#prog i");
+    send.disabled = true; $("#sending").hidden = false; prog.hidden = false; bar.style.width = "0";
+    const x = new XMLHttpRequest();
+    x.open("POST", "/api/submit");
+    x.upload.onprogress = (ev) => { if (ev.lengthComputable) bar.style.width = Math.round((ev.loaded / ev.total) * 100) + "%"; };
+    x.onload = () => {
+      send.disabled = false; $("#sending").hidden = true; prog.hidden = true;
+      let r = {}; try { r = JSON.parse(x.responseText); } catch {}
+      if (x.status >= 400 || !r.ok) return showErr(r.error || "Something went wrong. Please try again.");
+      done(r);
+    };
+    x.onerror = () => { send.disabled = false; $("#sending").hidden = true; prog.hidden = true; showErr("The connection dropped. Please try again."); };
+    x.send(fd);
+  };
+
+  function done(r) {
+    form.hidden = true; $("#done").hidden = false;
+    $("#title").innerHTML = "Thank you";
+    $("#kicker").textContent = r.revised ? "Revision received" : "Submission received";
+    $("#lede").textContent = r.revised ? "Your revised work is back with the curator." : "Our curator reads every submission. If a work is right for the gallery, we'll confirm its price and shipping with you before it goes on show.";
+    if (r.merged) {
+      $("#done-msg").innerHTML = "<strong>Thank you. Your work is with the curator.</strong> We've added it to the submissions already under this email address. To see them all, use the private link from your first submission.";
+    } else if (r.status_url) {
+      const url = location.origin + r.status_url;
+      $("#link-box").hidden = false; $("#link").textContent = url; $("#link").href = url; $("#go").href = url;
+      $("#copy").onclick = () => navigator.clipboard.writeText(url).then(() => ($("#copy").textContent = "Copied"));
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  async function init() {
+    if (!token) { addWork(); return; }
+    $("#token").value = token;
+    $("#about").hidden = true; $("#agree").hidden = true; $("#as").hidden = false;
+    $("#as-status").href = "/submission?t=" + encodeURIComponent(token);
+    let d;
+    try { const r = await fetch("/api/submission?t=" + encodeURIComponent(token)); d = await r.json(); if (!r.ok) throw new Error(d.error); }
+    catch (err) { showErr((err && err.message) || "That private link is not valid."); $("#send").disabled = true; return; }
+    $("#as-name").textContent = d.artist.name;
+    if (editId) {
+      const w = d.works.find((x) => x.id === editId);
+      if (!w || !w.editable) { showErr("This work can't be revised here."); $("#send").disabled = true; return; }
+      $("#work_id").value = editId;
+      $("#kicker").textContent = "Revise a work";
+      $("#title").innerHTML = "Revise <em>" + w.title.replace(/[<>&]/g, "") + "</em>";
+      $("#lede").textContent = w.note_to_artist ? "The curator's note: " + w.note_to_artist : "Make your changes and send it back to the curator.";
+      $("#works-h").textContent = "The work"; $("#works-p").hidden = true;
+      $("#send").firstChild.textContent = "Send revision ";
+      addWork(w);
+    } else {
+      $("#kicker").textContent = "Send more work";
+      addWork();
+    }
+  }
+  init();
+})();
+</script>
+</body>
+</html>

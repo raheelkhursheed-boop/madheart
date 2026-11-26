@@ -1,0 +1,29 @@
+# Cloudflare Pages configuration for silkroute.art.
+# Once this file is in a deployment, it is the source of truth for bindings:
+# anything bound in the dashboard must also be listed here.
+name = "silkroute-art"
+pages_build_output_dir = "./"
+compatibility_date = "2026-11-01"
+
+# Waitlist sign-ups (functions/api/signup.js). Unchanged from the dashboard binding.
+[[kv_namespaces]]
+binding = "SIGNUPS"
+id = "dbc965856f074f5ba81456320e25b428"
+
+# Artwork photos. Moves to an R2 bucket once R2 is enabled on the account;
+# functions/_lib/photos.js uses PHOTOS_R2 when it exists and this KV namespace otherwise.
+[[kv_namespaces]]
+binding = "PHOTOS"
+id = "a8c10a46a8854c66a73548b05998bf1c"
+
+# Artists, works, photos and the review log. Schema: functions/_lib/schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "silkroute-catalog"
+database_id = "1a5ef15f-e027-4907-8b43-15bdbb9bd411"
+
+# The admin pages trust only Cloudflare Access. Set ACCESS_TEAM_DOMAIN to the
+# Zero Trust team domain, e.g. "https://silkroute.cloudflareaccess.com".
+# Until it is set, /admin answers "locked" (fails closed).
+[vars]
+ACCESS_TEAM_DOMAIN = ""

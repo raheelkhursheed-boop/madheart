@@ -275,6 +275,13 @@ nav.main a:hover{opacity:1}
 .panel .btn{align-self:flex-start;margin-top:auto}
 .panel .sp{flex:1}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.code-in{font:300 38px/1.1 var(--serif)!important;letter-spacing:.32em!important;max-width:280px}
+.row-links{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+.linkbtn{background:none;border:0;padding:0 0 4px;font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--saffron);cursor:pointer;color:var(--ink)}
+.linkbtn:hover{color:var(--saffron)}
+.auth-err{padding:12px 14px;border-left:3px solid #8E2F24;background:#fff;font-size:15px;color:var(--ink)}
+.signin-hint{font-size:15px!important}
+.step2:not([hidden]) ~ .signin-hint{display:none}
 @media (max-width:900px){.join{grid-template-columns:1fr}}
 @media (max-width:560px){.fields{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
@@ -307,7 +314,7 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
 <header class="top" id="top-bar">
   <div class="wrap">
     <a class="brand" href="/" aria-label="silkroute.art home"><svg aria-hidden="true"><use href="#markhor"/></svg><span>silkroute<i>.art</i></span></a>
-    <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Custodians</a><a href="#curation">Manifesto</a><a href="/ai-policy.html">AI policy</a></nav>
+    <nav class="main" aria-label="Main"><a href="#artists-first">Artists</a><a href="#collectors">Custodians</a><a href="#curation">Manifesto</a><a href="/ai-policy.html">AI policy</a><a href="/signin">Sign in</a></nav>
     <a class="cta" href="#first-access">Join the waitlist</a>
   </div>
 </header>
@@ -433,17 +440,29 @@ footer{border-top:1px solid var(--rule);padding-block:clamp(56px,7vw,96px) 32px}
         <button class="btn" type="submit">Join the Route <span class="a" aria-hidden="true">&rarr;</span></button>
       </form>
 
-      <form id="first-access" class="panel" method="POST" action="/api/signup">
+      <form id="first-access" class="panel" method="POST" action="/api/signup" data-auth="join">
         <input type="hidden" name="form-name" value="collectors">
         <div class="hp" aria-hidden="true"><label for="hp2">Leave this empty</label><input id="hp2" name="company-website" tabindex="-1" autocomplete="off"></div>
         <span class="label">Custodians</span>
         <h3>Join the Journey</h3>
-        <p class="sub">We will write when we open. Is this your first work? Say so below and we will start with a conversation.</p>
+        <p class="sub">Make an account with your email. We will write when the gallery is open to you. Is this your first work? Say so below and we will start with a conversation.</p>
+        <div class="step1">
         <div class="fields">
           <label class="full" for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          <label class="full" for="c-country">Country<input id="c-country" name="country" maxlength="80" autocomplete="country-name" placeholder="Optional"></label>
           <label class="full" for="c-interest">Where are you starting from?<select id="c-interest" name="interest"><option value="">Choose one (optional)</option><option value="first-work">I have never bought original art</option><option value="a-few">I own a few works</option><option value="collector">I own many works</option></select></label>
           <label class="full check" for="c-consent"><input id="c-consent" name="consent" type="checkbox" value="yes" required> <span>Send me new artists and works, at most once a month. <a href="/privacy.html">Privacy</a></span></label>
         </div>
+        </div>
+        <div class="step2" hidden>
+          <div class="fields">
+            <label class="full" for="c-code">Six-digit code<input class="code-in" id="c-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="······"></label>
+          </div>
+          <p class="sub" style="margin-top:12px">We sent it to <b class="sent-to"></b>. It works for ten minutes.</p>
+          <div class="row-links"><button type="button" class="linkbtn again">Send a new code</button><button type="button" class="linkbtn other">Use a different email</button></div>
+        </div>
+        <p class="auth-err" role="alert" hidden></p>
+        <p class="sub signin-hint">Already joined? <a href="/signin" style="text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--saffron)">Sign in</a></p>
         <span class="sp"></span>
         <button class="btn fill" type="submit">Join the Journey <span class="a" aria-hidden="true">&rarr;</span></button>
       </form>
@@ -497,5 +516,6 @@ if("IntersectionObserver" in window){
 }
 })();
 </script>
+<script src="/auth.js" defer></script>
 </body>
 </html>

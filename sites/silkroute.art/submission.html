@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your submissions · silkroute.art</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#12100D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shop.css">
+<style>
+.row{display:grid;grid-template-columns:132px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--rule)}
+.row img{width:132px;height:132px;object-fit:cover;background:var(--paper-2);display:block}
+.row h3{font-size:26px;margin:6px 0 4px}
+.row .meta{font-size:14.5px;color:var(--ink-2)}
+.row .note{margin-top:12px;padding:12px 14px;background:#fff;border-left:3px solid var(--warn);font-size:15.5px}
+.row .actions{margin-top:14px}
+@media (max-width:520px){.row{grid-template-columns:84px 1fr;gap:16px}.row img{width:84px;height:84px}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a class="brand" href="/"><img src="/markhor.svg" alt=""><span>silkroute<i>.art</i></span></a>
+  <span class="where">Your submissions</span>
+</div></header>
+
+<main class="page">
+  <p class="kicker">Private link · keep it to yourself</p>
+  <h1 id="h">Your <em>submissions</em></h1>
+  <p class="lede" id="lede">Where each work stands with the curator.</p>
+  <div class="notice bad" id="err" hidden></div>
+  <section class="sect" id="list-wrap" hidden>
+    <div id="list"></div>
+    <div class="actions"><a class="btn fill" id="more">Send more work <span class="a">→</span></a></div>
+  </section>
+  <footer class="foot"><a href="/">silkroute.art</a><a href="/ai-policy.html">AI policy</a><a href="/privacy.html">Privacy</a></footer>
+</main>
+
+<script>
+(async () => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const t = new URLSearchParams(location.search).get("t");
+  const fail = (m) => { $("#err").textContent = m; $("#err").hidden = false; };
+  if (!t) return fail("This page needs the private link from your submission.");
+  let d;
+  try { const r = await fetch("/api/submission?t=" + encodeURIComponent(t)); d = await r.json(); if (!r.ok) throw new Error(d.error); }
+  catch (e) { return fail((e && e.message) || "That link is not valid."); }
+
+  $("#h").innerHTML = esc(d.artist.name.split(" ")[0]) + ", your <em>submissions</em>";
+  $("#more").href = "/submit?t=" + encodeURIComponent(t);
+  const money = (n) => (n == null ? "" : "$" + Number(n).toLocaleString("en-US"));
+  const size = (w) => [w.height_cm, w.width_cm, w.depth_cm].filter((x) => x != null).join(" × ") + (w.height_cm ? " cm" : "");
+  $("#list").innerHTML = d.works.map((w) => `
+    <article class="row">
+      ${w.photos[0] ? `<img src="${esc(w.photos[0].url)}" alt="">` : "<div style='width:100%;aspect-ratio:1;background:var(--paper-2)'></div>"}
+      <div>
+        <span class="chip ${esc(w.status)}">${esc(w.status_label)}</span>
+        <h3>${esc(w.title)}</h3>
+        <p class="meta">${[w.year, w.medium, size(w)].filter(Boolean).map(esc).join(" · ")}</p>
+        <p class="meta">Your price ${money(w.asking_price_usd)}${w.price_usd && ["published","held","sold","shipped","delivered","approved"].includes(w.status) ? " · Gallery price " + money(w.price_usd) : ""}</p>
+        ${w.note_to_artist ? `<p class="note"><strong>From the curator:</strong> ${esc(w.note_to_artist)}</p>` : ""}
+        ${w.editable ? `<div class="actions"><a class="btn sm ${w.status === "changes_requested" ? "fill" : "quiet"}" href="/submit?t=${encodeURIComponent(t)}&work=${encodeURIComponent(w.id)}">${w.status === "changes_requested" ? "Revise this work" : "Edit"}</a></div>` : ""}
+      </div>
+    </article>`).join("") || "<p class='muted'>No works yet.</p>";
+  $("#list-wrap").hidden = false;
+})();
+</script>
+</body>
+</html>
